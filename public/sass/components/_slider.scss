@@ -1,0 +1,28 @@
+.slider {
+    display: flex;
+    flex-wrap: nowrap;
+    scroll-behavior: smooth;
+    gap: 24px;
+    overflow-x: scroll;
+    .slider-item {
+        scroll-snap-type: x proximity;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        flex-shrink: 0;
+        .slider-image {
+            aspect-ratio: 16/9;
+            width: 100%;
+            max-height: 200px;
+            overflow: hidden;
+            border-radius: 8px;
+            min-width: 200px;
+            min-height: 200px;
+            background-color: #ccc;
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
+}

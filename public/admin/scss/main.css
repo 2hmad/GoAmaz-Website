@@ -1,0 +1,116 @@
+body {
+  font-family: "Tajawal", sans-serif;
+}
+
+.content-wrapper {
+  direction: rtl;
+  text-align: right;
+}
+
+.login-container {
+  font-family: "Cairo", sans-serif;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.login-container .card {
+  background-color: #f9f9f9;
+  max-width: 350px;
+  margin: 0 auto;
+  min-height: 35vh;
+  -webkit-box-shadow: 4px 1px 9px 0px #e7e7e7;
+          box-shadow: 4px 1px 9px 0px #e7e7e7;
+  padding: 20px;
+  margin-top: 12%;
+}
+
+.login-container .card form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 15px;
+}
+
+.login-container .card form input[type="email"],
+.login-container .card form input[type="password"] {
+  text-align: right !important;
+  padding: 8px;
+  width: 370px;
+  max-width: 100%;
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  outline: none;
+}
+
+.login-container .card form input[type="submit"] {
+  padding: 10px;
+  width: 155px;
+  background: #ffa530;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  font-weight: bold;
+  margin: 0 auto;
+}
+
+.login-container .card h1 {
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.error-message {
+  background-color: #ff4343;
+  padding: 10px;
+  color: white;
+  border-radius: 3px;
+  font-weight: bold;
+  text-transform: capitalize;
+  font-size: 14px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+}
+
+.error-message::before {
+  content: url("../../icons/error_white.svg");
+  position: relative;
+  left: 0px;
+  top: 2px;
+}
+
+.success-message {
+  background-color: green;
+  padding: 10px;
+  color: white;
+  border-radius: 3px;
+  font-weight: bold;
+  text-transform: capitalize;
+  font-size: 14px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+}
+
+.success-message::before {
+  content: url("../../icons/check_white.svg");
+  position: relative;
+  left: 0px;
+  top: 2px;
+}
+/*# sourceMappingURL=main.css.map */

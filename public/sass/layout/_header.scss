@@ -1,0 +1,122 @@
+header {
+    background-color: rgb(18, 25, 33);
+    color: #fff;
+    .container {
+        height: 64px;
+        display: flex;
+        align-items: center;
+        @media (max-width: 567px) {
+            padding: 0 16px;
+        }
+    }
+    .logo {
+        margin-right: 8px;
+    }
+    .search {
+        display: flex;
+        width: 100%;
+        max-width: 600px;
+        flex-grow: 1;
+        border-radius: 4px;
+        overflow: hidden;
+        margin-right: 16px;
+        cursor: pointer;
+
+        input {
+            border-radius: 0;
+        }
+        .icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0;
+            width: 50px;
+            height: 40px;
+            background-color: #ffa530;
+        }
+    }
+    .search-desk {
+        @media (max-width: 567px) {
+            display: none;
+        }
+    }
+    .lang {
+        background-color: #febd6920;
+        border-radius: 4px;
+        color: #ffa530;
+        position: relative;
+        user-select: none;
+        cursor: pointer;
+        width: 90px;
+        height: 35px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .current-lang {
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .lang-dropdown {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            width: 120px;
+            display: none;
+            position: absolute;
+            flex-direction: column;
+            top: 32px;
+            .lang-choice.active {
+                background-color: #febd69;
+                color: #fff;
+                font-weight: bold;
+            }
+            .lang-choice {
+                padding: 16px;
+                cursor: pointer;
+                &:hover {
+                    background-color: #ffa530;
+                    color: #fff;
+                }
+            }
+        }
+    }
+    .links {
+        margin-left: auto;
+        display: flex;
+        gap: 8px;
+        margin-right: 16px;
+    }
+    .cart {
+        font-size: 0;
+    }
+
+    .profile {
+        margin-left: auto;
+        margin-right: 16px;
+        .profile-image {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: #ccc;
+            cursor: pointer;
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+}
+
+.search-responsive-con {
+    display: none;
+    .search-responsive {
+        @media (max-width: 567px) {
+            margin: 0;
+        }
+    }
+    @media (max-width: 567px) {
+        display: block;
+    }
+}
