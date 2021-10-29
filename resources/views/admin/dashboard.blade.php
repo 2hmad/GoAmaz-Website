@@ -64,7 +64,7 @@
                         <!-- small box -->
                         <div class="small-box bg-white">
                             <div class="inner">
-                                <h3>{{ DB::table('visitors')->where('page', '<>', 'website')->count() }}</h3>
+                                <h3>{{ DB::table('product_counter')->count() }}</h3>
                                 <p>النقر علي المنتجات</p>
                             </div>
                             <div class="icon">
@@ -77,7 +77,7 @@
                         <!-- small box -->
                         <div class="small-box bg-white">
                             <div class="inner">
-                                <h3>{{ DB::table('visitors')->where('page', '=', 'website')->count() }}</h3>
+                                <h3>{{ DB::table('visitors')->count() }}</h3>
                                 <p>الزوار علي موقعك</p>
                             </div>
                             <div class="icon">

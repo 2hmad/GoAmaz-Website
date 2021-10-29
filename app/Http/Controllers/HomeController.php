@@ -27,6 +27,9 @@ class HomeController extends Controller
                 'date' => date('Y-m-d')
             ]);
         }
-        return view('home');
+
+        // Ads Carousel
+        $getAds = DB::table('ads')->get();
+        return view('home', compact('getAds'));
     }
 }

@@ -33,7 +33,8 @@
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
+                            class="fas fa-bars"></i></a>
                 </li>
             </ul>
         </nav>
@@ -46,7 +47,8 @@
                 <div class="row" style="padding-top: 2%">
                     <div class="col">
                         <h4 style="text-align: center;text-decoration:underline">اضافة اعلان منتج</h4>
-                        <form method="POST">
+                        <form method="POST" action="{{ route('add-ad') }}">
+                            @csrf
                             <div class="input-group">
                                 <label>رابط المنتج</label>
                                 <input type="text" name="product-url">
@@ -91,7 +93,8 @@
                                         <div class="card-body">
                                             <h5 class="card-title">{{ $ad->title }}
                                             </h5>
-                                            <form method="POST" action="{{ route('delete-ad'), $ad->id }}">
+                                            <form method="POST" action="{{ route('delete-ad', ['id' => $ad->id]) }}">
+                                                @csrf
                                                 <button type="submit" class="btn btn-primary">حذف
                                                     المنتج</button>
                                             </form>

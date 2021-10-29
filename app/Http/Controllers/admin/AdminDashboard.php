@@ -5,6 +5,8 @@ namespace App\Http\Controllers\admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AddAdRequest;
+use App\Models\ProductCounter;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Spatie\Analytics\AnalyticsFacade as Analytics;
@@ -37,7 +39,7 @@ class AdminDashboard extends Controller
     }
     public function statistics()
     {
-        $analyticsData = Analytics::fetchVisitorsAndPageViews(Period::years(1));
+        $analyticsData = ProductCounter::get();
         $data = DB::table('admins')->where('email', '=', Session::get('admin-email'))->first();
         $country = Analytics::performQuery(Period::days(30), 'ga:sessions',  ['dimensions' => 'ga:country', 'sort' => '-ga:sessions']);
         $results = collect($country['rows'] ?? [])->map(function (array $dateRow) {
@@ -53,5 +55,27 @@ class AdminDashboard extends Controller
         $data = DB::table('admins')->where('email', '=', Session::get('admin-email'))->first();
         $ads = DB::table('ads')->get();
         return view('admin/ads', compact('data', 'ads'));
+    }
+    public function add_ad(AddAdRequest $request)
+    {
+        if ($request->validated()) {
+            $add = DB::table('ads')->insert([
+                'url' => $request->input('product-url'),
+                'image' => $request->input('product-image'),
+                'title' => $request->input('product-title'),
+                'price' => $request->input('product-price'),
+                'currency' => $request->input('currency'),
+                'merchant' => $request->input('merchant-name'),
+                'logo' => $request->input('merchant-logo'),
+            ]);
+            if ($add) {
+                return redirect()->back()->with('success', 'Successfully');
+            }
+        }
+    }
+    public function delete_ad($id)
+    {
+        DB::table('ads')->where('id', '=', $id)->delete();
+        return redirect()->back()->with('success', 'تم الحذف بنجاح');
     }
 }

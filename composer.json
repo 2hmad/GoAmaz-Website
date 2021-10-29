@@ -15,7 +15,8 @@
         "laravel/tinker": "^2.5",
         "mcamara/laravel-localization": "^1.6",
         "nesbot/carbon": "^2.53",
-        "spatie/laravel-analytics": "^4.0"
+        "spatie/laravel-analytics": "^4.0",
+        "stevebauman/location": "^6.2"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

@@ -29,7 +29,7 @@ Route::group(['middleware' => 'visitors', 'prefix' => LaravelLocalization::setLo
     Route::post('/profile', [ProfileController::class, 'updateInfo'])->name('update_info');
     Route::post('/profile/update-password', [ProfileController::class, 'updatePassword'])->name('update_password');
 
-    Route::get('/product/{id}', [ProductController::class, 'index']);
+    Route::get('/product/{id}', [ProductController::class, 'index'])->middleware('productVisitor');
     Route::post('/product/{id}', [ProductController::class, 'addWatcher'])->name('addwatch');
     Route::post('/product/{id}/{email}', [ProductController::class, 'addFavorite'])->name('addfavorite');
     Route::delete('/product/{id}/{email}', [ProductController::class, 'deleteFavorite'])->name('destroy.favorite');
@@ -47,6 +47,6 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/users', [AdminDashboard::class, 'users']);
     Route::get('/statistics', [AdminDashboard::class, 'statistics']);
     Route::get('/ads', [AdminDashboard::class, 'ads']);
-    Route::post('/ads', [AdminDashboard::class, 'ads'])->name('add-ad');
-    Route::delete('/ads/{id}', [AdminDashboard::class, 'ads'])->name('delete-ad');
+    Route::post('/ads', [AdminDashboard::class, 'add_ad'])->name('add-ad');
+    Route::post('/ads/{id}', [AdminDashboard::class, 'delete_ad'])->name('delete-ad');
 });

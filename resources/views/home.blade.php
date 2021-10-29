@@ -16,31 +16,27 @@
                 <div class="swiper">
                     <!-- Additional required wrapper -->
                     <div class="swiper-wrapper">
+
                         <!-- Slides -->
-                        <div class="swiper-slide">
-                            @include('components/homecardtest2')
-                        </div>
-                        <div class="swiper-slide">
-                            @include('components/homecardtest2')
-                        </div>
-                        <div class="swiper-slide">
-                            @include('components/homecardtest2')
-                        </div>
-                        <div class="swiper-slide">
-                            @include('components/homecardtest2')
-                        </div>
-                        <div class="swiper-slide">
-                            @include('components/homecardtest2')
-                        </div>
-                        <div class="swiper-slide">
-                            @include('components/homecardtest2')
-                        </div>
-                        <div class="swiper-slide">
-                            @include('components/homecardtest2')
-                        </div>
-                        <div class="swiper-slide">
-                            @include('components/homecardtest2')
-                        </div>
+                        @foreach ($getAds as $ad)
+                            <div class="swiper-slide">
+                                <div class="home-card">
+                                    <a href="{{ $ad->url }}">
+                                        <div class="image">
+                                            <img src="{{ $ad->image }}" alt="{{ $ad->title }}" />
+                                        </div>
+                                        <div class="title"><span class="ad-label">Ads</span>
+                                            {{ $ad->title }}
+                                        </div>
+                                        <div class="price">
+                                            <div class="currency">{{ $ad->currency }}</div>
+                                            <div class="amount">{{ $ad->price }}</div>
+                                            <div class="complment">00</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        @endforeach
 
                     </div>
                     <!-- If we need pagination -->

@@ -42,10 +42,10 @@
                                         <th colspan="4" style="text-align: center">احصائية الصفحات</th>
                                     </tr>
                                     <tr>
+                                        <th>الاي بي</th>
+                                        <th>الدولة</th>
                                         <th>التاريخ</th>
-                                        <th>الزوار</th>
-                                        <th>اسم الصفحة</th>
-                                        <th>المشاهدات</th>
+                                        <th>رقم المنتج</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -54,10 +54,10 @@
                                     @endphp
                                     @foreach ($analyticsData as $data)
                                         <tr>
+                                            <td>{{ $data['ip'] }}</td>
+                                            <td>{{ Location::get($data['ip'])->countryName }}</td>
                                             <td>{{ $data['date'] }}</td>
-                                            <td>{{ $data['visitors'] }}</td>
-                                            <td>{{ $data['pageTitle'] }}</td>
-                                            <td>{{ $data['pageViews'] }}</td>
+                                            <td>{{ $data['product'] }}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>
