@@ -19,6 +19,7 @@ class CreateRatingTable extends Migration
             $table->string('author');
             $table->string('rate');
             $table->string('message');
+            $table->date('date');
         });
     }
 

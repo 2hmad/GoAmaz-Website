@@ -33,13 +33,15 @@
                                     action="{{ route('destroy.favorite', [Request::route('id'), Session::get('email') ? Session::get('email') : $_SERVER['REMOTE_ADDR']]) }}">
                                     @csrf
                                     @method('delete')
-                                    <button>{{ __('product.remove-from-favorite') }}</button>
+                                    <button
+                                        style="height: 30px;border-radius: 50px;width: 150px;font-size: 15px;">{{ __('product.remove-from-favorite') }}</button>
                                 </form>
                             @else
                                 <form method="POST"
                                     action="{{ route('addfavorite', [Request::route('id'), Session::get('email') ? Session::get('email') : $_SERVER['REMOTE_ADDR']]) }}">
                                     @csrf
-                                    <button>{{ __('product.add-to-favorite') }}</button>
+                                    <button
+                                        style="height: 30px;border-radius: 50px;width: 150px;font-size: 15px;">{{ __('product.add-to-favorite') }}</button>
                                 </form>
                             @endif
                         </div>
@@ -60,14 +62,14 @@
                                 <div>{{ __('product.lowest-price') }}</div>
                                 <span
                                     style="display: flex;align-items: center;justify-content: center;flex-wrap: nowrap;">
-                                    <img src="/icons/trending_up.svg" style="max-width: 30px">535.00
+                                    535.00
                                 </span>
                             </div>
                             <div class="h-price">
                                 <div>{{ __('product.highest-price') }}</div>
                                 <span
                                     style="display: flex;align-items: center;justify-content: center;flex-wrap: nowrap;">
-                                    <img src="/icons/trending_down.svg" style="max-width: 30px">1500
+                                    1500
                                 </span>
                             </div>
                             <div class="r-price">
@@ -92,12 +94,16 @@
                         <div class="advertise">
                             <img src="https://via.placeholder.com/250">
                         </div>
-                        <div class="watch">
-                            <h4>{{ __('product.amazon-price-watches') }}</h4>
+                        <div class="watch" style="margin-top: 10%">
+                            <h4 style="margin-bottom: 2%">{{ __('product.amazon-price-watches') }}</h4>
                             <form method="POST" action="{{ route('addwatch', [1]) }}"
                                 style="display: flex;flex-direction: column;gap: 9px;">
                                 @csrf
-                                @include('components/currencies')
+                                <div style="display: flex">
+                                    @include('components/currencies')
+                                    <input type="text" name="price" placeholder="{{ __('product.price') }}"
+                                        style="width:125px">
+                                </div>
                                 <div style="display: flex;align-items: center;gap: 10px;">
                                     <input type="checkbox" name="send_email">
                                     <label>{{ __('product.send-an-email') }}</label>
@@ -123,9 +129,6 @@
                                     <a class="a2a_button_facebook"></a>
                                     <a class="a2a_button_twitter"></a>
                                     <a class="a2a_button_email"></a>
-                                    <a class="a2a_button_linkedin"></a>
-                                    <a class="a2a_button_pinterest"></a>
-                                    <a class="a2a_button_facebook_messenger"></a>
                                 </div>
                                 <script async src="https://static.addtoany.com/menu/page.js"></script>
                                 <!-- AddToAny END -->
@@ -134,9 +137,6 @@
                     </div>
                 </div>
                 <div class="other">
-                    @include('components/othercard')
-                    @include('components/othercard')
-                    @include('components/othercard')
                     @include('components/othercard')
                 </div>
                 <div id="chartdiv"></div>
@@ -198,37 +198,37 @@
                             </div>
                         </div>
 
-                        <form class="review-input">
-                            <h2>{{ __('product.review-this-product') }}</h2>
-
+                        <h2>{{ __('product.review-this-product') }}</h2>
+                        <form class="review-input" method="POST" action="{{ route('addRate', [1, 1]) }}">
+                            @csrf
                             <div class="stars">
-                                <img src="/icons/star_outline.svg" />
-                                <img src="/icons/star_outline.svg" />
-                                <img src="/icons/star_outline.svg" />
-                                <img src="/icons/star_outline.svg" />
-                                <img src="/icons/star_outline.svg" />
+                                <input type="radio" name="star" id="star-1" value="1">
+                                <label for="star-1"><img src="/icons/star_outline.svg"></label>
+
+                                <input type="radio" name="star" id="star-2" value="2">
+                                <label for="star-2"><img src="/icons/star_outline.svg"></label>
+
+                                <input type="radio" name="star" id="star-3" value="3">
+                                <label for="star-3"><img src="/icons/star_outline.svg"></label>
+
+                                <input type="radio" name="star" id="star-4" value="4">
+                                <label for="star-4"><img src="/icons/star_outline.svg"></label>
+
+                                <input type="radio" name="star" id="star-5" value="5">
+                                <label for="star-5"><img src="/icons/star_outline.svg"></label>
                             </div>
                             <div class="first-row">
                                 <div class="input-wrapper">
-
                                     <textarea name="review" rows="20"
                                         placeholder="{{ __('product.what-do-you-think') }}"></textarea>
                                 </div>
-
-                                <button>{{ __('product.review') }}</button>
+                                <button type="submit">{{ __('product.review') }}</button>
                             </div>
-
                         </form>
-
                     </div>
                     <div class="reviews-content">
 
                         <div class="reviews">
-                            @include('components/review')
-                            @include('components/review')
-                            @include('components/review')
-                            @include('components/review')
-                            @include('components/review')
                             @include('components/review')
                         </div>
                     </div>

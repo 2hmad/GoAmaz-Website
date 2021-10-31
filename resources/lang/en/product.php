@@ -2,9 +2,9 @@
 return [
     'add-to-favorite' => 'Add to favorite',
     'remove-from-favorite' => 'Remove from favorite',
-    'lowest-price' => 'Lowest price',
-    'highest-price' => 'Highest price',
-    'latest-down' => 'Latest down',
+    'lowest-price' => 'Before',
+    'highest-price' => 'After',
+    'latest-down' => 'Percent',
     'about-this-item' => 'About this item',
     'amazon-price-watches' => 'Amazon price watches',
     'select-currency' => 'Select currency',
@@ -17,6 +17,6 @@ return [
     'stars' => 'Stars',
     'review-this-product' => 'Review this product',
     'review' => 'Review',
-    'what-do-you-think' => 'What do you think'
+    'what-do-you-think' => 'What do you think',
+    'price' => 'Price'
 ];
-?>

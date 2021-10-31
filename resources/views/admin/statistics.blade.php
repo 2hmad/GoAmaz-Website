@@ -55,7 +55,8 @@
                                     @foreach ($analyticsData as $data)
                                         <tr>
                                             <td>{{ $data['ip'] }}</td>
-                                            <td>{{ Location::get($data['ip'])->countryName }}</td>
+                                            <td>{{ Location::get('102.40.194.32')->countryName }}
+                                            </td>
                                             <td>{{ $data['date'] }}</td>
                                             <td>{{ $data['product'] }}</td>
                                         </tr>

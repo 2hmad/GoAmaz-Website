@@ -9,6 +9,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SocialController;
+use App\Models\ProductCounter;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -33,6 +34,7 @@ Route::group(['middleware' => 'visitors', 'prefix' => LaravelLocalization::setLo
     Route::post('/product/{id}', [ProductController::class, 'addWatcher'])->name('addwatch');
     Route::post('/product/{id}/{email}', [ProductController::class, 'addFavorite'])->name('addfavorite');
     Route::delete('/product/{id}/{email}', [ProductController::class, 'deleteFavorite'])->name('destroy.favorite');
+    Route::post('/rate', [ProductController::class, 'store_rate'])->name('addRate');
 
     Route::get('/favorite', [FavoriteController::class, 'index']);
     Route::get('/search', function () {

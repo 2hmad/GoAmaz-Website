@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use AshAllenDesign\LaravelExchangeRates\Classes\ExchangeRate;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Session;
@@ -18,7 +19,8 @@ class ProductController extends Controller
         } else {
             $check = DB::table('favorite')->where('email', '=', $_SERVER['REMOTE_ADDR'])->where('product_id', '=', $id)->first();
         }
-        return view('product', compact('check'));
+        $rates = DB::table('rating')->where('product', '=', $id)->get();
+        return view('product', compact('check', 'rates'));
     }
     public function addFavorite($id, $email)
     {
@@ -44,5 +46,8 @@ class ProductController extends Controller
         } else {
             return redirect()->back()->with('watcher_fail', 'Failed');
         }
+    }
+    public function store_rate()
+    {
     }
 }

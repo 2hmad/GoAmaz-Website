@@ -3,6 +3,7 @@
     background-color: #fff;
     flex-wrap: wrap;
     position: relative;
+    justify-content: center;
     .image-selector {
         display: flex;
         flex-direction: column;
@@ -23,7 +24,6 @@
         width: auto;
         height: auto;
         flex-basis: 250px;
-        aspect-ratio: 1/1;
         min-width: 320px;
         min-height: 320px;
         flex-grow: 1;
@@ -82,16 +82,15 @@
 
     .prices {
         display: flex;
-        background-color: #ddd;
         gap: 1px;
         flex-direction: row;
         flex-grow: 1;
-        border: 1px solid #ddd;
+        border: none;
+        border-top: 1px solid #ddd;
         flex-wrap: wrap;
         flex-basis: 100px;
         flex-shrink: 0;
         & > div {
-            background-color: #fcfcfc;
             padding: 16px;
             min-width: 120px;
             flex: 1;
@@ -108,12 +107,12 @@
         }
         .l-price,
         .r-price {
-            color: rgb(73, 240, 95);
+            color: #f33;
             font-size: 24px;
         }
         .h-price {
             font-size: 24px;
-            color: #f33;
+            color: rgb(73, 240, 95);
         }
     }
 
@@ -274,6 +273,12 @@
             font-weight: bold;
             border: none;
             border-radius: 3px;
+        }
+    }
+    @media (max-width: 567px) {
+        width: 100%;
+        form {
+            width: 100%;
         }
     }
 }
