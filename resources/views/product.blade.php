@@ -6,6 +6,75 @@
     <title>GoAmaz - Login</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <style>
+        #currency {
+            width: 125px;
+        }
+
+        div.stars {
+            direction: rtl;
+            justify-content: flex-end;
+        }
+
+        input.star {
+            display: none;
+        }
+
+        label.star {
+            float: right;
+            padding: 10px;
+            font-size: 20px;
+            transition: all .2s;
+            color: #CCC
+        }
+
+        input.star:checked~label.star:before {
+            content: '\f005';
+            color:
+                #ffbb00;
+            transition: all .25s;
+            font-weight: 900
+        }
+
+        input.star:checked~label.star:before {
+            content: '\f005';
+            color:
+                #ffbb00;
+            transition: all .25s;
+            font-weight: 900
+        }
+
+        input.star-5:checked~label.star:before {
+            color:
+                #ffbb00;
+        }
+
+        input.star-1:checked~label.star:before {
+            color:
+                #ffbb00;
+        }
+
+        label.star:before {
+            content: '\f005';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900
+        }
+
+
+        .horline>li:not(:last-child):after {
+            content: " |";
+        }
+
+        .horline>li {
+            font-weight: bold;
+            color:
+                #ffbb00;
+
+        }
+
+    </style>
 </head>
 
 <body>
@@ -154,73 +223,35 @@
                             </div>
                             <div class="rate">4.5 {{ __('product.out-of') }} 5</div>
                         </div>
-                        <h5>2 {{ __('product.customer-ratings') }}</h5>
-                        <div class="all-progress">
-
-                            <div class="progress">
-                                <div>5 {{ __('product.stars') }}</div>
-                                <div class="progress-bar">
-                                    <div class="inner" style="width: 50%"></div>
-                                </div>
-                                <div>50%</div>
-                            </div>
-
-                            <div class="progress">
-                                <div>4 {{ __('product.stars') }}</div>
-                                <div class="progress-bar">
-                                    <div class="inner" style="width: 50%"></div>
-                                </div>
-                                <div>50%</div>
-                            </div>
-
-                            <div class="progress">
-                                <div>3 {{ __('product.stars') }}</div>
-                                <div class="progress-bar">
-                                    <div class="inner" style="width: 0%"></div>
-                                </div>
-                                <div>0%</div>
-                            </div>
-
-                            <div class="progress">
-                                <div>2 {{ __('product.stars') }}</div>
-                                <div class="progress-bar">
-                                    <div class="inner" style="width: 0%"></div>
-                                </div>
-                                <div>0%</div>
-                            </div>
-
-                            <div class="progress">
-                                <div>1 {{ __('product.stars') }}</div>
-                                <div class="progress-bar">
-                                    <div class="inner" style="width: 0%"></div>
-                                </div>
-                                <div>0%</div>
-                            </div>
-                        </div>
-
-                        <h2>{{ __('product.review-this-product') }}</h2>
-                        <form class="review-input" method="POST" action="{{ route('addRate', [1, 1]) }}">
+                        <h5>{{ DB::table('rating')->where('product', '=', Request::route('id'))->count() .
+    ' ' .
+    __('product.customer-ratings') }}
+                        </h5>
+                        @include('components/percentage')
+                        <h2 style="margin-top: 5%">{{ __('product.review-this-product') }}</h2>
+                        <form class="review-input" method="POST"
+                            action="{{ route('addRate', ['id' => request()->route('id'), 'author' => Crypt::encrypt(Session::get('email'))]) }}">
                             @csrf
                             <div class="stars">
-                                <input type="radio" name="star" id="star-1" value="1">
-                                <label for="star-1"><img src="/icons/star_outline.svg"></label>
+                                <input class="star star-5" value="5" id="star-5" type="radio" name="star" />
+                                <label class="star star-5" for="star-5"></label>
 
-                                <input type="radio" name="star" id="star-2" value="2">
-                                <label for="star-2"><img src="/icons/star_outline.svg"></label>
+                                <input class="star star-4" value="4" id="star-4" type="radio" name="star" />
+                                <label class="star star-4" for="star-4"></label>
 
-                                <input type="radio" name="star" id="star-3" value="3">
-                                <label for="star-3"><img src="/icons/star_outline.svg"></label>
+                                <input class="star star-3" value="3" id="star-3" type="radio" name="star" />
+                                <label class="star star-3" for="star-3"></label>
 
-                                <input type="radio" name="star" id="star-4" value="4">
-                                <label for="star-4"><img src="/icons/star_outline.svg"></label>
+                                <input class="star star-2" value="2" id="star-2" type="radio" name="star" />
+                                <label class="star star-2" for="star-2"></label>
 
-                                <input type="radio" name="star" id="star-5" value="5">
-                                <label for="star-5"><img src="/icons/star_outline.svg"></label>
+                                <input class="star star-1" value="1" id="star-1" type="radio" name="star" />
+                                <label class="star star-1" for="star-1"></label>
                             </div>
                             <div class="first-row">
                                 <div class="input-wrapper">
                                     <textarea name="review" rows="20"
-                                        placeholder="{{ __('product.what-do-you-think') }}"></textarea>
+                                        placeholder="{{ __('product.what-do-you-think') }}" required></textarea>
                                 </div>
                                 <button type="submit">{{ __('product.review') }}</button>
                             </div>

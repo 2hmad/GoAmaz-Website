@@ -36,12 +36,12 @@
                             {{ Session::get('fail-password') }}</div>
                     @endif
                     <div class="login-social">
-                        <a href="javascript:;" id="facebook-connect" onclick="openFacebook()"
+                        <a href="{{ url('redirect/facebook') }}" id="facebook-connect"
                             title="Continue with Facebook">
                             <img class="facebook"
                                 src="https://iconmonstr.com/wp-content/g/gd/makefg.php?i=../assets/preview/2012/png/iconmonstr-facebook-1.png&r=66&g=103&b=178">
                         </a>
-                        <a href="javascript:;" id="google-connect" onclick="openGoogle()" title="Continue with Google">
+                        <a href="{{ url('redirect/google') }}" id="google-connect" title="Continue with Google">
                             <img class="google"
                                 src="https://iconmonstr.com/wp-content/g/gd/makefg.php?i=../assets/preview/2012/png/iconmonstr-google-plus-1.png&r=219&g=68&b=55">
                         </a>
@@ -69,17 +69,17 @@
     function openFacebook() {
         var login = window.open(
             "{{ url('redirect/facebook') }}", 'popup', 'width=600,height=500,resizable=no')
-        setTimeout(function() {
-            login.close()
-        }, 5000)
+        // setTimeout(function() {
+        //     login.close()
+        // }, 5000)
     }
 
     function openGoogle() {
         var login = window.open(
             "{{ url('redirect/google') }}", 'popup', 'width=600,height=500,resizable=no')
-        setTimeout(function() {
-            login.close()
-        }, 5000)
+        // setTimeout(function() {
+        //     login.close()
+        // }, 5000)
     }
 </script>
 

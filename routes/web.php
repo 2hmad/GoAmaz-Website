@@ -34,7 +34,7 @@ Route::group(['middleware' => 'visitors', 'prefix' => LaravelLocalization::setLo
     Route::post('/product/{id}', [ProductController::class, 'addWatcher'])->name('addwatch');
     Route::post('/product/{id}/{email}', [ProductController::class, 'addFavorite'])->name('addfavorite');
     Route::delete('/product/{id}/{email}', [ProductController::class, 'deleteFavorite'])->name('destroy.favorite');
-    Route::post('/rate', [ProductController::class, 'store_rate'])->name('addRate');
+    Route::post('/rate/{id}/{author}', [ProductController::class, 'store_rate'])->name('addRate');
 
     Route::get('/favorite', [FavoriteController::class, 'index']);
     Route::get('/search', function () {
