@@ -7,6 +7,7 @@
 </head>
 
 <body style="background:#f6f6f8">
+
     @include('layout/header')
     @include('layout/nav')
     <div class="ad-728"></div>
@@ -48,11 +49,47 @@
                 </div>
 
                 <div class="multi-item-grid">
-                    @include('components/homecard2')
-                    @include('components/homecard2')
-                    @include('components/homecard2')
-                    @include('components/homecard2')
-                    @include('components/homecard2')
+                    @foreach ($getOffersOne as $offer)
+                        <div class="home-card">
+                            <a href="/product/{{ $offer->asin }}">
+                                <div class="image">
+                                    <img src="{{ $offer->img }}" alt="A" />
+                                </div>
+                                <div class="title">{{ $offer->title }}</div>
+                                <div class="stars">
+                                    <img src="/icons/star.svg" />
+                                    <img src="/icons/star.svg" />
+                                    <img src="/icons/star.svg" />
+                                    <img src="/icons/star.svg" />
+                                    <img src="/icons/star_half.svg" />
+                                </div>
+                                <div class="price">
+                                    <div class="currency">USD</div>
+                                    <div class="amount">{{ $offer->price }}</div>
+                                    {{-- <div class="complment">00</div> --}}
+                                </div>
+                            </a>
+                            <div class="countries">
+                                <div class="country">
+                                    <div class="flag">
+                                        <img src="/images/eg.webp" alt="EG" />
+                                    </div>
+                                    <div class="info">
+                                        <div>1500 EGP</div>
+                                    </div>
+                                    @if (LaravelLocalization::getCurrentLocale() == 'en')
+                                        <a href="/" class="c-go">
+                                            <img src="/icons/arrow.svg" alt="Go" />
+                                        </a>
+                                    @else
+                                        <a href="/" class="c-go" style="margin-right: auto">
+                                            <img src="/icons/arrow-left.svg" alt="Go" />
+                                        </a>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
                 <div class="homeblocks">
                     @include('components/homeblock2')
@@ -63,31 +100,49 @@
                     <!-- Additional required wrapper -->
                     <div class="swiper-wrapper">
                         <!-- Slides -->
-                        <div class="swiper-slide">
-                            @include('components/homecardtest')
-                        </div>
-                        <div class="swiper-slide">
-                            @include('components/homecardtest')
-                        </div>
-                        <div class="swiper-slide">
-                            @include('components/homecardtest')
-                        </div>
-                        <div class="swiper-slide">
-                            @include('components/homecardtest')
-                        </div>
-                        <div class="swiper-slide">
-                            @include('components/homecardtest')
-                        </div>
-                        <div class="swiper-slide">
-                            @include('components/homecardtest')
-                        </div>
-                        <div class="swiper-slide">
-                            @include('components/homecardtest')
-                        </div>
-                        <div class="swiper-slide">
-                            @include('components/homecardtest')
-                        </div>
-
+                        @foreach ($getOffersCarousel as $offer)
+                            <div class="swiper-slide">
+                                <div class="home-card">
+                                    <a href="/product/{{ $offer->asin }}">
+                                        <div class="image">
+                                            <img src="{{ $offer->img }}" alt="{{ $offer->title }}" />
+                                        </div>
+                                        <div class="title">{{ $offer->title }}</div>
+                                        <div class="stars">
+                                            <img src="/icons/star.svg" />
+                                            <img src="/icons/star.svg" />
+                                            <img src="/icons/star.svg" />
+                                            <img src="/icons/star.svg" />
+                                            <img src="/icons/star_half.svg" />
+                                        </div>
+                                        <div class="price">
+                                            <div class="currency">USD</div>
+                                            <div class="amount">{{ $offer->price }}</div>
+                                            {{-- <div class="complment">00</div> --}}
+                                        </div>
+                                    </a>
+                                    <div class="countries">
+                                        <div class="country">
+                                            <div class="flag">
+                                                <img src="/images/eg.webp" alt="EG" />
+                                            </div>
+                                            <div class="info">
+                                                <div>1500 EGP</div>
+                                            </div>
+                                            @if (LaravelLocalization::getCurrentLocale() == 'en')
+                                                <a href="/" class="c-go">
+                                                    <img src="/icons/arrow.svg" alt="Go" />
+                                                </a>
+                                            @else
+                                                <a href="/" class="c-go" style="margin-right: auto">
+                                                    <img src="/icons/arrow-left.svg" alt="Go" />
+                                                </a>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
                     <!-- If we need pagination -->
 
@@ -100,11 +155,47 @@
                 <div class="ad-728"></div>
                 <!-- End Ad -->
                 <div class="multi-item-grid">
-                    @include('components/homecard2')
-                    @include('components/homecard2')
-                    @include('components/homecard2')
-                    @include('components/homecard2')
-                    @include('components/homecard2')
+                    @foreach ($getOffersTwo as $offer)
+                        <div class="home-card">
+                            <a href="/product/{{ $offer->asin }}">
+                                <div class="image">
+                                    <img src="{{ $offer->img }}" alt="A" />
+                                </div>
+                                <div class="title">{{ $offer->title }}</div>
+                                <div class="stars">
+                                    <img src="/icons/star.svg" />
+                                    <img src="/icons/star.svg" />
+                                    <img src="/icons/star.svg" />
+                                    <img src="/icons/star.svg" />
+                                    <img src="/icons/star_half.svg" />
+                                </div>
+                                <div class="price">
+                                    <div class="currency">USD</div>
+                                    <div class="amount">{{ $offer->price }}</div>
+                                    {{-- <div class="complment">00</div> --}}
+                                </div>
+                            </a>
+                            <div class="countries">
+                                <div class="country">
+                                    <div class="flag">
+                                        <img src="/images/eg.webp" alt="EG" />
+                                    </div>
+                                    <div class="info">
+                                        <div>1500 EGP</div>
+                                    </div>
+                                    @if (LaravelLocalization::getCurrentLocale() == 'en')
+                                        <a href="/" class="c-go">
+                                            <img src="/icons/arrow.svg" alt="Go" />
+                                        </a>
+                                    @else
+                                        <a href="/" class="c-go" style="margin-right: auto">
+                                            <img src="/icons/arrow-left.svg" alt="Go" />
+                                        </a>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
                 <div class="homeblocks">
                     @include('components/homeblock2')
@@ -112,11 +203,47 @@
                     @include('components/homeblock')
                 </div>
                 <div class="multi-item-grid">
-                    @include('components/homecard2')
-                    @include('components/homecard2')
-                    @include('components/homecard2')
-                    @include('components/homecard2')
-                    @include('components/homecard2')
+                    @foreach ($getOffersThree as $offer)
+                        <div class="home-card">
+                            <a href="/product/{{ $offer->asin }}">
+                                <div class="image">
+                                    <img src="{{ $offer->img }}" alt="A" />
+                                </div>
+                                <div class="title">{{ $offer->title }}</div>
+                                <div class="stars">
+                                    <img src="/icons/star.svg" />
+                                    <img src="/icons/star.svg" />
+                                    <img src="/icons/star.svg" />
+                                    <img src="/icons/star.svg" />
+                                    <img src="/icons/star_half.svg" />
+                                </div>
+                                <div class="price">
+                                    <div class="currency">USD</div>
+                                    <div class="amount">{{ $offer->price }}</div>
+                                    {{-- <div class="complment">00</div> --}}
+                                </div>
+                            </a>
+                            <div class="countries">
+                                <div class="country">
+                                    <div class="flag">
+                                        <img src="/images/eg.webp" alt="EG" />
+                                    </div>
+                                    <div class="info">
+                                        <div>1500 EGP</div>
+                                    </div>
+                                    @if (LaravelLocalization::getCurrentLocale() == 'en')
+                                        <a href="/" class="c-go">
+                                            <img src="/icons/arrow.svg" alt="Go" />
+                                        </a>
+                                    @else
+                                        <a href="/" class="c-go" style="margin-right: auto">
+                                            <img src="/icons/arrow-left.svg" alt="Go" />
+                                        </a>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
 
             </div>

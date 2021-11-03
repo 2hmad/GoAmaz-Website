@@ -85,17 +85,29 @@
             <div class="product-page">
                 <div class="product">
                     <div class="image-selector" @if (LaravelLocalization::getCurrentLocale() == 'ar') style="right:0;left:auto" @endif>
-                        <img src="/images/1.jpg" alt="A1">
-                        <img src="/images/3.jpg" alt="A1">
+                        @if (isset($json['images'][0]))
+                            <img src="{{ $json['images'][0] }}" alt="{{ $json['title'] }}">
+                        @endif
+                        @if (isset($json['images'][1]))
+                            <img src="{{ $json['images'][1] }}" alt="{{ $json['title'] }}">
+                        @endif
+                        @if (isset($json['images'][2]))
+                            <img src="{{ $json['images'][2] }}" alt="{{ $json['title'] }}">
+                        @endif
+                        @if (isset($json['images'][3]))
+                            <img src="{{ $json['images'][3] }}" alt="{{ $json['title'] }}">
+                        @endif
+                        @if (isset($json['images'][4]))
+                            <img src="{{ $json['images'][4] }}" alt="{{ $json['title'] }}">
+                        @endif
                     </div>
                     <div class="image">
-                        <img src="/images/1.jpg" alt="A1">
+                        <img src="{{ $json['images'][0] }}" alt="A1">
                     </div>
                     <div class="details">
                         <div class="top-details">
-
-                            <h1 class="title">Face Mask
-                                <span><img src="/images/eg.webp" /></span>
+                            <h1 class="title">{{ $json['title'] }}
+                                <span><img src="/images/united-states.svg" /></span>
                             </h1>
                             @if ($check)
                                 <form method="POST"
@@ -123,7 +135,7 @@
                             <span>4.5</span>
                         </div>
                         <div class="price">
-                            <div>100</div>
+                            <div>{{ $json['prices']['current_price'] }}</div>
                             <span>USD</span>
                         </div>
                         <div class="prices">
@@ -131,30 +143,30 @@
                                 <div>{{ __('product.lowest-price') }}</div>
                                 <span
                                     style="display: flex;align-items: center;justify-content: center;flex-wrap: nowrap;">
-                                    535.00
+                                    @if ($json['prices']['previous_price'] != -1)
+                                        {{ $json['prices']['previous_price'] }}
+                                    @else
+                                        0
+                                    @endif
                                 </span>
                             </div>
                             <div class="h-price">
                                 <div>{{ __('product.highest-price') }}</div>
                                 <span
                                     style="display: flex;align-items: center;justify-content: center;flex-wrap: nowrap;">
-                                    1500
+                                    {{ $json['prices']['current_price'] }}
                                 </span>
                             </div>
                             <div class="r-price">
                                 <div>{{ __('product.latest-down') }}</div>
-                                -12.8%
+                                {{ number_format(($json['prices']['previous_price'] / $json['prices']['current_price']) * 100, 2) }}%
                             </div>
                         </div>
 
                         <div class="p-details">
                             <h3>{{ __('product.about-this-item') }}</h3>
-                            <ul>
-                                <li>Color: Black</li>
-                                <li>Awesome Shoe</li>
-                                <li>Unbreakable</li>
-                                <li>Ass Best</li>
-                                <li>Great</li>
+                            <ul style="width: 714px;line-height: 2em;">
+                                {{ $json['description'] }}
                             </ul>
                         </div>
 
@@ -221,11 +233,11 @@
                                 <img src="/icons/star.svg" />
                                 <img src="/icons/star_half.svg" />
                             </div>
-                            <div class="rate">4.5 {{ __('product.out-of') }} 5</div>
+                            <div class="rate">{{ $json['reviews']['stars'] }} {{ __('product.out-of') }}
+                                5
+                            </div>
                         </div>
-                        <h5>{{ DB::table('rating')->where('product', '=', Request::route('id'))->count() .
-    ' ' .
-    __('product.customer-ratings') }}
+                        <h5>{{ $json['reviews']['total_reviews'] . ' ' . __('product.customer-ratings') }}
                         </h5>
                         @include('components/percentage')
                         <h2 style="margin-top: 5%">{{ __('product.review-this-product') }}</h2>

@@ -1,9 +1,14 @@
 const image_viewer = document.querySelector(".product .image");
-const image = document.querySelector(".product .image");
+const image = document.querySelector(".product .image img");
 const image_selector = document.querySelector(".product .image-selector");
-const stars = document.querySelector(".review-input .stars ");
+const stars = document.querySelector(".review-input .stars");
 
 const review_input = document.querySelector(".review-input .first-row");
+image_selector.childNodes.forEach((child) => {
+    child.addEventListener("click", () => {
+        image.src = child.src;
+    });
+});
 
 for (const child of stars.children) {
     child.addEventListener("click", () => {

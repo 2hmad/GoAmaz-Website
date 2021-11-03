@@ -21,7 +21,15 @@ class ProductController extends Controller
             $check = DB::table('favorite')->where('email', '=', $_SERVER['REMOTE_ADDR'])->where('product_id', '=', $id)->first();
         }
         $rates = DB::table('rating')->where('product', '=', $id)->orderBy('id', 'DESC')->get();
-        return view('product', compact('check', 'rates'));
+        $json = Http::withHeaders([
+            'x-rapidapi-host' => 'amazon-products1.p.rapidapi.com',
+            'x-rapidapi-key' => env('X_RAPIDAPI_KEY', null)
+        ])->get('https://amazon-products1.p.rapidapi.com/product', [
+            'country' => 'US',
+            'asin' => "$id"
+        ]);
+        $json = json_decode($json, TRUE);
+        return view('product', compact('check', 'rates', 'json'));
     }
     public function addFavorite($id, $email)
     {
