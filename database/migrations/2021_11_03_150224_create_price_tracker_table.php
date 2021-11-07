@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWatchersTable extends Migration
+class CreatePriceTrackerTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateWatchersTable extends Migration
      */
     public function up()
     {
-        Schema::create('watchers', function (Blueprint $table) {
+        Schema::create('price_tracker', function (Blueprint $table) {
             $table->id();
-            $table->string('product');
-            $table->string('contact');
-            $table->string('phone');
-            $table->string('price');
-            $table->string('currency');
+            $table->text('asin');
+            $table->text('price');
+            $table->date('date');
         });
     }
 
@@ -30,6 +28,6 @@ class CreateWatchersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('watchers');
+        Schema::dropIfExists('price_tracker');
     }
 }

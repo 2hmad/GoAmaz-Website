@@ -104,6 +104,8 @@ header .container {
 @media (max-width: 567px) {
   header .container {
     padding: 0 16px;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
   }
 }
 
@@ -1094,6 +1096,8 @@ nav .links {
   background-color: #fff;
   border-top: 1px solid #ccc;
   padding: 16px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .cart-item .cart-image {
@@ -1118,11 +1122,12 @@ nav .links {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+  width: 1000px;
 }
 
 .cart-item .cart-item-info .name {
   font-size: 22px;
-  line-height: 1;
+  line-height: 2rem;
   font-weight: bold;
 }
 

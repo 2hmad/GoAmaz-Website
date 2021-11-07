@@ -16,9 +16,9 @@ class HomeController extends Controller
     public function index(Request $request)
     {
 
-        $getOffersOne = DB::table('offers')->inRandomOrder()->limit(5)->get();
+        $getOffersOne = DB::table('offers')->inRandomOrder()->limit(10)->get();
         $getOffersTwo = DB::table('offers')->inRandomOrder()->limit(5)->get();
-        $getOffersThree = DB::table('offers')->inRandomOrder()->limit(5)->get();
+        $getOffersThree = DB::table('offers')->inRandomOrder()->limit(10)->get();
         $getOffersCarousel = DB::table('offers')->inRandomOrder()->limit(10)->get();
         $checkVisitor = DB::table('visitors')
             ->where([

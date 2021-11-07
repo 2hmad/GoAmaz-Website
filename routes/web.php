@@ -8,6 +8,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SocialController;
 use App\Models\ProductCounter;
 use Illuminate\Support\Facades\Route;
@@ -37,9 +38,8 @@ Route::group(['middleware' => 'visitors', 'prefix' => LaravelLocalization::setLo
     Route::post('/rate/{id}/{author}', [ProductController::class, 'store_rate'])->name('addRate');
 
     Route::get('/favorite', [FavoriteController::class, 'index']);
-    Route::get('/search', function () {
-        return view('search');
-    });
+    Route::get('/search', [SearchController::class, 'index']);
+    Route::post('/search', [SearchController::class, 'search'])->name('search');
 });
 Route::group(['prefix' => 'admin'], function () {
     Route::get('/login', [AdminLogin::class, 'index']);

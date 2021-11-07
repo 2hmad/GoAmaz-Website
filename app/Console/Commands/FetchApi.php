@@ -39,20 +39,31 @@ class FetchApi extends Command
      */
     public function handle()
     {
-        $delete = DB::table('offers')->delete();
-        $restartId = DB::statement('ALTER TABLE offers AUTO_INCREMENT = 0');
         $json = Http::withHeaders([
             'x-rapidapi-host' => 'amazon-products1.p.rapidapi.com',
             'x-rapidapi-key' => env('X_RAPIDAPI_KEY', null)
         ])->get('https://amazon-products1.p.rapidapi.com/offers', [
             'min_number' => '5',
             'country' => 'US',
-            'type' => 'LIGHTNING_DEAL',
             'max_number' => '40'
         ]);
         $json = json_decode($json, TRUE);
         foreach ($json['offers'] as $result) {
-            $posts = DB::insert('insert into offers (title, img, asin, price, reviews) values (?, ?, ?, ?, ?)', [$result['title'], $result['images'][0], $result['asin'], $result['prices']['current_price'], $result['reviews']['stars']]);
+            $offers = DB::table('offers')->insert([
+                'title' => $result['title'],
+                'img' => $result['images'][0],
+                'asin' => $result['asin'],
+                'price' => $result['prices']['current_price'],
+                'reviews' => $result['reviews']['stars']
+            ]);
+            $check_asin = DB::table('price_tracker')->where('asin', '=', $result['asin'])->where('date', '=', date('M Y'))->count();
+            if ($check_asin == 0) {
+                $tracking = DB::table('price_tracker')->insert([
+                    'asin' => $result['asin'],
+                    'price' => $result['prices']['current_price'],
+                    'date' => date('M Y')
+                ]);
+            }
         }
     }
 }

@@ -3,7 +3,7 @@
 
 <head>
     @include('layout/head')
-    <title>GoAmaz - Login</title>
+    <title>Favourite - GoAmaz</title>
 </head>
 
 <body>
@@ -13,25 +13,55 @@
         <div class="container">
             <div class="cart-page">
                 <div class="cart-cont">
-                    <h1>Cart</h1>
-                    <div class="cart-item">
-                        <div class="cart-image">
-                            <img src="/images/2.jpg" alt="Alt">
-                        </div>
-                        <div class="cart-item-info">
-                            <div class="name">Face mask 350ml</div>
-                            <div class="price">350 USD</div>
-                            <div class="stars">
-                                <img src="/icons/star.svg" />
-                                <img src="/icons/star.svg" />
-                                <img src="/icons/star.svg" />
-                                <img src="/icons/star.svg" />
-                                <img src="/icons/star_half.svg" />
+                    <h1>{{ __('home.favourite') }}</h1>
+                    @foreach ($products as $product)
+                        <div class="cart-item">
+                            <div class="cart-image">
+                                <img src="{{ $product->image }}" alt="Alt">
                             </div>
-                            <button>Buy</button>
+                            <div class="cart-item-info">
+                                <div class="name">{{ $product->title }}</div>
+                                <div class="price">{{ $product->price }} USD</div>
+                                <div class="stars">
+                                    @if (number_format($product->stars, 0) == 5)
+                                        <img src="/icons/star.svg" />
+                                        <img src="/icons/star.svg" />
+                                        <img src="/icons/star.svg" />
+                                        <img src="/icons/star.svg" />
+                                        <img src="/icons/star.svg" />
+                                    @elseif(number_format($product->stars, 0) == 4)
+                                        <img src="/icons/star.svg" />
+                                        <img src="/icons/star.svg" />
+                                        <img src="/icons/star.svg" />
+                                        <img src="/icons/star.svg" />
+                                        <img src="/icons/grey-star.svg" />
+                                    @elseif(number_format($product->stars, 0) == 3)
+                                        <img src="/icons/star.svg" />
+                                        <img src="/icons/star.svg" />
+                                        <img src="/icons/star.svg" />
+                                        <img src="/icons/grey-star.svg" />
+                                        <img src="/icons/grey-star.svg" />
+                                    @elseif(number_format($product->stars, 0) == 2)
+                                        <img src="/icons/star.svg" />
+                                        <img src="/icons/star.svg" />
+                                        <img src="/icons/grey-star.svg" />
+                                        <img src="/icons/grey-star.svg" />
+                                        <img src="/icons/grey-star.svg" />
+                                    @elseif(number_format($product->stars, 0) == 1)
+                                        <img src="/icons/star.svg" />
+                                    @else
+                                        <img src="/icons/grey-star.svg" />
+                                        <img src="/icons/grey-star.svg" />
+                                        <img src="/icons/grey-star.svg" />
+                                        <img src="/icons/grey-star.svg" />
+                                        <img src="/icons/grey-star.svg" />
+                                    @endif
+                                </div>
+                                <a
+                                    href="/product/{{ $product->product_id }}"><button>{{ __('home.view-product') }}</button></a>
+                            </div>
                         </div>
-                    </div>
-
+                    @endforeach
                 </div>
             </div>
         </div>

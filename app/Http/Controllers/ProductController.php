@@ -29,11 +29,53 @@ class ProductController extends Controller
             'asin' => "$id"
         ]);
         $json = json_decode($json, TRUE);
-        return view('product', compact('check', 'rates', 'json'));
+
+        if (DB::table('price_tracker')->where('date', '=', date('M Y'))->where('price', '=', $json['prices']['current_price'])->where('asin', '=', $id)->count() == 0) {
+            DB::table('price_tracker')->insert([
+                'asin' => $id,
+                'price' => $json['prices']['current_price'],
+                'date' => date('M Y')
+            ]);
+        }
+
+        $jsonSa = Http::withHeaders([
+            'x-rapidapi-host' => 'amazon-products1.p.rapidapi.com',
+            'x-rapidapi-key' => env('X_RAPIDAPI_KEY', null)
+        ])->get('https://amazon-products1.p.rapidapi.com/product', [
+            'country' => 'SA',
+            'asin' => "$id"
+        ]);
+        $jsonSa = json_decode($jsonSa, TRUE);
+
+        $jsonAe = Http::withHeaders([
+            'x-rapidapi-host' => 'amazon-products1.p.rapidapi.com',
+            'x-rapidapi-key' => env('X_RAPIDAPI_KEY', null)
+        ])->get('https://amazon-products1.p.rapidapi.com/product', [
+            'country' => 'AE',
+            'asin' => "$id"
+        ]);
+        $jsonAe = json_decode($jsonAe, TRUE);
+
+        $jsonUk = Http::withHeaders([
+            'x-rapidapi-host' => 'amazon-products1.p.rapidapi.com',
+            'x-rapidapi-key' => env('X_RAPIDAPI_KEY', null)
+        ])->get('https://amazon-products1.p.rapidapi.com/product', [
+            'country' => 'UK',
+            'asin' => "$id"
+        ]);
+        $jsonUk = json_decode($jsonUk, TRUE);
+
+        $chart = DB::table('price_tracker')->where('asin', '=', $id)->orderBy('date', 'DESC')->get();
+
+        return view('product', compact('check', 'rates', 'json', 'jsonSa', 'jsonAe', 'jsonUk', 'chart'));
     }
-    public function addFavorite($id, $email)
+    public function addFavorite(Request $request, $id, $email)
     {
-        DB::insert('insert into favorite (product_id, email, date) values (?, ?, ?)', [$id, $email, date('Y-m-d')]);
+        $title = $request->input('title');
+        $price = $request->input('price');
+        $stars = $request->input('stars');
+        $image = $request->input('image');
+        DB::insert('insert into favorite (product_id, title, price, stars, image, email, date) values (?, ?, ?, ?, ?, ?, ?)', [$id, $title, $price, $stars, $image, $email, date('Y-m-d')]);
         return redirect()->back();
     }
     public function deleteFavorite($id, $email)
@@ -44,16 +86,16 @@ class ProductController extends Controller
     public function addWatcher(Request $request, $id)
     {
         if ($request->has('send_email') && !$request->has('send_phone')) {
-            DB::insert('insert into watchers (product, contact, currency) values (?, ?, ?)', [$id, $request->input('email'), $request->input('currency')]);
+            DB::insert('insert into watchers (product, contact, price, currency) values (?, ?, ?, ?)', [$id, $request->input('email'), $request->input('price'), $request->input('currency')]);
             return redirect()->back()->with('watcher_added', 'Done');
         } elseif (!$request->has('send_email') && $request->has('send_phone')) {
-            DB::insert('insert into watchers (product, phone, currency) values (?, ?, ?)', [$id, $request->input('full-phone'), $request->input('currency')]);
+            DB::insert('insert into watchers (product, phone, price, currency) values (?, ?, ?, ?)', [$id, $request->input('full-phone'), $request->input('price'), $request->input('currency')]);
             return redirect()->back()->with('watcher_added', 'Done');
         } elseif ($request->has('send_email') && $request->has('send_phone')) {
-            DB::insert('insert into watchers (product, contact, phone, currency) values (?, ?, ?, ?)', [$id, $request->input('email'), $request->input('full-phone'), $request->input('currency')]);
+            DB::insert('insert into watchers (product, contact, phone, price, currency) values (?, ?, ?, ?, ?)', [$id, $request->input('email'), $request->input('full-phone'), $request->input('price'), $request->input('currency')]);
             return redirect()->back()->with('watcher_added', 'Done');
         } else {
-            return redirect()->back()->with('watcher_fail', 'Failed');
+            return redirect()->back()->with('watcher_fail', 'Please fill required fields');
         }
     }
     public function store_rate(Request $request, $id, $author)

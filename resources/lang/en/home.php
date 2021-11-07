@@ -14,4 +14,6 @@ return [
     'change-password' => 'Change password',
     'signout' => 'Sign Out',
     'signin' => 'Sign In',
+    'favourite' => 'Favourite',
+    'view-product' => 'View Product'
 ];

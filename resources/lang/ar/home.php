@@ -14,4 +14,6 @@ return [
     'change-password' => 'تغيير كلمة المرور',
     'signout' => 'تسجيل الخروج',
     'signin' => 'تسجيل الدخول',
+    'favourite' => 'المفضلة',
+    'view-product' => 'زيارة المنتج'
 ];

@@ -3,19 +3,24 @@
 
 <head>
     @include('layout/head')
-    <title>GoAmaz - Login</title>
+    <title>{{ $json['title'] }}</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
         integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <style>
+        canvas {
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+        }
+
         #currency {
             width: 125px;
         }
 
         div.stars {
-            direction: rtl;
-            justify-content: flex-end;
+            justify-content: flex-start;
         }
 
         input.star {
@@ -62,7 +67,6 @@
             font-weight: 900
         }
 
-
         .horline>li:not(:last-child):after {
             content: " |";
         }
@@ -91,51 +95,84 @@
                         @if (isset($json['images'][1]))
                             <img src="{{ $json['images'][1] }}" alt="{{ $json['title'] }}">
                         @endif
-                        @if (isset($json['images'][2]))
-                            <img src="{{ $json['images'][2] }}" alt="{{ $json['title'] }}">
-                        @endif
-                        @if (isset($json['images'][3]))
-                            <img src="{{ $json['images'][3] }}" alt="{{ $json['title'] }}">
-                        @endif
-                        @if (isset($json['images'][4]))
-                            <img src="{{ $json['images'][4] }}" alt="{{ $json['title'] }}">
-                        @endif
                     </div>
                     <div class="image">
-                        <img src="{{ $json['images'][0] }}" alt="A1">
+                        @if (isset($json['images'][0]))
+                            <img src="{{ $json['images'][0] }}" alt="{{ $json['title'] }}">
+                        @endif
                     </div>
                     <div class="details">
                         <div class="top-details">
-                            <h1 class="title">{{ $json['title'] }}
-                                <span><img src="/images/united-states.svg" /></span>
-                            </h1>
+                            <a href="{{ $json['full_link'] }}">
+                                <h1 class="title">{{ $json['title'] }}
+                                    <span><img src="/images/united-states.svg" /></span>
+                                </h1>
+                            </a>
                             @if ($check)
                                 <form method="POST"
                                     action="{{ route('destroy.favorite', [Request::route('id'), Session::get('email') ? Session::get('email') : $_SERVER['REMOTE_ADDR']]) }}">
                                     @csrf
                                     @method('delete')
                                     <button
-                                        style="height: 30px;border-radius: 50px;width: 150px;font-size: 15px;">{{ __('product.remove-from-favorite') }}</button>
+                                        style="height: 30px;border-radius: 50px;font-size: 15px;">{{ __('product.remove-from-favorite') }}</button>
                                 </form>
                             @else
                                 <form method="POST"
                                     action="{{ route('addfavorite', [Request::route('id'), Session::get('email') ? Session::get('email') : $_SERVER['REMOTE_ADDR']]) }}">
                                     @csrf
+                                    <input type="text" name="title" value="{{ $json['title'] }}" hidden>
+                                    <input type="text" name="price" value="{{ $json['prices']['current_price'] }}"
+                                        hidden>
+                                    <input type="text" name="stars"
+                                        value="{{ number_format($json['reviews']['stars'], 0) }}" hidden>
+                                    <input type="text" name="image" value="{{ $json['images'][0] }}" hidden>
+                                    <input type="text" name="date" value="{{ date('Y-m-d') }}" hidden>
                                     <button
-                                        style="height: 30px;border-radius: 50px;width: 150px;font-size: 15px;">{{ __('product.add-to-favorite') }}</button>
+                                        style="height: 30px;border-radius: 50px;font-size: 15px;">{{ __('product.add-to-favorite') }}</button>
                                 </form>
                             @endif
                         </div>
                         <div class="stars">
-                            <img src="/icons/star.svg" />
-                            <img src="/icons/star.svg" />
-                            <img src="/icons/star.svg" />
-                            <img src="/icons/star.svg" />
-                            <img src="/icons/star_half.svg" />
-                            <span>4.5</span>
+                            @if (number_format($json['reviews']['stars'], 0) == 5)
+                                <img src="/icons/star.svg" />
+                                <img src="/icons/star.svg" />
+                                <img src="/icons/star.svg" />
+                                <img src="/icons/star.svg" />
+                                <img src="/icons/star.svg" />
+                            @elseif(number_format($json['reviews']['stars'], 0) == 4)
+                                <img src="/icons/star.svg" />
+                                <img src="/icons/star.svg" />
+                                <img src="/icons/star.svg" />
+                                <img src="/icons/star.svg" />
+                                <img src="/icons/grey-star.svg" />
+                            @elseif(number_format($json['reviews']['stars'], 0) == 3)
+                                <img src="/icons/star.svg" />
+                                <img src="/icons/star.svg" />
+                                <img src="/icons/star.svg" />
+                                <img src="/icons/grey-star.svg" />
+                                <img src="/icons/grey-star.svg" />
+                            @elseif(number_format($json['reviews']['stars'], 0) == 2)
+                                <img src="/icons/star.svg" />
+                                <img src="/icons/star.svg" />
+                                <img src="/icons/grey-star.svg" />
+                                <img src="/icons/grey-star.svg" />
+                                <img src="/icons/grey-star.svg" />
+                            @elseif(number_format($json['reviews']['stars'], 0) == 1)
+                                <img src="/icons/star.svg" />
+                            @else
+                                <img src="/icons/grey-star.svg" />
+                                <img src="/icons/grey-star.svg" />
+                                <img src="/icons/grey-star.svg" />
+                                <img src="/icons/grey-star.svg" />
+                                <img src="/icons/grey-star.svg" />
+                            @endif
                         </div>
                         <div class="price">
-                            <div>{{ $json['prices']['current_price'] }}</div>
+                            @if ($json['prices']['current_price'] > 0)
+                                <div>{{ $json['prices']['current_price'] }}</div>
+                            @else
+                                <div>0</div>
+                            @endif
                             <span>USD</span>
                         </div>
                         <div class="prices">
@@ -154,12 +191,20 @@
                                 <div>{{ __('product.highest-price') }}</div>
                                 <span
                                     style="display: flex;align-items: center;justify-content: center;flex-wrap: nowrap;">
-                                    {{ $json['prices']['current_price'] }}
+                                    @if ($json['prices']['current_price'] > 0)
+                                        {{ $json['prices']['current_price'] }}
+                                    @else
+                                        0
+                                    @endif
                                 </span>
                             </div>
                             <div class="r-price">
                                 <div>{{ __('product.latest-down') }}</div>
-                                {{ number_format(($json['prices']['previous_price'] / $json['prices']['current_price']) * 100, 2) }}%
+                                @if ($json['prices']['previous_price'] != -1)
+                                    {{ number_format((1 - $json['prices']['current_price'] / $json['prices']['previous_price']) * 100, 0) }}%
+                                @else
+                                    0%
+                                @endif
                             </div>
                         </div>
 
@@ -173,7 +218,7 @@
                     </div>
                     <div class="right-side">
                         <div class="advertise">
-                            <img src="https://via.placeholder.com/250">
+                            <img src="/images/250px.png">
                         </div>
                         <div class="watch" style="margin-top: 10%">
                             <h4 style="margin-bottom: 2%">{{ __('product.amazon-price-watches') }}</h4>
@@ -220,20 +265,50 @@
                 <div class="other">
                     @include('components/othercard')
                 </div>
-                <div id="chartdiv"></div>
+
+                <div class="chart">
+                    <canvas id="chart"></canvas>
+                </div>
+
                 <div class="reviews-container">
                     <div class="stats">
                         <h2>{{ __('product.customer-review') }}</h2>
                         <div class="stars-container">
-
-                            <div class="stars">
+                            @if (number_format($json['reviews']['stars'], 0) == 5)
                                 <img src="/icons/star.svg" />
                                 <img src="/icons/star.svg" />
                                 <img src="/icons/star.svg" />
                                 <img src="/icons/star.svg" />
-                                <img src="/icons/star_half.svg" />
-                            </div>
-                            <div class="rate">{{ $json['reviews']['stars'] }} {{ __('product.out-of') }}
+                                <img src="/icons/star.svg" />
+                            @elseif(number_format($json['reviews']['stars'], 0) == 4)
+                                <img src="/icons/star.svg" />
+                                <img src="/icons/star.svg" />
+                                <img src="/icons/star.svg" />
+                                <img src="/icons/star.svg" />
+                                <img src="/icons/grey-star.svg" />
+                            @elseif(number_format($json['reviews']['stars'], 0) == 3)
+                                <img src="/icons/star.svg" />
+                                <img src="/icons/star.svg" />
+                                <img src="/icons/star.svg" />
+                                <img src="/icons/grey-star.svg" />
+                                <img src="/icons/grey-star.svg" />
+                            @elseif(number_format($json['reviews']['stars'], 0) == 2)
+                                <img src="/icons/star.svg" />
+                                <img src="/icons/star.svg" />
+                                <img src="/icons/grey-star.svg" />
+                                <img src="/icons/grey-star.svg" />
+                                <img src="/icons/grey-star.svg" />
+                            @elseif(number_format($json['reviews']['stars'], 0) == 1)
+                                <img src="/icons/star.svg" />
+                            @else
+                                <img src="/icons/grey-star.svg" />
+                                <img src="/icons/grey-star.svg" />
+                                <img src="/icons/grey-star.svg" />
+                                <img src="/icons/grey-star.svg" />
+                                <img src="/icons/grey-star.svg" />
+                            @endif
+                            <div class="rate">{{ number_format($json['reviews']['stars'], 0) }}
+                                {{ __('product.out-of') }}
                                 5
                             </div>
                         </div>
@@ -282,38 +357,54 @@
     @include('layout/footer')
     <script src="/js/product.js"></script>
 </body>
-<script src="https://cdn.amcharts.com/lib/4/core.js"></script>
-<script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
-<script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+<script src="https://www.chartjs.org/dist/master/chart.js"></script>
 <script>
-    am4core.ready(function() {
-        am4core.useTheme(am4themes_animated);
-        var chart = am4core.create("chartdiv", am4charts.XYChart);
-        var data = [];
-        var value = 50;
-        for (var i = 0; i < 300; i++) {
-            var date = new Date();
-            date.setHours(0, 0, 0, 0);
-            date.setDate(i);
-            value -= Math.round((Math.random() < 0.5 ? 1 : -1) * Math.random() * 10);
-            data.push({
-                date: date,
-                value: value
-            });
+    let draw = Chart.controllers.line.prototype.draw;
+    Chart.controllers.line.prototype.draw = function() {
+        let chart = this.chart;
+        let ctx = chart.ctx;
+        let _stroke = ctx.stroke;
+        ctx.stroke = function() {
+            ctx.save();
+            ctx.shadowColor = ctx.strokeStyle;
+            ctx.shadowBlur = 5;
+            ctx.shadowOffsetX = 0;
+            ctx.shadowOffsetY = 4;
+            _stroke.apply(this, arguments);
+            ctx.restore();
+        };
+        draw.apply(this, arguments);
+        ctx.stroke = _stroke;
+    };
+
+    var ctx = document.getElementById("chart").getContext("2d");
+    var chart = new Chart(ctx, {
+        type: "line",
+        data: {
+            labels: [@foreach ($chart as $date) "{{ $date->date }}", @endforeach],
+            datasets: [{
+                label: 'Price Tracker',
+                data: [@foreach ($chart as $price) {{ $price->price }}, @endforeach],
+                borderColor: "#009dd9",
+                borderWidth: 1,
+                fill: false,
+                pointBackgroundColor: "white"
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            },
+            title: {
+                display: true,
+                text: "chart",
+                fontColor: "#212A49"
+            }
         }
-        chart.data = data;
-        var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
-        dateAxis.renderer.minGridDistance = 60;
-        var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-        var series = chart.series.push(new am4charts.LineSeries());
-        series.dataFields.valueY = "value";
-        series.dataFields.dateX = "date";
-        series.tooltipText = "{value}"
-        series.tooltip.pointerOrientation = "vertical";
-        chart.cursor = new am4charts.XYCursor();
-        chart.cursor.snapToSeries = series;
-        chart.cursor.xAxis = dateAxis;
-        chart.scrollbarX = new am4core.Scrollbar();
     });
 </script>
 <script>

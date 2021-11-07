@@ -4,12 +4,15 @@
         @if (request()->route()->uri == 'ar/login' || (request()->route()->uri == 'en/login' || request()->route()->uri == 'ar/register') || request()->route()->uri == 'en/register')
 
         @else
-            <div class="search search-desk">
-                <input type="text" placeholder="Search..." />
-                <div class="icon">
-                    <img src="/icons/search.svg" />
+            <form method="POST" action="{{ route('search') }}" style="width: 400px;margin-right: 2%;">
+                @csrf
+                <div class="search search-desk">
+                    <input type="text" name="search" placeholder="Search..." />
+                    <button type="submit" style="border-radius: 0;" class="icon">
+                        <img src="/icons/search.svg" />
+                    </button>
                 </div>
-            </div>
+            </form>
         @endif
         <div class="lang">
             <div class="current-lang">{{ LaravelLocalization::getCurrentLocaleName() }}</div>
