@@ -37,6 +37,7 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            \Silber\PageCache\Middleware\CacheResponse::class,
         ],
 
         'api' => [
@@ -69,6 +70,7 @@ class Kernel extends HttpKernel
         'localeCookieRedirect'    => \Mcamara\LaravelLocalization\Middleware\LocaleCookieRedirect::class,
         'localeViewPath'          => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath::class,
         'visitor'                 => \App\Http\Middleware\CountVisitor::class,
-        'productVisitor'          => \App\Http\Middleware\ProductVisitor::class
+        'productVisitor'          => \App\Http\Middleware\ProductVisitor::class,
+        'page-cache' => \Silber\PageCache\Middleware\CacheResponse::class,
     ];
 }

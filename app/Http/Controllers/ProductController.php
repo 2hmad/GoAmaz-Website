@@ -13,7 +13,7 @@ use stdClass;
 
 class ProductController extends Controller
 {
-    public function index($id)
+    public function index(Request $request, $id)
     {
         if (Session::has('email')) {
             $check = DB::table('favorite')->where('email', '=', Session::get('email'))->where('product_id', '=', $id)->first();
@@ -67,7 +67,12 @@ class ProductController extends Controller
 
         $chart = DB::table('price_tracker')->where('asin', '=', $id)->orderBy('date', 'DESC')->get();
 
-        return view('product', compact('check', 'rates', 'json', 'jsonSa', 'jsonAe', 'jsonUk', 'chart'));
+        // $myIp = $request->ip();
+        $myIp = "154.180.89.205";
+        $ip = Http::get("http://ip-api.com/json/$myIp?fields=currency");
+        $ip = json_decode($ip, TRUE);
+
+        return view('product', compact('check', 'rates', 'json', 'jsonSa', 'jsonAe', 'jsonUk', 'chart', 'ip'));
     }
     public function addFavorite(Request $request, $id, $email)
     {

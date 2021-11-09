@@ -10,12 +10,12 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\URL;
 use stdClass;
+use Torann\GeoIP\Facades\GeoIP;
 
 class HomeController extends Controller
 {
     public function index(Request $request)
     {
-
         $getOffersOne = DB::table('offers')->inRandomOrder()->limit(10)->get();
         $getOffersTwo = DB::table('offers')->inRandomOrder()->limit(5)->get();
         $getOffersThree = DB::table('offers')->inRandomOrder()->limit(10)->get();

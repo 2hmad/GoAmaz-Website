@@ -45,7 +45,7 @@ class FetchApi extends Command
         ])->get('https://amazon-products1.p.rapidapi.com/offers', [
             'min_number' => '5',
             'country' => 'US',
-            'max_number' => '40'
+            'max_number' => '100'
         ]);
         $json = json_decode($json, TRUE);
         foreach ($json['offers'] as $result) {
@@ -54,7 +54,7 @@ class FetchApi extends Command
                 'img' => $result['images'][0],
                 'asin' => $result['asin'],
                 'price' => $result['prices']['current_price'],
-                'reviews' => $result['reviews']['stars']
+                'reviews' => $result['reviews']['stars'],
             ]);
             $check_asin = DB::table('price_tracker')->where('asin', '=', $result['asin'])->where('date', '=', date('M Y'))->count();
             if ($check_asin == 0) {

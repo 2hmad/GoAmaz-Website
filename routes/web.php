@@ -31,7 +31,7 @@ Route::group(['middleware' => 'visitors', 'prefix' => LaravelLocalization::setLo
     Route::post('/profile', [ProfileController::class, 'updateInfo'])->name('update_info');
     Route::post('/profile/update-password', [ProfileController::class, 'updatePassword'])->name('update_password');
 
-    Route::get('/product/{id}', [ProductController::class, 'index'])->middleware('productVisitor');
+    Route::get('/product/{id}', [ProductController::class, 'index'])->middleware('productVisitor')->middleware('page-cache');
     Route::post('/product/{id}', [ProductController::class, 'addWatcher'])->name('addwatch');
     Route::post('/product/{id}/{email}', [ProductController::class, 'addFavorite'])->name('addfavorite');
     Route::delete('/product/{id}/{email}', [ProductController::class, 'deleteFavorite'])->name('destroy.favorite');

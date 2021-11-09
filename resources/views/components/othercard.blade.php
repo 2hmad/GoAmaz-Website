@@ -19,7 +19,13 @@
                         <img src="/images/eg.webp">
                     </div>
                     <div class="price">
-                        <div class="amount" style="color: green;font-weight:bold">456 EGP</div>
+                        <div class="amount" style="color: green;font-weight:bold">
+                            {{ number_format(
+                                Currency::convert()->from('SAR')->to($ip['currency'])->amount($jsonSa['prices']['current_price'])->get(),
+                                0,
+                            ) }}
+                            {{ $ip['currency'] }}
+                        </div>
                     </div>
                 @endif
             </div>
@@ -42,7 +48,7 @@
     @endif
 
     {{-- Amazon AE --}}
-    @if ($jsonSa['error'] !== true)
+    @if ($jsonAe['error'] !== true)
         <div class="other-card">
             <div class="image">
                 <img src="/images/amazon logo.png" alt="">
@@ -62,7 +68,13 @@
                         <img src="/images/eg.webp">
                     </div>
                     <div class="price">
-                        <div class="amount" style="color: green;font-weight:bold">456 EGP</div>
+                        <div class="amount" style="color: green;font-weight:bold">
+                            {{ number_format(
+                                Currency::convert()->from('AED')->to($ip['currency'])->amount($jsonAe['prices']['current_price'])->get(),
+                                0,
+                            ) }}
+                            {{ $ip['currency'] }}
+                        </div>
                     </div>
                 @endif
             </div>
@@ -85,7 +97,7 @@
     @endif
 
     {{-- Amazon UK --}}
-    @if ($jsonSa['error'] !== true)
+    @if ($jsonUk['error'] !== true)
         <div class="other-card">
             <div class="image">
                 <img src="/images/amazon logo.png" alt="">
@@ -105,7 +117,13 @@
                         <img src="/images/eg.webp">
                     </div>
                     <div class="price">
-                        <div class="amount" style="color: green;font-weight:bold">456 EGP</div>
+                        <div class="amount" style="color: green;font-weight:bold">
+                            {{ number_format(
+                                Currency::convert()->from('GBP')->to($ip['currency'])->amount($jsonUk['prices']['current_price'])->get(),
+                                0,
+                            ) }}
+                            {{ $ip['currency'] }}
+                        </div>
                     </div>
                 @endif
             </div>
