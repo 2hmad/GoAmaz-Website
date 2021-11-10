@@ -1,13 +1,3 @@
-RewriteCond %{REQUEST_URI} ^/?$
-RewriteCond %{DOCUMENT_ROOT}/page-cache/pc__index__pc.html -f
-RewriteRule .? page-cache/pc__index__pc.html [L]
-RewriteCond %{DOCUMENT_ROOT}/page-cache%{REQUEST_URI}.html -f
-RewriteRule . page-cache%{REQUEST_URI}.html [L]
-RewriteCond %{DOCUMENT_ROOT}/page-cache%{REQUEST_URI}.json -f
-RewriteRule . page-cache%{REQUEST_URI}.json [L]
-RewriteCond %{DOCUMENT_ROOT}/page-cache%{REQUEST_URI}.xml -f
-RewriteRule . page-cache%{REQUEST_URI}.xml [L]
-
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
         Options -MultiViews -Indexes
@@ -16,7 +6,7 @@ RewriteRule . page-cache%{REQUEST_URI}.xml [L]
     RewriteEngine On
 
     RewriteCond %{HTTP:Authorization} .
-    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+    RewpuriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_URI} (.+)/$
