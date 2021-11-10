@@ -9,7 +9,7 @@
                 <div class="search search-desk">
                     <input type="text" name="search" placeholder="Search..." />
                     <button type="submit" style="border-radius: 0;" class="icon">
-                        <img src="/icons/search.svg" />
+                        <img src="{{ asset('public/icons/search.svg') }}" />
                     </button>
                 </div>
             </form>
@@ -28,10 +28,11 @@
         @if (Session::has('email'))
             <a href="/profile" class="profile">
                 <div class="profile-image">
-                    <img src="/images/2.jpg">
+                    <img src="{{ asset('public/images/2.jpg') }}">
                 </div>
             </a>
-            <a href="/favorite" class="cart"><img src="/icons/favorite.svg" style="width: 25px;" /></a>
+            <a href="/favorite" class="cart"><img src="{{ asset('public/icons/favorite.svg') }}"
+                    style="width: 25px;" /></a>
             <a href="/logout" style="margin-left: 1%">
                 {{ __('home.signout') }}
             </a>
@@ -39,7 +40,8 @@
             <div class="links">
                 <a href="/login">{{ __('home.signin') }}</a>
             </div>
-            <a href="/favorite" class="cart"><img src="/icons/favorite.svg" style="width: 25px;" /></a>
+            <a href="/favorite" class="cart"><img src="{{ asset('public/icons/favorite.svg') }}"
+                    style="width: 25px;" /></a>
         @endif
     </div>
     <div class="search-responsive-con">
@@ -47,7 +49,7 @@
             <div class="search search-responsive">
                 <input type="text" placeholder="Search..." />
                 <div class="icon">
-                    <img src="/icons/search.svg" />
+                    <img src="{{ asset('public/icons/search.svg') }}" />
                 </div>
             </div>
         </div>
