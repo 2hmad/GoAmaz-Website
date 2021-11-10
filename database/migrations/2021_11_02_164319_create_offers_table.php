@@ -14,18 +14,18 @@ class CreateOffersTable extends Migration
     public function up()
     {
         Schema::create('offers', function (Blueprint $table) {
-            $table->id();
+            $table->bigInteger('id')->autoIncrement();
             $table->text('title');
             $table->text('img');
             $table->text('asin');
             $table->text('price');
-            $table->text('reviews');
-            $table->text('sa_link');
-            $table->text('sa_price');
-            $table->text('ae_link');
-            $table->text('ae_price');
-            $table->text('uk_link');
-            $table->text('uk_price');
+            $table->string('reviews');
+            // $table->text('sa_link');
+            // $table->text('sa_price');
+            // $table->text('ae_link');
+            // $table->text('ae_price');
+            // $table->text('uk_link');
+            // $table->text('uk_price');
         });
     }
 

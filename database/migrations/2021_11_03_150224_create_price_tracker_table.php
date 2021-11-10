@@ -14,7 +14,7 @@ class CreatePriceTrackerTable extends Migration
     public function up()
     {
         Schema::create('price_tracker', function (Blueprint $table) {
-            $table->id();
+            $table->bigInteger('id');
             $table->text('asin');
             $table->text('price');
             $table->date('date');

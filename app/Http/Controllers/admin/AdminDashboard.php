@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\AddAdRequest;
 use App\Models\ProductCounter;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Spatie\Analytics\AnalyticsFacade as Analytics;
 use Spatie\Analytics\Period;
@@ -16,7 +17,7 @@ class AdminDashboard extends Controller
 {
     public function index(Request $request)
     {
-        if ($request->session()->exists('admin-email')) {
+        if ($request->session()->exists('admin-email') && Session::get('admin-email') !== "") {
             $analyticsData = Analytics::fetchVisitorsAndPageViews(Period::years(1));
             $data = DB::table('admins')->where('email', '=', Session::get('admin-email'))->first();
             $users = DB::table('users')->limit(5)->orderBy('id', 'DESC')->get();
@@ -28,6 +29,8 @@ class AdminDashboard extends Controller
                 ];
             });
             return view('admin/dashboard', compact('data', 'users', 'results'), ['analyticsData' => $analyticsData]);
+        } else {
+            return redirect("admin/logout");
         }
         return redirect("admin/login")->with('error', 'عذراً قم بتسجيل الدخول اولاً');
     }
@@ -76,6 +79,26 @@ class AdminDashboard extends Controller
     public function delete_ad($id)
     {
         DB::table('ads')->where('id', '=', $id)->delete();
+        return redirect()->back()->with('success', 'تم الحذف بنجاح');
+    }
+    public function admins()
+    {
+        $data = DB::table('admins')->where('email', '=', Session::get('admin-email'))->first();
+        $admins = DB::table('admins')->get();
+        return view('admin/add-admin', compact('admins', 'data'));
+    }
+    public function add_admin(Request $request)
+    {
+        DB::table('admins')->insert([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'password' => Hash::make($request->input('password')),
+        ]);
+        return redirect()->back()->with('success', 'تم اضافة مشرف جديد');
+    }
+    public function delete_admin($id)
+    {
+        DB::table('admins')->where('id', '=', $id)->delete();
         return redirect()->back()->with('success', 'تم الحذف بنجاح');
     }
 }

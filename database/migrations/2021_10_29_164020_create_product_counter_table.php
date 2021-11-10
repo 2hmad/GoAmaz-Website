@@ -14,7 +14,7 @@ class CreateProductCounterTable extends Migration
     public function up()
     {
         Schema::create('product_counter', function (Blueprint $table) {
-            $table->id();
+            $table->bigInteger('id');
             $table->text('product');
             $table->text('ip');
             $table->date('date');

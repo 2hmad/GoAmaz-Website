@@ -16,10 +16,10 @@ class CreateRatingTable extends Migration
         Schema::create('rating', function (Blueprint $table) {
             $table->id();
             $table->integer('product');
-            $table->string('author');
-            $table->string('rate');
-            $table->string('message');
-            $table->date('date');
+            $table->text('author');
+            $table->text('rate');
+            $table->text('message');
+            $table->date('date')->nullable($value = true);
         });
     }
 

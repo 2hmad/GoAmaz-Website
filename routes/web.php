@@ -48,7 +48,12 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/dashboard', [AdminDashboard::class, 'index']);
     Route::get('/users', [AdminDashboard::class, 'users']);
     Route::get('/statistics', [AdminDashboard::class, 'statistics']);
+
     Route::get('/ads', [AdminDashboard::class, 'ads']);
     Route::post('/ads', [AdminDashboard::class, 'add_ad'])->name('add-ad');
     Route::post('/ads/{id}', [AdminDashboard::class, 'delete_ad'])->name('delete-ad');
+
+    Route::get('/add-admin', [AdminDashboard::class, 'admins']);
+    Route::post('/add-admin', [AdminDashboard::class, 'add_admin'])->name('add-admin');
+    Route::post('/add-admin/{id}', [AdminDashboard::class, 'delete_admin'])->name('delete-admin');
 });

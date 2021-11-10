@@ -34,6 +34,14 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="add-admin" class="nav-link">
+                                <i class="nav-icon fas fa-user"></i>
+                                <p>
+                                    اضافة مشرف
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="statistics" class="nav-link">
                                 <i class="nav-icon fas fa-chart-bar"></i>
                                 <p>

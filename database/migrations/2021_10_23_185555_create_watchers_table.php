@@ -16,10 +16,10 @@ class CreateWatchersTable extends Migration
         Schema::create('watchers', function (Blueprint $table) {
             $table->id();
             $table->string('product');
-            $table->string('contact');
-            $table->string('phone');
+            $table->text('contact');
+            $table->text('phone');
             $table->string('price');
-            $table->string('currency');
+            $table->text('currency');
         });
     }
 
