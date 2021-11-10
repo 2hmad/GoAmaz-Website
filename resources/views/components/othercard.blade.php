@@ -16,7 +16,10 @@
                 </div>
                 @if ($jsonSa['prices']['current_price'] != -1)
                     <div class="logo">
-                        <img src="/images/eg.webp">
+                        <?php
+                        $egypt = country('eg');
+                        echo $egypt->getFlag();
+                        ?>
                     </div>
                     <div class="price">
                         <div class="amount" style="color: green;font-weight:bold">
@@ -65,7 +68,10 @@
                 </div>
                 @if ($jsonAe['prices']['current_price'] != -1)
                     <div class="logo">
-                        <img src="/images/eg.webp">
+                        <?php
+                        $egypt = country('' . $ip['countryCode'] . '');
+                        echo $egypt->getFlag();
+                        ?>
                     </div>
                     <div class="price">
                         <div class="amount" style="color: green;font-weight:bold">
@@ -114,7 +120,10 @@
                 </div>
                 @if ($jsonUk['prices']['current_price'] != -1)
                     <div class="logo">
-                        <img src="/images/eg.webp">
+                        <?php
+                        $egypt = country('eg');
+                        echo $egypt->getFlag();
+                        ?>
                     </div>
                     <div class="price">
                         <div class="amount" style="color: green;font-weight:bold">
