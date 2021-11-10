@@ -15,5 +15,12 @@ return [
     'signout' => 'تسجيل الخروج',
     'signin' => 'تسجيل الدخول',
     'favourite' => 'المفضلة',
-    'view-product' => 'زيارة المنتج'
+    'view-product' => 'زيارة المنتج',
+    'explore-now' => 'اكتشف الان',
+    'show-now' => 'تسوق الان',
+    'clothes' => 'الملابس',
+    'black-friday-deals' => 'عروض الجمعه البيضاء',
+    'shopping' => 'تسوق حسب الفئة',
+    'shopping-laptops' => 'تسوق أجهزة الكمبيوتر المحمولة',
+    'light-bar' => 'الإنشاء مع شريط إضاءة'
 ];

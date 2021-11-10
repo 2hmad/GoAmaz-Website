@@ -1445,8 +1445,8 @@ body {
 .homeblock .images .row img {
   width: 186px;
   height: 116px;
-  -o-object-fit: cover;
-     object-fit: cover;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 .homeblock a {

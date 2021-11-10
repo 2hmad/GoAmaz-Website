@@ -15,5 +15,12 @@ return [
     'signout' => 'Sign Out',
     'signin' => 'Sign In',
     'favourite' => 'Favourite',
-    'view-product' => 'View Product'
+    'view-product' => 'View Product',
+    'explore-now' => 'Explore now',
+    'show-now' => 'Shop now',
+    'clothes' => 'Clothes',
+    'black-friday-deals' => 'Black Friday Deals',
+    'shopping' => 'Shopping',
+    'shopping-laptops' => 'Shop Laptops & Tablets',
+    'light-bar' => 'light bars'
 ];
