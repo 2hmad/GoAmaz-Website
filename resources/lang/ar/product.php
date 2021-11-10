@@ -18,5 +18,6 @@ return [
     'review-this-product' => 'اضافة تقييم للمنتج',
     'review' => 'تقييم',
     'what-do-you-think' => 'ما هو تقييمك ؟',
-    'price' => 'السعر'
+    'price' => 'السعر',
+    'unknown-price' => 'سعر مجهول'
 ];

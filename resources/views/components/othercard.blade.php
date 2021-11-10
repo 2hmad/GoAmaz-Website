@@ -11,7 +11,7 @@
                 </div>
                 <div class="price" style="margin-right: 50px;">
                     <div class="amount" style="color: green;font-weight:bold">
-                        {{ $jsonSa['prices']['current_price'] == -1 ? 'Not Available' : $jsonSa['prices']['current_price'] . ' ' . $jsonSa['prices']['currency'] }}
+                        {{ $jsonSa['prices']['current_price'] == -1 ? '' . __('product.unknown-price') . '' : $jsonSa['prices']['current_price'] . ' ' . $jsonSa['prices']['currency'] }}
                     </div>
                 </div>
                 @if ($jsonSa['prices']['current_price'] != -1)
@@ -63,7 +63,7 @@
                 </div>
                 <div class="price" style="margin-right: 50px;">
                     <div class="amount" style="color: green;font-weight:bold">
-                        {{ $jsonAe['prices']['current_price'] == -1 ? 'Not Available' : $jsonAe['prices']['current_price'] . ' ' . $jsonAe['prices']['currency'] }}
+                        {{ $jsonAe['prices']['current_price'] == -1 ? '' . __('product.unknown-price') . '' : $jsonAe['prices']['current_price'] . ' ' . $jsonAe['prices']['currency'] }}
                     </div>
                 </div>
                 @if ($jsonAe['prices']['current_price'] != -1)
@@ -115,7 +115,7 @@
                 </div>
                 <div class="price" style="margin-right: 50px;">
                     <div class="amount" style="color: green;font-weight:bold">
-                        {{ $jsonUk['prices']['current_price'] == -1 ? 'Not Available' : $jsonUk['prices']['current_price'] . ' ' . $jsonUk['prices']['currency'] }}
+                        {{ $jsonUk['prices']['current_price'] == -1 ? '' . __('product.unknown-price') . '' : $jsonUk['prices']['current_price'] . ' ' . $jsonUk['prices']['currency'] }}
                     </div>
                 </div>
                 @if ($jsonUk['prices']['current_price'] != -1)

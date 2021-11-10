@@ -22,5 +22,5 @@ return [
     'black-friday-deals' => 'Black Friday Deals',
     'shopping' => 'Shopping',
     'shopping-laptops' => 'Shop Laptops & Tablets',
-    'light-bar' => 'light bars'
+    'light-bar' => 'light bars',
 ];

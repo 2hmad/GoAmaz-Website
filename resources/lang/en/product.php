@@ -18,5 +18,6 @@ return [
     'review-this-product' => 'Review this product',
     'review' => 'Review',
     'what-do-you-think' => 'What do you think',
-    'price' => 'Price'
+    'price' => 'Price',
+    'unknown-price' => 'Unknown price'
 ];
