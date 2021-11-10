@@ -24,37 +24,37 @@
                                 <div class="price">{{ $product->price }} USD</div>
                                 <div class="stars">
                                     @if (number_format($product->stars, 0) == 5)
-                                        <img src="/icons/star.svg" />
-                                        <img src="/icons/star.svg" />
-                                        <img src="/icons/star.svg" />
-                                        <img src="/icons/star.svg" />
-                                        <img src="/icons/star.svg" />
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
                                     @elseif(number_format($product->stars, 0) == 4)
-                                        <img src="/icons/star.svg" />
-                                        <img src="/icons/star.svg" />
-                                        <img src="/icons/star.svg" />
-                                        <img src="/icons/star.svg" />
-                                        <img src="/icons/grey-star.svg" />
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
+                                        <img src="{{ asset('public/icons/grey-star.svg') }}" />
                                     @elseif(number_format($product->stars, 0) == 3)
-                                        <img src="/icons/star.svg" />
-                                        <img src="/icons/star.svg" />
-                                        <img src="/icons/star.svg" />
-                                        <img src="/icons/grey-star.svg" />
-                                        <img src="/icons/grey-star.svg" />
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
+                                        <img src="{{ asset('public/icons/grey-star.svg') }}" />
+                                        <img src="{{ asset('public/icons/grey-star.svg') }}" />
                                     @elseif(number_format($product->stars, 0) == 2)
-                                        <img src="/icons/star.svg" />
-                                        <img src="/icons/star.svg" />
-                                        <img src="/icons/grey-star.svg" />
-                                        <img src="/icons/grey-star.svg" />
-                                        <img src="/icons/grey-star.svg" />
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
+                                        <img src="{{ asset('public/icons/grey-star.svg') }}" />
+                                        <img src="{{ asset('public/icons/grey-star.svg') }}" />
+                                        <img src="{{ asset('public/icons/grey-star.svg') }}" />
                                     @elseif(number_format($product->stars, 0) == 1)
-                                        <img src="/icons/star.svg" />
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
                                     @else
-                                        <img src="/icons/grey-star.svg" />
-                                        <img src="/icons/grey-star.svg" />
-                                        <img src="/icons/grey-star.svg" />
-                                        <img src="/icons/grey-star.svg" />
-                                        <img src="/icons/grey-star.svg" />
+                                        <img src="{{ asset('public/icons/grey-star.svg') }}" />
+                                        <img src="{{ asset('public/icons/grey-star.svg') }}" />
+                                        <img src="{{ asset('public/icons/grey-star.svg') }}" />
+                                        <img src="{{ asset('public/icons/grey-star.svg') }}" />
+                                        <img src="{{ asset('public/icons/grey-star.svg') }}" />
                                     @endif
                                 </div>
                                 <a

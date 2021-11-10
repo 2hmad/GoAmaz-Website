@@ -7,10 +7,10 @@
             </div>
             <div class="title">{{ $item['title'] }}</div>
             <div class="stars">
-                <img src="/icons/star.svg" />
-                <img src="/icons/star.svg" />
-                <img src="/icons/star.svg" />
-                <img src="/icons/star.svg" />
+                <img src="{{ asset('public/icons/star.svg') }}" />
+                <img src="{{ asset('public/icons/star.svg') }}" />
+                <img src="{{ asset('public/icons/star.svg') }}" />
+                <img src="{{ asset('public/icons/star.svg') }}" />
                 <img src="/icons/star_half.svg" />
             </div>
             <div class="price">

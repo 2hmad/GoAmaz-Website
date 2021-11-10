@@ -56,11 +56,39 @@
                                 </div>
                                 <div class="title">{{ $offer->title }}</div>
                                 <div class="stars">
-                                    <img src="/icons/star.svg" />
-                                    <img src="/icons/star.svg" />
-                                    <img src="/icons/star.svg" />
-                                    <img src="/icons/star.svg" />
-                                    <img src="/icons/star_half.svg" />
+                                    @if (number_format($offer->reviews, 0) == 5)
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
+                                    @elseif(number_format($offer->reviews, 0) == 4)
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
+                                        <img src="{{ asset('public/icons/grey-star.svg') }}" />
+                                    @elseif(number_format($offer->reviews, 0) == 3)
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
+                                        <img src="{{ asset('public/icons/grey-star.svg') }}" />
+                                        <img src="{{ asset('public/icons/grey-star.svg') }}" />
+                                    @elseif(number_format($offer->reviews, 0) == 2)
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
+                                        <img src="{{ asset('public/icons/grey-star.svg') }}" />
+                                        <img src="{{ asset('public/icons/grey-star.svg') }}" />
+                                        <img src="{{ asset('public/icons/grey-star.svg') }}" />
+                                    @elseif(number_format($offer->reviews, 0) == 1)
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
+                                    @else
+                                        <img src="{{ asset('public/icons/grey-star.svg') }}" />
+                                        <img src="{{ asset('public/icons/grey-star.svg') }}" />
+                                        <img src="{{ asset('public/icons/grey-star.svg') }}" />
+                                        <img src="{{ asset('public/icons/grey-star.svg') }}" />
+                                        <img src="{{ asset('public/icons/grey-star.svg') }}" />
+                                    @endif
                                 </div>
                                 <div class="price">
                                     <div class="currency">USD</div>
@@ -152,11 +180,39 @@
                                         </div>
                                         <div class="title">{{ $offer->title }}</div>
                                         <div class="stars">
-                                            <img src="/icons/star.svg" />
-                                            <img src="/icons/star.svg" />
-                                            <img src="/icons/star.svg" />
-                                            <img src="/icons/star.svg" />
-                                            <img src="/icons/star_half.svg" />
+                                            @if (number_format($offer->reviews, 0) == 5)
+                                                <img src="{{ asset('public/icons/star.svg') }}" />
+                                                <img src="{{ asset('public/icons/star.svg') }}" />
+                                                <img src="{{ asset('public/icons/star.svg') }}" />
+                                                <img src="{{ asset('public/icons/star.svg') }}" />
+                                                <img src="{{ asset('public/icons/star.svg') }}" />
+                                            @elseif(number_format($offer->reviews, 0) == 4)
+                                                <img src="{{ asset('public/icons/star.svg') }}" />
+                                                <img src="{{ asset('public/icons/star.svg') }}" />
+                                                <img src="{{ asset('public/icons/star.svg') }}" />
+                                                <img src="{{ asset('public/icons/star.svg') }}" />
+                                                <img src="{{ asset('public/icons/grey-star.svg') }}" />
+                                            @elseif(number_format($offer->reviews, 0) == 3)
+                                                <img src="{{ asset('public/icons/star.svg') }}" />
+                                                <img src="{{ asset('public/icons/star.svg') }}" />
+                                                <img src="{{ asset('public/icons/star.svg') }}" />
+                                                <img src="{{ asset('public/icons/grey-star.svg') }}" />
+                                                <img src="{{ asset('public/icons/grey-star.svg') }}" />
+                                            @elseif(number_format($offer->reviews, 0) == 2)
+                                                <img src="{{ asset('public/icons/star.svg') }}" />
+                                                <img src="{{ asset('public/icons/star.svg') }}" />
+                                                <img src="{{ asset('public/icons/grey-star.svg') }}" />
+                                                <img src="{{ asset('public/icons/grey-star.svg') }}" />
+                                                <img src="{{ asset('public/icons/grey-star.svg') }}" />
+                                            @elseif(number_format($offer->reviews, 0) == 1)
+                                                <img src="{{ asset('public/icons/star.svg') }}" />
+                                            @else
+                                                <img src="{{ asset('public/icons/grey-star.svg') }}" />
+                                                <img src="{{ asset('public/icons/grey-star.svg') }}" />
+                                                <img src="{{ asset('public/icons/grey-star.svg') }}" />
+                                                <img src="{{ asset('public/icons/grey-star.svg') }}" />
+                                                <img src="{{ asset('public/icons/grey-star.svg') }}" />
+                                            @endif
                                         </div>
                                         <div class="price">
                                             <div class="currency">USD</div>
@@ -188,11 +244,39 @@
                                 </div>
                                 <div class="title">{{ $offer->title }}</div>
                                 <div class="stars">
-                                    <img src="/icons/star.svg" />
-                                    <img src="/icons/star.svg" />
-                                    <img src="/icons/star.svg" />
-                                    <img src="/icons/star.svg" />
-                                    <img src="/icons/star_half.svg" />
+                                    @if (number_format($offer->reviews, 0) == 5)
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
+                                    @elseif(number_format($offer->reviews, 0) == 4)
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
+                                        <img src="{{ asset('public/icons/grey-star.svg') }}" />
+                                    @elseif(number_format($offer->reviews, 0) == 3)
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
+                                        <img src="{{ asset('public/icons/grey-star.svg') }}" />
+                                        <img src="{{ asset('public/icons/grey-star.svg') }}" />
+                                    @elseif(number_format($offer->reviews, 0) == 2)
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
+                                        <img src="{{ asset('public/icons/grey-star.svg') }}" />
+                                        <img src="{{ asset('public/icons/grey-star.svg') }}" />
+                                        <img src="{{ asset('public/icons/grey-star.svg') }}" />
+                                    @elseif(number_format($offer->reviews, 0) == 1)
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
+                                    @else
+                                        <img src="{{ asset('public/icons/grey-star.svg') }}" />
+                                        <img src="{{ asset('public/icons/grey-star.svg') }}" />
+                                        <img src="{{ asset('public/icons/grey-star.svg') }}" />
+                                        <img src="{{ asset('public/icons/grey-star.svg') }}" />
+                                        <img src="{{ asset('public/icons/grey-star.svg') }}" />
+                                    @endif
                                 </div>
                                 <div class="price">
                                     <div class="currency">USD</div>
@@ -260,11 +344,39 @@
                                 </div>
                                 <div class="title">{{ $offer->title }}</div>
                                 <div class="stars">
-                                    <img src="/icons/star.svg" />
-                                    <img src="/icons/star.svg" />
-                                    <img src="/icons/star.svg" />
-                                    <img src="/icons/star.svg" />
-                                    <img src="/icons/star_half.svg" />
+                                    @if (number_format($offer->reviews, 0) == 5)
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
+                                    @elseif(number_format($offer->reviews, 0) == 4)
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
+                                        <img src="{{ asset('public/icons/grey-star.svg') }}" />
+                                    @elseif(number_format($offer->reviews, 0) == 3)
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
+                                        <img src="{{ asset('public/icons/grey-star.svg') }}" />
+                                        <img src="{{ asset('public/icons/grey-star.svg') }}" />
+                                    @elseif(number_format($offer->reviews, 0) == 2)
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
+                                        <img src="{{ asset('public/icons/grey-star.svg') }}" />
+                                        <img src="{{ asset('public/icons/grey-star.svg') }}" />
+                                        <img src="{{ asset('public/icons/grey-star.svg') }}" />
+                                    @elseif(number_format($offer->reviews, 0) == 1)
+                                        <img src="{{ asset('public/icons/star.svg') }}" />
+                                    @else
+                                        <img src="{{ asset('public/icons/grey-star.svg') }}" />
+                                        <img src="{{ asset('public/icons/grey-star.svg') }}" />
+                                        <img src="{{ asset('public/icons/grey-star.svg') }}" />
+                                        <img src="{{ asset('public/icons/grey-star.svg') }}" />
+                                        <img src="{{ asset('public/icons/grey-star.svg') }}" />
+                                    @endif
                                 </div>
                                 <div class="price">
                                     <div class="currency">USD</div>
