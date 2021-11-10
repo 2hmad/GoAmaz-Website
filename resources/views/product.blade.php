@@ -360,7 +360,7 @@
         </div>
     </div>
     @include('layout/footer')
-    <script src="/js/product.js"></script>
+    <script src="{{ asset('/js/product.js') }}"></script>
 </body>
 <script src="https://www.chartjs.org/dist/master/chart.js"></script>
 <script>
