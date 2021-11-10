@@ -105,7 +105,7 @@
                         <div class="top-details">
                             <a href="{{ $json['full_link'] }}">
                                 <h1 class="title">{{ $json['title'] }}
-                                    <span><img src="/images/united-states.svg" /></span>
+                                    <span><img src="{{ asset('public/images/united-states.svg') }}" /></span>
                                 </h1>
                             </a>
                             @if ($check)
@@ -223,7 +223,7 @@
                     </div>
                     <div class="right-side">
                         <div class="advertise">
-                            <img src="/images/250px.png">
+                            <img src="{{ asset('public/images/250px.png') }}">
                         </div>
                         <div class="watch" style="margin-top: 10%">
                             <h4 style="margin-bottom: 2%">{{ __('product.amazon-price-watches') }}</h4>
