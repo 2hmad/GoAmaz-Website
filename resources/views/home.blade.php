@@ -220,7 +220,7 @@
                                             {{-- <div class="complment">00</div> --}}
                                         </div>
                                     </a>
-                                    @include('components/country')
+                                    {{-- @include('components/country') --}}
                                 </div>
                             </div>
                         @endforeach
@@ -284,7 +284,7 @@
                                     {{-- <div class="complment">00</div> --}}
                                 </div>
                             </a>
-                            @include('components/country')
+                            {{-- @include('components/country') --}}
                         </div>
                     @endforeach
                 </div>
@@ -384,7 +384,7 @@
                                     {{-- <div class="complment">00</div> --}}
                                 </div>
                             </a>
-                            @include('components/country')
+                            {{-- @include('components/country') --}}
                         </div>
                     @endforeach
                 </div>

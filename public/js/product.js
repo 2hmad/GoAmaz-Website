@@ -16,8 +16,8 @@ for (const child of stars.children) {
         let nextSibling = stars.children[0];
         let unmark = false;
         while (nextSibling) {
-            if (unmark) nextSibling.src = "/icons/star_outline.svg";
-            else nextSibling.src = "/icons/star.svg";
+            if (unmark) nextSibling.src = "public/icons/star_outline.svg";
+            else nextSibling.src = "public/icons/star.svg";
             if (nextSibling === child) unmark = true;
             nextSibling = nextSibling.nextElementSibling;
         }
