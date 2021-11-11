@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use AshAllenDesign\LaravelExchangeRates\Classes\ExchangeRate;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
@@ -64,7 +65,6 @@ class ProductController extends Controller
             'asin' => "$id"
         ]);
         $jsonUk = json_decode($jsonUk, TRUE);
-
         $chart = DB::table('price_tracker')->where('asin', '=', $id)->orderBy('date', 'DESC')->get();
 
         // $myIp = $request->ip();

@@ -216,11 +216,11 @@
                         <div class="p-details">
                             <h3>{{ __('product.about-this-item') }}</h3>
                             <ul style="width: 714px;line-height: 2em;">
-                                <li>{{ $json['features'][0] }}</li>
-                                <li>{{ $json['features'][1] }}</li>
-                                <li>{{ $json['features'][2] }}</li>
-                                <li>{{ $json['features'][3] }}</li>
-                                <li>{{ $json['features'][4] }}</li>
+                                <li>{{ isset($json['features'][0]) ? $json['features'][0] : '' }}</li>
+                                <li>{{ isset($json['features'][1]) ? $json['features'][1] : '' }}</li>
+                                <li>{{ isset($json['features'][2]) ? $json['features'][2] : '' }}</li>
+                                <li>{{ isset($json['features'][3]) ? $json['features'][3] : '' }}</li>
+                                <li>{{ isset($json['features'][4]) ? $json['features'][4] : '' }}</li>
                                 {{ $json['description'] }}
                             </ul>
                         </div>
@@ -273,7 +273,7 @@
                     </div>
                 </div>
                 <div class="other">
-                    @include('components/othercard')
+                    {{-- @include('components/othercard') --}}
                 </div>
 
                 <div class="chart">
