@@ -27,14 +27,14 @@
 
         label.star {
             float: right;
-            padding: 10px;
+            padding: 0 10px;
             font-size: 20px;
             transition: all .2s;
             color: #CCC
         }
 
         input.star:checked~label.star:before {
-            content: '\f005';
+            content: '\2605';
             color:
                 #ffbb00;
             transition: all .25s;
@@ -42,7 +42,7 @@
         }
 
         input.star:checked~label.star:before {
-            content: '\f005';
+            content: '\2605';
             color:
                 #ffbb00;
             transition: all .25s;
@@ -60,9 +60,9 @@
         }
 
         label.star:before {
-            content: '\f005';
-            font-family: 'Font Awesome 5 Free';
-            font-weight: 900
+            content: '\2605';
+            font-weight: 900;
+            font-size: 30px;
         }
 
         .horline>li:not(:last-child):after {
