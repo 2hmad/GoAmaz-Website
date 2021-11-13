@@ -18,7 +18,8 @@
         }
 
         div.stars {
-            justify-content: flex-start;
+            justify-content: flex-end;
+            direction: rtl;
         }
 
         input.star {
