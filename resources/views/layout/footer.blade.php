@@ -1,4 +1,4 @@
-<script src="{{ asset('public/js/header.js') }}"></script>
+<script src="{{ asset('js/header.js') }}"></script>
 <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 <script>
     const swiper = new Swiper('.swiper', {

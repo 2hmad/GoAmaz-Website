@@ -110,7 +110,7 @@
                         <div class="top-details">
                             <a href="{{ $json['full_link'] }}">
                                 <h1 class="title">{{ $json['title'] }}
-                                    <span><img src="{{ asset('public/images/united-states.svg') }}" /></span>
+                                    <span><img src="{{ asset('images/united-states.svg') }}" /></span>
                                 </h1>
                             </a>
                             @if ($check)
@@ -139,37 +139,37 @@
                         </div>
                         <div class="stars">
                             @if (number_format($json['reviews']['stars'], 0) == 5)
-                                <img src="{{ asset('public/icons/star.svg') }}" />
-                                <img src="{{ asset('public/icons/star.svg') }}" />
-                                <img src="{{ asset('public/icons/star.svg') }}" />
-                                <img src="{{ asset('public/icons/star.svg') }}" />
-                                <img src="{{ asset('public/icons/star.svg') }}" />
+                                <img src="{{ asset('icons/star.svg') }}" />
+                                <img src="{{ asset('icons/star.svg') }}" />
+                                <img src="{{ asset('icons/star.svg') }}" />
+                                <img src="{{ asset('icons/star.svg') }}" />
+                                <img src="{{ asset('icons/star.svg') }}" />
                             @elseif(number_format($json['reviews']['stars'], 0) == 4)
-                                <img src="{{ asset('public/icons/star.svg') }}" />
-                                <img src="{{ asset('public/icons/star.svg') }}" />
-                                <img src="{{ asset('public/icons/star.svg') }}" />
-                                <img src="{{ asset('public/icons/star.svg') }}" />
-                                <img src="{{ asset('public/icons/grey-star.svg') }}" />
+                                <img src="{{ asset('icons/star.svg') }}" />
+                                <img src="{{ asset('icons/star.svg') }}" />
+                                <img src="{{ asset('icons/star.svg') }}" />
+                                <img src="{{ asset('icons/star.svg') }}" />
+                                <img src="{{ asset('icons/grey-star.svg') }}" />
                             @elseif(number_format($json['reviews']['stars'], 0) == 3)
-                                <img src="{{ asset('public/icons/star.svg') }}" />
-                                <img src="{{ asset('public/icons/star.svg') }}" />
-                                <img src="{{ asset('public/icons/star.svg') }}" />
-                                <img src="{{ asset('public/icons/grey-star.svg') }}" />
-                                <img src="{{ asset('public/icons/grey-star.svg') }}" />
+                                <img src="{{ asset('icons/star.svg') }}" />
+                                <img src="{{ asset('icons/star.svg') }}" />
+                                <img src="{{ asset('icons/star.svg') }}" />
+                                <img src="{{ asset('icons/grey-star.svg') }}" />
+                                <img src="{{ asset('icons/grey-star.svg') }}" />
                             @elseif(number_format($json['reviews']['stars'], 0) == 2)
-                                <img src="{{ asset('public/icons/star.svg') }}" />
-                                <img src="{{ asset('public/icons/star.svg') }}" />
-                                <img src="{{ asset('public/icons/grey-star.svg') }}" />
-                                <img src="{{ asset('public/icons/grey-star.svg') }}" />
-                                <img src="{{ asset('public/icons/grey-star.svg') }}" />
+                                <img src="{{ asset('icons/star.svg') }}" />
+                                <img src="{{ asset('icons/star.svg') }}" />
+                                <img src="{{ asset('icons/grey-star.svg') }}" />
+                                <img src="{{ asset('icons/grey-star.svg') }}" />
+                                <img src="{{ asset('icons/grey-star.svg') }}" />
                             @elseif(number_format($json['reviews']['stars'], 0) == 1)
-                                <img src="{{ asset('public/icons/star.svg') }}" />
+                                <img src="{{ asset('icons/star.svg') }}" />
                             @else
-                                <img src="{{ asset('public/icons/grey-star.svg') }}" />
-                                <img src="{{ asset('public/icons/grey-star.svg') }}" />
-                                <img src="{{ asset('public/icons/grey-star.svg') }}" />
-                                <img src="{{ asset('public/icons/grey-star.svg') }}" />
-                                <img src="{{ asset('public/icons/grey-star.svg') }}" />
+                                <img src="{{ asset('icons/grey-star.svg') }}" />
+                                <img src="{{ asset('icons/grey-star.svg') }}" />
+                                <img src="{{ asset('icons/grey-star.svg') }}" />
+                                <img src="{{ asset('icons/grey-star.svg') }}" />
+                                <img src="{{ asset('icons/grey-star.svg') }}" />
                             @endif
                         </div>
                         <div class="price">
@@ -228,7 +228,7 @@
                     </div>
                     <div class="right-side">
                         <div class="advertise">
-                            <img src="{{ asset('public/images/250px.png') }}">
+                            <img src="{{ asset('images/250px.png') }}">
                         </div>
                         <div class="watch" style="margin-top: 10%">
                             <h4 style="margin-bottom: 2%">{{ __('product.amazon-price-watches') }}</h4>
@@ -285,37 +285,37 @@
                         <h2>{{ __('product.customer-review') }}</h2>
                         <div class="stars-container">
                             @if (number_format($json['reviews']['stars'], 0) == 5)
-                                <img src="{{ asset('public/icons/star.svg') }}" />
-                                <img src="{{ asset('public/icons/star.svg') }}" />
-                                <img src="{{ asset('public/icons/star.svg') }}" />
-                                <img src="{{ asset('public/icons/star.svg') }}" />
-                                <img src="{{ asset('public/icons/star.svg') }}" />
+                                <img src="{{ asset('icons/star.svg') }}" />
+                                <img src="{{ asset('icons/star.svg') }}" />
+                                <img src="{{ asset('icons/star.svg') }}" />
+                                <img src="{{ asset('icons/star.svg') }}" />
+                                <img src="{{ asset('icons/star.svg') }}" />
                             @elseif(number_format($json['reviews']['stars'], 0) == 4)
-                                <img src="{{ asset('public/icons/star.svg') }}" />
-                                <img src="{{ asset('public/icons/star.svg') }}" />
-                                <img src="{{ asset('public/icons/star.svg') }}" />
-                                <img src="{{ asset('public/icons/star.svg') }}" />
-                                <img src="{{ asset('public/icons/grey-star.svg') }}" />
+                                <img src="{{ asset('icons/star.svg') }}" />
+                                <img src="{{ asset('icons/star.svg') }}" />
+                                <img src="{{ asset('icons/star.svg') }}" />
+                                <img src="{{ asset('icons/star.svg') }}" />
+                                <img src="{{ asset('icons/grey-star.svg') }}" />
                             @elseif(number_format($json['reviews']['stars'], 0) == 3)
-                                <img src="{{ asset('public/icons/star.svg') }}" />
-                                <img src="{{ asset('public/icons/star.svg') }}" />
-                                <img src="{{ asset('public/icons/star.svg') }}" />
-                                <img src="{{ asset('public/icons/grey-star.svg') }}" />
-                                <img src="{{ asset('public/icons/grey-star.svg') }}" />
+                                <img src="{{ asset('icons/star.svg') }}" />
+                                <img src="{{ asset('icons/star.svg') }}" />
+                                <img src="{{ asset('icons/star.svg') }}" />
+                                <img src="{{ asset('icons/grey-star.svg') }}" />
+                                <img src="{{ asset('icons/grey-star.svg') }}" />
                             @elseif(number_format($json['reviews']['stars'], 0) == 2)
-                                <img src="{{ asset('public/icons/star.svg') }}" />
-                                <img src="{{ asset('public/icons/star.svg') }}" />
-                                <img src="{{ asset('public/icons/grey-star.svg') }}" />
-                                <img src="{{ asset('public/icons/grey-star.svg') }}" />
-                                <img src="{{ asset('public/icons/grey-star.svg') }}" />
+                                <img src="{{ asset('icons/star.svg') }}" />
+                                <img src="{{ asset('icons/star.svg') }}" />
+                                <img src="{{ asset('icons/grey-star.svg') }}" />
+                                <img src="{{ asset('icons/grey-star.svg') }}" />
+                                <img src="{{ asset('icons/grey-star.svg') }}" />
                             @elseif(number_format($json['reviews']['stars'], 0) == 1)
-                                <img src="{{ asset('public/icons/star.svg') }}" />
+                                <img src="{{ asset('icons/star.svg') }}" />
                             @else
-                                <img src="{{ asset('public/icons/grey-star.svg') }}" />
-                                <img src="{{ asset('public/icons/grey-star.svg') }}" />
-                                <img src="{{ asset('public/icons/grey-star.svg') }}" />
-                                <img src="{{ asset('public/icons/grey-star.svg') }}" />
-                                <img src="{{ asset('public/icons/grey-star.svg') }}" />
+                                <img src="{{ asset('icons/grey-star.svg') }}" />
+                                <img src="{{ asset('icons/grey-star.svg') }}" />
+                                <img src="{{ asset('icons/grey-star.svg') }}" />
+                                <img src="{{ asset('icons/grey-star.svg') }}" />
+                                <img src="{{ asset('icons/grey-star.svg') }}" />
                             @endif
                             <div class="rate">{{ number_format($json['reviews']['stars'], 0) }}
                                 {{ __('product.out-of') }}
@@ -365,7 +365,7 @@
         </div>
     </div>
     @include('layout/footer')
-    <script src="{{ asset('public/js/product.js') }}"></script>
+    <script src="{{ asset('js/product.js') }}"></script>
 </body>
 <script src="https://www.chartjs.org/dist/master/chart.js"></script>
 <script>

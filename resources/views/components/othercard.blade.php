@@ -2,12 +2,12 @@
     @if ($jsonSa['error'] !== true)
         <div class="other-card">
             <div class="image">
-                <img src="{{ asset('public/images/amazon logo.png') }}" alt="">
+                <img src="{{ asset('images/amazon logo.png') }}" alt="">
                 <a href="{{ $jsonSa['full_link'] }}"><span>{{ $jsonSa['full_link'] }}</span></a>
             </div>
             <div class="price-list">
                 <div class="logo">
-                    <img src="{{ asset('public/icons/saudi-arabia.svg') }}" alt="SA">
+                    <img src="{{ asset('icons/saudi-arabia.svg') }}" alt="SA">
                 </div>
                 <div class="price" style="margin-right: 50px;">
                     <div class="amount" style="color: green;font-weight:bold">
@@ -36,11 +36,11 @@
             @if ($jsonSa['prices']['current_price'] != -1)
                 @if ($jsonSa['prices']['previous_price'] != -1)
                     @if ($jsonSa['prices']['current_price'] > $jsonSa['prices']['previous_price'])
-                        <div class="down"><img src="{{ asset('public/icons/trending_down.svg') }}">
+                        <div class="down"><img src="{{ asset('icons/trending_down.svg') }}">
                             {{ number_format((1 - $jsonSa['prices']['current_price'] / $jsonSa['prices']['previous_price']) * 100, 0) }}%
                         </div>
                     @else
-                        <div class="up"><img src="{{ asset('public/icons/trending_up.svg') }}">
+                        <div class="up"><img src="{{ asset('icons/trending_up.svg') }}">
                             {{ number_format((1 - $jsonSa['prices']['current_price'] / $jsonSa['prices']['previous_price']) * 100, 0) }}%
                         </div>
                     @endif
@@ -54,12 +54,12 @@
     @if ($jsonAe['error'] !== true)
         <div class="other-card">
             <div class="image">
-                <img src="{{ asset('public/images/amazon logo.png') }}" alt="">
+                <img src="{{ asset('images/amazon logo.png') }}" alt="">
                 <a href="{{ $jsonAe['full_link'] }}"><span>{{ $jsonAe['full_link'] }}</span></a>
             </div>
             <div class="price-list">
                 <div class="logo">
-                    <img src="{{ asset('public/icons/United-Arab-Emirates-Flag.svg') }}" alt="UAE">
+                    <img src="{{ asset('icons/United-Arab-Emirates-Flag.svg') }}" alt="UAE">
                 </div>
                 <div class="price" style="margin-right: 50px;">
                     <div class="amount" style="color: green;font-weight:bold">
@@ -88,11 +88,11 @@
             @if ($jsonAe['prices']['current_price'] != -1)
                 @if ($jsonAe['prices']['previous_price'] != -1)
                     @if ($jsonAe['prices']['current_price'] > $jsonAe['prices']['previous_price'])
-                        <div class="down"><img src="{{ asset('public/icons/trending_down.svg') }}">
+                        <div class="down"><img src="{{ asset('icons/trending_down.svg') }}">
                             {{ number_format((1 - $jsonAe['prices']['current_price'] / $jsonAe['prices']['previous_price']) * 100, 0) }}%
                         </div>
                     @else
-                        <div class="up"><img src="{{ asset('public/icons/trending_up.svg') }}">
+                        <div class="up"><img src="{{ asset('icons/trending_up.svg') }}">
                             {{ number_format((1 - $jsonAe['prices']['current_price'] / $jsonAe['prices']['previous_price']) * 100, 0) }}%
                         </div>
                     @endif
@@ -106,12 +106,12 @@
     @if ($jsonUk['error'] !== true)
         <div class="other-card">
             <div class="image">
-                <img src="{{ asset('public/images/amazon logo.png') }}" alt="">
+                <img src="{{ asset('images/amazon logo.png') }}" alt="">
                 <a href="{{ $jsonUk['full_link'] }}"><span>{{ $jsonUk['full_link'] }}</span></a>
             </div>
             <div class="price-list">
                 <div class="logo">
-                    <img src="{{ asset('public/icons/United-Kingdom-Flag.svg') }}" alt="United Kingdom">
+                    <img src="{{ asset('icons/United-Kingdom-Flag.svg') }}" alt="United Kingdom">
                 </div>
                 <div class="price" style="margin-right: 50px;">
                     <div class="amount" style="color: green;font-weight:bold">
@@ -140,11 +140,11 @@
             @if ($jsonUk['prices']['current_price'] != -1)
                 @if ($jsonUk['prices']['previous_price'] != -1)
                     @if ($jsonUk['prices']['current_price'] > $jsonUk['prices']['previous_price'])
-                        <div class="down"><img src="{{ asset('public/icons/trending_down.svg') }}">
+                        <div class="down"><img src="{{ asset('icons/trending_down.svg') }}">
                             {{ number_format((1 - $jsonUk['prices']['current_price'] / $jsonUk['prices']['previous_price']) * 100, 0) }}%
                         </div>
                     @else
-                        <div class="up"><img src="{{ asset('public/icons/trending_up.svg') }}">
+                        <div class="up"><img src="{{ asset('icons/trending_up.svg') }}">
                             {{ number_format((1 - $jsonUk['prices']['current_price'] / $jsonUk['prices']['previous_price']) * 100, 0) }}%
                         </div>
                     @endif
