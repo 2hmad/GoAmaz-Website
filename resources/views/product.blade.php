@@ -5,7 +5,6 @@
     @include('layout/head')
     <title>{{ $json['title'] }}</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
     <style>
         canvas {
             -moz-user-select: none;
@@ -366,6 +365,7 @@
     @include('layout/footer')
     <script src="{{ asset('js/product.js') }}"></script>
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
 <script src="https://www.chartjs.org/dist/master/chart.js"></script>
 <script>
     let draw = Chart.controllers.line.prototype.draw;
