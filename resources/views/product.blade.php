@@ -279,84 +279,86 @@
                 </div>
 
                 <div class="reviews-container">
-                    <div class="stats">
-                        <h2>{{ __('product.customer-review') }}</h2>
-                        <div class="stars-container">
-                            @if (number_format($json['reviews']['stars'], 0) == 5)
-                                <img src="{{ asset('icons/star.svg') }}" />
-                                <img src="{{ asset('icons/star.svg') }}" />
-                                <img src="{{ asset('icons/star.svg') }}" />
-                                <img src="{{ asset('icons/star.svg') }}" />
-                                <img src="{{ asset('icons/star.svg') }}" />
-                            @elseif(number_format($json['reviews']['stars'], 0) == 4)
-                                <img src="{{ asset('icons/star.svg') }}" />
-                                <img src="{{ asset('icons/star.svg') }}" />
-                                <img src="{{ asset('icons/star.svg') }}" />
-                                <img src="{{ asset('icons/star.svg') }}" />
-                                <img src="{{ asset('icons/grey-star.svg') }}" />
-                            @elseif(number_format($json['reviews']['stars'], 0) == 3)
-                                <img src="{{ asset('icons/star.svg') }}" />
-                                <img src="{{ asset('icons/star.svg') }}" />
-                                <img src="{{ asset('icons/star.svg') }}" />
-                                <img src="{{ asset('icons/grey-star.svg') }}" />
-                                <img src="{{ asset('icons/grey-star.svg') }}" />
-                            @elseif(number_format($json['reviews']['stars'], 0) == 2)
-                                <img src="{{ asset('icons/star.svg') }}" />
-                                <img src="{{ asset('icons/star.svg') }}" />
-                                <img src="{{ asset('icons/grey-star.svg') }}" />
-                                <img src="{{ asset('icons/grey-star.svg') }}" />
-                                <img src="{{ asset('icons/grey-star.svg') }}" />
-                            @elseif(number_format($json['reviews']['stars'], 0) == 1)
-                                <img src="{{ asset('icons/star.svg') }}" />
-                            @else
-                                <img src="{{ asset('icons/grey-star.svg') }}" />
-                                <img src="{{ asset('icons/grey-star.svg') }}" />
-                                <img src="{{ asset('icons/grey-star.svg') }}" />
-                                <img src="{{ asset('icons/grey-star.svg') }}" />
-                                <img src="{{ asset('icons/grey-star.svg') }}" />
-                            @endif
-                            <div class="rate">{{ number_format($json['reviews']['stars'], 0) }}
-                                {{ __('product.out-of') }}
-                                5
-                            </div>
-                        </div>
-                        <h5>{{ $json['reviews']['total_reviews'] . ' ' . __('product.customer-ratings') }}
-                        </h5>
-                        @include('components/percentage')
-                        <h2 style="margin-top: 5%">{{ __('product.review-this-product') }}</h2>
-                        <form class="review-input" method="POST"
-                            action="{{ route('addRate', ['id' => request()->route('id'), 'author' => Crypt::encrypt(Session::get('email'))]) }}">
-                            @csrf
-                            <div class="stars">
-                                <input class="star star-5" value="5" id="star-5" type="radio" name="star" />
-                                <label class="star star-5" for="star-5"></label>
-
-                                <input class="star star-4" value="4" id="star-4" type="radio" name="star" />
-                                <label class="star star-4" for="star-4"></label>
-
-                                <input class="star star-3" value="3" id="star-3" type="radio" name="star" />
-                                <label class="star star-3" for="star-3"></label>
-
-                                <input class="star star-2" value="2" id="star-2" type="radio" name="star" />
-                                <label class="star star-2" for="star-2"></label>
-
-                                <input class="star star-1" value="1" id="star-1" type="radio" name="star" />
-                                <label class="star star-1" for="star-1"></label>
-                            </div>
-                            <div class="first-row">
-                                <div class="input-wrapper">
-                                    <textarea name="review" rows="20"
-                                        placeholder="{{ __('product.what-do-you-think') }}" required></textarea>
+                    <div style="width: 100%">
+                        <div class="stats">
+                            <h2>{{ __('product.customer-review') }}</h2>
+                            <div class="stars-container">
+                                @if (number_format($json['reviews']['stars'], 0) == 5)
+                                    <img src="{{ asset('icons/star.svg') }}" />
+                                    <img src="{{ asset('icons/star.svg') }}" />
+                                    <img src="{{ asset('icons/star.svg') }}" />
+                                    <img src="{{ asset('icons/star.svg') }}" />
+                                    <img src="{{ asset('icons/star.svg') }}" />
+                                @elseif(number_format($json['reviews']['stars'], 0) == 4)
+                                    <img src="{{ asset('icons/star.svg') }}" />
+                                    <img src="{{ asset('icons/star.svg') }}" />
+                                    <img src="{{ asset('icons/star.svg') }}" />
+                                    <img src="{{ asset('icons/star.svg') }}" />
+                                    <img src="{{ asset('icons/grey-star.svg') }}" />
+                                @elseif(number_format($json['reviews']['stars'], 0) == 3)
+                                    <img src="{{ asset('icons/star.svg') }}" />
+                                    <img src="{{ asset('icons/star.svg') }}" />
+                                    <img src="{{ asset('icons/star.svg') }}" />
+                                    <img src="{{ asset('icons/grey-star.svg') }}" />
+                                    <img src="{{ asset('icons/grey-star.svg') }}" />
+                                @elseif(number_format($json['reviews']['stars'], 0) == 2)
+                                    <img src="{{ asset('icons/star.svg') }}" />
+                                    <img src="{{ asset('icons/star.svg') }}" />
+                                    <img src="{{ asset('icons/grey-star.svg') }}" />
+                                    <img src="{{ asset('icons/grey-star.svg') }}" />
+                                    <img src="{{ asset('icons/grey-star.svg') }}" />
+                                @elseif(number_format($json['reviews']['stars'], 0) == 1)
+                                    <img src="{{ asset('icons/star.svg') }}" />
+                                @else
+                                    <img src="{{ asset('icons/grey-star.svg') }}" />
+                                    <img src="{{ asset('icons/grey-star.svg') }}" />
+                                    <img src="{{ asset('icons/grey-star.svg') }}" />
+                                    <img src="{{ asset('icons/grey-star.svg') }}" />
+                                    <img src="{{ asset('icons/grey-star.svg') }}" />
+                                @endif
+                                <div class="rate">{{ number_format($json['reviews']['stars'], 0) }}
+                                    {{ __('product.out-of') }}
+                                    5
                                 </div>
-                                <button type="submit">{{ __('product.review') }}</button>
                             </div>
-                        </form>
-                        <img src="https://via.placeholder.com/330x500"
-                            style="display:block;margin-top:50px;max-width: 100%;">
-                    </div>
-                    <div class="reviews-content">
-                        <div class="reviews">
-                            @include('components/review')
+                            <h5>{{ $json['reviews']['total_reviews'] . ' ' . __('product.customer-ratings') }}
+                            </h5>
+                            @include('components/percentage')
+                            <h2 style="margin-top: 5%">{{ __('product.review-this-product') }}</h2>
+                            <form class="review-input" method="POST"
+                                action="{{ route('addRate', ['id' => request()->route('id'), 'author' => Crypt::encrypt(Session::get('email'))]) }}">
+                                @csrf
+                                <div class="stars">
+                                    <input class="star star-5" value="5" id="star-5" type="radio" name="star" />
+                                    <label class="star star-5" for="star-5"></label>
+
+                                    <input class="star star-4" value="4" id="star-4" type="radio" name="star" />
+                                    <label class="star star-4" for="star-4"></label>
+
+                                    <input class="star star-3" value="3" id="star-3" type="radio" name="star" />
+                                    <label class="star star-3" for="star-3"></label>
+
+                                    <input class="star star-2" value="2" id="star-2" type="radio" name="star" />
+                                    <label class="star star-2" for="star-2"></label>
+
+                                    <input class="star star-1" value="1" id="star-1" type="radio" name="star" />
+                                    <label class="star star-1" for="star-1"></label>
+                                </div>
+                                <div class="first-row">
+                                    <div class="input-wrapper">
+                                        <textarea name="review" rows="20"
+                                            placeholder="{{ __('product.what-do-you-think') }}" required></textarea>
+                                    </div>
+                                    <button type="submit">{{ __('product.review') }}</button>
+                                </div>
+                            </form>
+                            <img src="https://via.placeholder.com/330x500"
+                                style="display:block;margin-top:50px;max-width: 100%;">
+                        </div>
+                        <div class="reviews-content">
+                            <div class="reviews">
+                                @include('components/review')
+                            </div>
                         </div>
                     </div>
                 </div>
