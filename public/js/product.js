@@ -13,6 +13,7 @@ image_selector.childNodes.forEach((child) => {
 for (const child of stars.children) {
     child.addEventListener("click", () => {
         review_input.style.display = "flex";
+        review_input.style.flexDirection = "column";
         let nextSibling = stars.children[0];
         let unmark = false;
         while (nextSibling) {

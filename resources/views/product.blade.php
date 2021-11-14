@@ -213,7 +213,7 @@
 
                         <div class="p-details">
                             <h3>{{ __('product.about-this-item') }}</h3>
-                            <ul style="width: 714px;line-height: 2em;">
+                            <ul style="width: 714px;max-width: 100%;line-height: 2em;">
                                 <li>{{ isset($json['features'][0]) ? $json['features'][0] : '' }}</li>
                                 <li>{{ isset($json['features'][1]) ? $json['features'][1] : '' }}</li>
                                 <li>{{ isset($json['features'][2]) ? $json['features'][2] : '' }}</li>
@@ -351,9 +351,10 @@
                                 <button type="submit">{{ __('product.review') }}</button>
                             </div>
                         </form>
+                        <img src="https://via.placeholder.com/330x500"
+                            style="display:block;margin-top:50px;max-width: 100%;">
                     </div>
                     <div class="reviews-content">
-
                         <div class="reviews">
                             @include('components/review')
                         </div>

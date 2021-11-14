@@ -548,6 +548,7 @@ nav .links {
       -ms-flex-positive: 1;
           flex-grow: 1;
   padding: 32px;
+  max-width: 100%;
 }
 
 .product .top-details {
@@ -561,6 +562,7 @@ nav .links {
       flex-wrap: wrap;
   gap: 16px;
   margin-bottom: 16px;
+  overflow: auto;
 }
 
 @media (max-width: 567px) {
@@ -728,6 +730,7 @@ nav .links {
   border-radius: 8px;
   -ms-flex-item-align: start;
       align-self: flex-start;
+  width: 400px;
   max-width: 100%;
 }
 
