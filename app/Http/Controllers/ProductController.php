@@ -39,32 +39,33 @@ class ProductController extends Controller
             ]);
         }
 
-        $jsonSa = Http::withHeaders([
-            'x-rapidapi-host' => 'amazon-products1.p.rapidapi.com',
-            'x-rapidapi-key' => env('X_RAPIDAPI_KEY', null)
-        ])->get('https://amazon-products1.p.rapidapi.com/product', [
-            'country' => 'SA',
-            'asin' => "$id"
-        ]);
-        $jsonSa = json_decode($jsonSa, TRUE);
+        // $jsonSa = Http::withHeaders([
+        //     'x-rapidapi-host' => 'amazon-products1.p.rapidapi.com',
+        //     'x-rapidapi-key' => env('X_RAPIDAPI_KEY', null)
+        // ])->get('https://amazon-products1.p.rapidapi.com/product', [
+        //     'country' => 'SA',
+        //     'asin' => "$id"
+        // ]);
+        // $jsonSa = json_decode($jsonSa, TRUE);
 
-        $jsonAe = Http::withHeaders([
-            'x-rapidapi-host' => 'amazon-products1.p.rapidapi.com',
-            'x-rapidapi-key' => env('X_RAPIDAPI_KEY', null)
-        ])->get('https://amazon-products1.p.rapidapi.com/product', [
-            'country' => 'AE',
-            'asin' => "$id"
-        ]);
-        $jsonAe = json_decode($jsonAe, TRUE);
+        // $jsonAe = Http::withHeaders([
+        //     'x-rapidapi-host' => 'amazon-products1.p.rapidapi.com',
+        //     'x-rapidapi-key' => env('X_RAPIDAPI_KEY', null)
+        // ])->get('https://amazon-products1.p.rapidapi.com/product', [
+        //     'country' => 'AE',
+        //     'asin' => "$id"
+        // ]);
+        // $jsonAe = json_decode($jsonAe, TRUE);
 
-        $jsonUk = Http::withHeaders([
-            'x-rapidapi-host' => 'amazon-products1.p.rapidapi.com',
-            'x-rapidapi-key' => env('X_RAPIDAPI_KEY', null)
-        ])->get('https://amazon-products1.p.rapidapi.com/product', [
-            'country' => 'UK',
-            'asin' => "$id"
-        ]);
-        $jsonUk = json_decode($jsonUk, TRUE);
+        // $jsonUk = Http::withHeaders([
+        //     'x-rapidapi-host' => 'amazon-products1.p.rapidapi.com',
+        //     'x-rapidapi-key' => env('X_RAPIDAPI_KEY', null)
+        // ])->get('https://amazon-products1.p.rapidapi.com/product', [
+        //     'country' => 'UK',
+        //     'asin' => "$id"
+        // ]);
+        // $jsonUk = json_decode($jsonUk, TRUE);
+
         $chart = DB::table('price_tracker')->where('asin', '=', $id)->orderBy('date', 'DESC')->get();
 
         // $myIp = $request->ip();
@@ -72,7 +73,8 @@ class ProductController extends Controller
         $ip = Http::get("http://ip-api.com/json/$myIp?fields=country,countryCode,currency");
         $ip = json_decode($ip, TRUE);
 
-        return view('product', compact('check', 'rates', 'json', 'jsonSa', 'jsonAe', 'jsonUk', 'chart', 'ip'));
+        // return view('product', compact('check', 'rates', 'json', 'jsonSa', 'jsonAe', 'jsonUk', 'chart', 'ip'));
+        return view('product', compact('check', 'rates', 'json', 'chart', 'ip'));
     }
     public function addFavorite(Request $request, $id, $email)
     {
