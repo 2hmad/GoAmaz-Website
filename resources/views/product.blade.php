@@ -80,6 +80,41 @@
             width: 100%;
             height: 100%
         }
+        .lds-ring {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+.lds-ring div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border: 8px solid #fff;
+    border-radius: 50%;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: #fff transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+    animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+    animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+    animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
 
     </style>
 </head>
@@ -271,7 +306,13 @@
                     </div>
                 </div>
                 <div class="other">
-                    {{-- @include('components/othercard') --}}
+                    <div class="sa">
+                    </div>
+                    <div class="ae">
+                        <div class="lds-ring"><div></div><div></div><div></div><div>.....</div></div>
+                    </div>
+                    <div class="uk">
+                    </div>
                 </div>
 
                 <div class="chart">
@@ -427,5 +468,54 @@
         utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
     });
 </script>
+<script>
+    const all = document.querySelectorAll('.other-card');
+const sa = document.querySelector('.sa')
+const ae = document.querySelector('.ae')
+const uk = document.querySelector('.uk')
+console.log(sa);
+console.log(ae);
+console.log(uk);
+function generateCard({
+    imageLink,
+    title,
+    price,
+    fullLink
+}) {
+    return `
+    <div class="other-card">
+        <div class="image">
+            <img src="" alt="">
+            <a href=""><span></span></a>
+        </div>
+        <div class="price-list">
+            <div class="logo">
+                <img src="" alt="SA">
+            </div>
+            <div class="price" style="margin-right: 50px;">
+                <div class="amount" style="color: green;font-weight:bold">
+                    ${price}
+                </div>
+            </div>
+            <div class="logo">
+            </div>
+            <div class="price">
+                <div class="amount" style="color: green;font-weight:bold">
+                </div>
+            </div>
+        </div>
 
+        <div class="down"><img src="">
+        </div>
+        <div class="up"><img src="">
+        </div>
+        <a href=""><button></button></a>
+    </div>
+`
+}
+fetch('/amazonae/'+ "{{ $json['asin'] }}").then(res => res.json()).then(data => {
+    console.log(data)
+    ae.innerHTML = (generateCard({price: data.prices.current_price}))
+})
+</script>
 </html>

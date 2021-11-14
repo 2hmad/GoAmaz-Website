@@ -5,6 +5,7 @@ use App\Http\Controllers\admin\AdminLogin;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\OtherCardController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
@@ -36,6 +37,10 @@ Route::group(['middleware' => 'visitors', 'prefix' => LaravelLocalization::setLo
     Route::post('/product/{id}/{email}', [ProductController::class, 'addFavorite'])->name('addfavorite');
     Route::delete('/product/{id}/{email}', [ProductController::class, 'deleteFavorite'])->name('destroy.favorite');
     Route::post('/rate/{id}/{author}', [ProductController::class, 'store_rate'])->name('addRate');
+
+    Route::get('/amazonsa/{id}', [OtherCardController::class, 'amazonSa']);
+    Route::get('/amazonae/{id}', [OtherCardController::class, 'amazonAe']);
+    Route::get('/amazonuk/{id}', [OtherCardController::class, 'amazonUk']);
 
     Route::get('/favorite', [FavoriteController::class, 'index']);
     Route::get('/search', [SearchController::class, 'index']);
