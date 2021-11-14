@@ -279,7 +279,7 @@
                 </div>
 
                 <div class="reviews-container">
-                    <div style="width: 100%">
+                    <div style="max-width: 400px">
                         <div class="stats">
                             <h2>{{ __('product.customer-review') }}</h2>
                             <div class="stars-container">
@@ -355,10 +355,10 @@
                             <img src="https://via.placeholder.com/330x500"
                                 style="display:block;margin-top:50px;max-width: 100%;">
                         </div>
-                        <div class="reviews-content">
-                            <div class="reviews">
-                                @include('components/review')
-                            </div>
+                    </div>
+                    <div class="reviews-content">
+                        <div class="reviews">
+                            @include('components/review')
                         </div>
                     </div>
                 </div>

@@ -729,8 +729,7 @@ nav .links {
   border-radius: 8px;
   -ms-flex-item-align: start;
       align-self: flex-start;
-  width: 400px;
-  max-width: 100%;
+  width: 100%;
 }
 
 .reviews-container .stats h2 {
