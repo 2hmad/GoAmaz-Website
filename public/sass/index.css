@@ -527,12 +527,10 @@ nav .links {
 }
 
 .product .image {
-  width: auto;
-  height: auto;
   -ms-flex-preferred-size: 250px;
       flex-basis: 250px;
-  min-width: 320px;
-  min-height: 320px;
+  max-width: 300px;
+  height: 300px;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
@@ -547,9 +545,9 @@ nav .links {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
-  padding: 32px;
   width: 100px;
   max-width: 100%;
+  padding: 32px;
 }
 
 .product .top-details {
