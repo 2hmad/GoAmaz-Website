@@ -548,6 +548,7 @@ nav .links {
       -ms-flex-positive: 1;
           flex-grow: 1;
   padding: 32px;
+  width: 100px;
   max-width: 100%;
 }
 
