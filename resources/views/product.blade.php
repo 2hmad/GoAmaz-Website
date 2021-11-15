@@ -123,7 +123,7 @@
                                 <div>{{ __('product.lowest-price') }}</div>
                                 <span
                                     style="display: flex;align-items: center;justify-content: center;flex-wrap: nowrap;">
-                                    @if ($json['prices']['previous_price'] !== -1)
+                                    @if ($json['prices']['previous_price'] != -1)
                                         {{ $json['prices']['previous_price'] }}
                                     @else
                                         0
@@ -143,7 +143,7 @@
                             </div>
                             <div class="r-price">
                                 <div>{{ __('product.latest-down') }}</div>
-                                @if ($json['prices']['previous_price'] !== -1)
+                                @if ($json['prices']['previous_price'] != -1)
                                     {{ number_format((1 - $json['prices']['current_price'] / $json['prices']['previous_price']) * 100, 0) }}%
                                 @else
                                     0%
