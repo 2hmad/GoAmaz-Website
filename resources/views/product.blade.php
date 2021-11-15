@@ -109,7 +109,7 @@
                                 <div>{{ __('product.lowest-price') }}</div>
                                 <span
                                     style="display: flex;align-items: center;justify-content: center;flex-wrap: nowrap;">
-                                    @if ($json['prices']['previous_price'] != -1)
+                                    @if ($json['prices']['previous_price'] !== -1)
                                         {{ $json['prices']['previous_price'] }}
                                     @else
                                         0
@@ -129,7 +129,7 @@
                             </div>
                             <div class="r-price">
                                 <div>{{ __('product.latest-down') }}</div>
-                                @if ($json['prices']['previous_price'] != -1)
+                                @if ($json['prices']['previous_price'] !== -1)
                                     {{ number_format((1 - $json['prices']['current_price'] / $json['prices']['previous_price']) * 100, 0) }}%
                                 @else
                                     0%
@@ -356,7 +356,7 @@
         utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
     });
 </script>
-{{-- <script>
+<script>
     const sa = document.querySelector('.sa')
 
     // Amazon SA
@@ -391,8 +391,8 @@
             currencySa;
 
         function upDown() {
-            if (priceSa != -1) {
-                if (prevPriceSa != -1) {
+            if (priceSa !== -1) {
+                if (prevPriceSa !== -1) {
                     if (priceSa > prevPriceSa) {
                         return `
                         <div class="down"><img src="{{ asset('icons/trending_down.svg') }}">
@@ -476,8 +476,8 @@
         const checkPrice = price = -1 ? '' + "{{ __('product.unknown-price') }}" + '' : price + ' ' + currency;
 
         function upDown() {
-            if (price != -1) {
-                if (prevPrice != -1) {
+            if (price !== -1) {
+                if (prevPrice !== -1) {
                     if (price > prevPrice) {
                         return `
                         <div class="down"><img src="{{ asset('icons/trending_down.svg') }}">
@@ -525,7 +525,7 @@
             fullLink: data.full_link
         }))
     })
-</script> --}}
+</script>
 
 <script>
     const uk = document.querySelector('.uk')

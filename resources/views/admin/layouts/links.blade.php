@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="css/adminlte.min.css">
-  <link rel="stylesheet" href="scss/main.css">
+  <link rel="stylesheet" href="{{ asset('adminn/scss/main.css') }}">
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Daterange picker -->

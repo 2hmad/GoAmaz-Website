@@ -1,3 +1,4 @@
+{{ Hash::make('123456789') }}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="scss/main.css">
+    <link rel="stylesheet" href="{{ asset('admin/scss/main.css') }}">
 </head>
 
 <body>
