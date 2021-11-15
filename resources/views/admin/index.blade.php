@@ -1,4 +1,3 @@
-{{ Hash::make('123456789') }}
 <!DOCTYPE html>
 <html lang="en">
 
