@@ -16,7 +16,7 @@ header {
     .search {
         display: flex;
         width: 100%;
-        max-width: 600px;
+        max-width: 800px;
         flex-grow: 1;
         border-radius: 4px;
         overflow: hidden;
@@ -31,7 +31,9 @@ header {
             justify-content: center;
             align-items: center;
             font-size: 0;
-            width: 50px;
+            min-width: auto;
+            width: 60px;
+            max-width: 60px;
             height: 40px;
             background-color: #ffa530;
         }
@@ -62,22 +64,29 @@ header {
         .lang-dropdown {
             background-color: #fff;
             border: 1px solid #ccc;
-            width: 120px;
+            width: 200px;
+            padding: 10px;
             display: none;
             position: absolute;
             flex-direction: column;
-            top: 32px;
+            top: 45px;
+            color: black;
+            @media only screen and (max-width: 768px) {
+                width: 100%;
+            }
             .lang-choice.active {
-                background-color: #febd69;
-                color: #fff;
+                color: #febd69;
                 font-weight: bold;
+                &:hover {
+                    text-decoration: none;
+                }
             }
             .lang-choice {
-                padding: 16px;
+                padding: 16px 0;
                 cursor: pointer;
                 &:hover {
-                    background-color: #ffa530;
-                    color: #fff;
+                    color: #febd69;
+                    text-decoration: underline;
                 }
             }
         }

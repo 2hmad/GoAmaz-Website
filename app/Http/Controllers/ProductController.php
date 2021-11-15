@@ -70,7 +70,7 @@ class ProductController extends Controller
 
         // $myIp = $request->ip();
         $myIp = "154.180.89.205";
-        $ip = Http::get("http://ip-api.com/json/$myIp?fields=country,countryCode,currency");
+        $ip = Http::get("https://ipwhois.app/json/$myIp?objects=country,currency_code,country_code");
         $ip = json_decode($ip, TRUE);
 
         // return view('product', compact('check', 'rates', 'json', 'jsonSa', 'jsonAe', 'jsonUk', 'chart', 'ip'));

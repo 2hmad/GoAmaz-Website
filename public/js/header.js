@@ -24,7 +24,7 @@ function AccessClipboardData() {
 setInterval("AccessClipboardData()", 300);
 const lang = document.querySelector("header .lang");
 const lang_dropdown = document.querySelector("header .lang .lang-dropdown");
-let isopen = false;
+let isopen = true;
 lang.addEventListener("click", () => {
     lang_dropdown.style.display = isopen ? "flex" : "none";
     isopen = !isopen;

@@ -4,7 +4,8 @@
         @if (request()->route()->uri == 'ar/login' || (request()->route()->uri == 'en/login' || request()->route()->uri == 'ar/register') || request()->route()->uri == 'en/register')
 
         @else
-            <form method="POST" action="{{ route('search') }}" style="width: 400px;margin-right: 2%;">
+            <form method="POST" action="{{ route('search') }}"
+                style="width: 800px;max-width: 100%;;margin-right: 2%;">
                 @csrf
                 <div class="search search-desk">
                     <input type="text" name="search" placeholder="Search..." />
@@ -17,11 +18,12 @@
         <div class="lang">
             <div class="current-lang">{{ LaravelLocalization::getCurrentLocaleName() }}</div>
             <div class="lang-dropdown" style="z-index: 999;">
+                <span>Change Language</span>
                 <a href="{{ LaravelLocalization::getLocalizedURL('en') }}">
-                    <div class="lang-choice @if (LaravelLocalization::getCurrentLocale() == 'en') active @endif">EN</div>
+                    <div class="lang-choice @if (LaravelLocalization::getCurrentLocale() == 'en') active @endif">English</div>
                 </a>
                 <a href="{{ LaravelLocalization::getLocalizedURL('ar') }}">
-                    <div class="lang-choice @if (LaravelLocalization::getCurrentLocale() == 'ar') active @endif">AR</div>
+                    <div class="lang-choice @if (LaravelLocalization::getCurrentLocale() == 'ar') active @endif">Arabic</div>
                 </a>
             </div>
         </div>

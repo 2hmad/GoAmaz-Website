@@ -6,115 +6,6 @@
     <title>{{ $json['title'] }}</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
     <style>
-        canvas {
-            -moz-user-select: none;
-            -webkit-user-select: none;
-            -ms-user-select: none;
-        }
-
-        #currency {
-            width: 125px;
-        }
-
-        div.stars {
-            justify-content: flex-end;
-            direction: rtl;
-        }
-
-        input.star {
-            display: none;
-        }
-
-        label.star {
-            float: right;
-            padding: 0 10px;
-            font-size: 20px;
-            transition: all .2s;
-            color: #CCC
-        }
-
-        input.star:checked~label.star:before {
-            content: '\2605';
-            color:
-                #ffbb00;
-            transition: all .25s;
-            font-weight: 900
-        }
-
-        input.star:checked~label.star:before {
-            content: '\2605';
-            color:
-                #ffbb00;
-            transition: all .25s;
-            font-weight: 900
-        }
-
-        input.star-5:checked~label.star:before {
-            color:
-                #ffbb00;
-        }
-
-        input.star-1:checked~label.star:before {
-            color:
-                #ffbb00;
-        }
-
-        label.star:before {
-            content: '\2605';
-            font-weight: 900;
-            font-size: 30px;
-        }
-
-        .horline>li:not(:last-child):after {
-            content: " |";
-        }
-
-        .horline>li {
-            font-weight: bold;
-            color:
-                #ffbb00;
-
-        }
-
-        .logo svg {
-            width: 100%;
-            height: 100%
-        }
-        .lds-ring {
-    display: inline-block;
-    position: relative;
-    width: 80px;
-    height: 80px;
-}
-.lds-ring div {
-    box-sizing: border-box;
-    display: block;
-    position: absolute;
-    width: 64px;
-    height: 64px;
-    margin: 8px;
-    border: 8px solid #fff;
-    border-radius: 50%;
-    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-    border-color: #fff transparent transparent transparent;
-}
-.lds-ring div:nth-child(1) {
-    animation-delay: -0.45s;
-}
-.lds-ring div:nth-child(2) {
-    animation-delay: -0.3s;
-}
-.lds-ring div:nth-child(3) {
-    animation-delay: -0.15s;
-}
-@keyframes lds-ring {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
 
     </style>
 </head>
@@ -264,14 +155,16 @@
                             <img src="{{ asset('images/250px.png') }}">
                         </div>
                         <div class="watch" style="margin-top: 10%">
-                            <h4 style="margin-bottom: 2%">{{ __('product.amazon-price-watches') }}</h4>
+                            <h4
+                                style="background: #ffa633;padding: 7px;border-radius: 50px;text-align: center;margin-bottom: 5%;">
+                                {{ __('product.amazon-price-watches') }}</h4>
                             <form method="POST" action="{{ route('addwatch', [1]) }}"
                                 style="display: flex;flex-direction: column;gap: 9px;">
                                 @csrf
                                 <div style="display: flex">
                                     @include('components/currencies')
                                     <input type="text" name="price" placeholder="{{ __('product.price') }}"
-                                        style="width:125px">
+                                        style="padding:6px 13px 6px 85px;height:auto">
                                 </div>
                                 <div style="display: flex;align-items: center;gap: 10px;">
                                     <input type="checkbox" name="send_email">
@@ -292,30 +185,49 @@
                                 @endif
                             </form>
                             <div style="margin-top: 5%">
-                                <!-- AddToAny BEGIN -->
-                                <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
-                                    <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
-                                    <a class="a2a_button_facebook"></a>
-                                    <a class="a2a_button_twitter"></a>
-                                    <a class="a2a_button_email"></a>
-                                </div>
-                                <script async src="https://static.addtoany.com/menu/page.js"></script>
-                                <!-- AddToAny END -->
+                                <a href="https://www.facebook.com/sharer/sharer.php?u={{ url()->current() }}"
+                                    target="_blank">
+                                    <img src="{{ asset('icons/facebook.svg') }}">
+                                </a>
+                                <a href="http://twitter.com/share?url={{ url()->current() }}&hashtags=GoAmaz"
+                                    target="_blank">
+                                    <img src="{{ asset('icons/twitter.svg') }}">
+                                </a>
+                                <a href="mailto:?subject=GoAmaz Website&body={{ url()->current() }}" target="_blank">
+                                    <img src="{{ asset('icons/email.svg') }}">
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="other">
                     <div class="sa">
+                        <div class="lds-ellipsis">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
                     </div>
                     <div class="ae">
-                        <div class="lds-ring"><div></div><div></div><div></div><div>.....</div></div>
+                        <div class="lds-ellipsis">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
                     </div>
                     <div class="uk">
+                        <div class="lds-ellipsis">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="chart">
+                <div class="chart-container">
                     <canvas id="chart"></canvas>
                 </div>
 
@@ -408,28 +320,12 @@
     </div>
     @include('layout/footer')
     <script src="{{ asset('js/product.js') }}"></script>
+
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
 <script src="https://www.chartjs.org/dist/master/chart.js"></script>
 <script>
     let draw = Chart.controllers.line.prototype.draw;
-    Chart.controllers.line.prototype.draw = function() {
-        let chart = this.chart;
-        let ctx = chart.ctx;
-        let _stroke = ctx.stroke;
-        ctx.stroke = function() {
-            ctx.save();
-            ctx.shadowColor = ctx.strokeStyle;
-            ctx.shadowBlur = 5;
-            ctx.shadowOffsetX = 0;
-            ctx.shadowOffsetY = 4;
-            _stroke.apply(this, arguments);
-            ctx.restore();
-        };
-        draw.apply(this, arguments);
-        ctx.stroke = _stroke;
-    };
-
     var ctx = document.getElementById("chart").getContext("2d");
     var chart = new Chart(ctx, {
         type: "line",
@@ -445,20 +341,12 @@
             }]
         },
         options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
-            },
-            title: {
-                display: true,
-                text: "chart",
-                fontColor: "#212A49"
-            }
+            maintainAspectRatio: false,
+            responsive: true,
         }
     });
+    chart.canvas.parentNode.style.height = '500px';
+    chart.canvas.parentNode.style.width = '1300px';
 </script>
 <script>
     const phoneInputField = document.querySelector("#phone");
@@ -468,54 +356,257 @@
         utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
     });
 </script>
-<script>
-    const all = document.querySelectorAll('.other-card');
-const sa = document.querySelector('.sa')
-const ae = document.querySelector('.ae')
-const uk = document.querySelector('.uk')
-console.log(sa);
-console.log(ae);
-console.log(uk);
-function generateCard({
-    imageLink,
-    title,
-    price,
-    fullLink
-}) {
-    return `
-    <div class="other-card">
-        <div class="image">
-            <img src="" alt="">
-            <a href=""><span></span></a>
-        </div>
-        <div class="price-list">
-            <div class="logo">
-                <img src="" alt="SA">
-            </div>
-            <div class="price" style="margin-right: 50px;">
-                <div class="amount" style="color: green;font-weight:bold">
-                    ${price}
-                </div>
-            </div>
-            <div class="logo">
-            </div>
-            <div class="price">
-                <div class="amount" style="color: green;font-weight:bold">
-                </div>
-            </div>
-        </div>
+{{-- <script>
+    const sa = document.querySelector('.sa')
 
-        <div class="down"><img src="">
-        </div>
-        <div class="up"><img src="">
-        </div>
-        <a href=""><button></button></a>
-    </div>
-`
-}
-fetch('/amazonae/'+ "{{ $json['asin'] }}").then(res => res.json()).then(data => {
-    console.log(data)
-    ae.innerHTML = (generateCard({price: data.prices.current_price}))
-})
+    // Amazon SA
+    function generateCardSa({
+        imageLinkSa,
+        titleSa,
+        priceSa,
+        prevPriceSa,
+        currencySa,
+        fullLinkSa
+    }) {
+        function changeCurrency() {
+            return `
+            <div class="logo">
+                <?php
+                $country = country('' . $ip['country_code'] . '');
+                echo $country->getFlag();
+                ?>
+                </div>
+                <div class="price">
+                    <div class="amount" style="color: green;font-weight:bold">
+                        {{ number_format(
+                            Currency::convert()->from('SAR')->to($ip['currency_code'])->amount(-1)->get(),
+                            0,
+                        ) }}
+                            {{ $ip['currency_code'] }}
+                            </div>
+                            </div>
+                            `
+        }
+        const checkPrice = priceSa = -1 ? '' + "{{ __('product.unknown-price') }}" + '' : priceSa + ' ' +
+            currencySa;
+
+        function upDown() {
+            if (priceSa != -1) {
+                if (prevPriceSa != -1) {
+                    if (priceSa > prevPriceSa) {
+                        return `
+                        <div class="down"><img src="{{ asset('icons/trending_down.svg') }}">
+                            (1 - ${priceSa} / ${prevPriceSa}) * 100
+                        </div>`
+                    } else {
+                        return `
+                        <div class="up"><img src="{{ asset('icons/trending_up.svg') }}">
+                            (1 - ${priceSa} / ${prevPriceSa}) * 100
+                        </div>`
+                    }
+                }
+            } else {
+                return '';
+            }
+        }
+        return `
+        <div class="other-card">
+            <div class="image">
+                <img src="{{ asset('images/amazon logo.png') }}" alt="">
+                <a href="${fullLinkSa}"><span>${fullLinkSa}</span></a>
+            </div>
+            <div class="price-list">
+                <div class="logo">
+                    <img src="{{ asset('icons/saudi-arabia.svg') }}" alt="SA">
+                </div>
+                <div class="price" style="margin-right: 50px;">
+                    <div class="amount" style="color: green;font-weight:bold">
+                        ${priceSa}
+                    </div>
+                </div>
+                ${changeCurrency()}            
+            </div>
+
+            ${upDown()}
+
+            <a href="${fullLinkSa}"><button>{{ __('home.view-amazon') }}</button></a>
+        </div>`
+    }
+    fetch('/amazonsa/' + "{{ $json['asin'] }}").then(res => res.json()).then(data => {
+        sa.innerHTML = (generateCardSa({
+            priceSa: data.prices.current_price,
+            prevPriceSa: data.prices.previous_price,
+            currencySa: data.prices.currency,
+            fullLinkSa: data.full_link
+        }))
+    })
 </script>
+
+<script>
+    const ae = document.querySelector('.ae')
+
+    // Amazon AE
+    function generateCardAe({
+        imageLink,
+        title,
+        price,
+        prevPrice,
+        currency,
+        fullLink
+    }) {
+        function changeCurrency() {
+            return `
+            <div class="logo">
+                <?php
+                $country = country('' . $ip['country_code'] . '');
+                echo $country->getFlag();
+                ?>
+                </div>
+                <div class="price">
+                    <div class="amount" style="color: green;font-weight:bold">
+                        {{ number_format(
+                            Currency::convert()->from('AED')->to($ip['currency_code'])->amount(-1)->get(),
+                            0,
+                        ) }}
+                            {{ $ip['currency_code'] }}
+                            </div>
+                            </div>
+                            `
+        }
+        const checkPrice = price = -1 ? '' + "{{ __('product.unknown-price') }}" + '' : price + ' ' + currency;
+
+        function upDown() {
+            if (price != -1) {
+                if (prevPrice != -1) {
+                    if (price > prevPrice) {
+                        return `
+                        <div class="down"><img src="{{ asset('icons/trending_down.svg') }}">
+                            (1 - ${price} / ${prevPrice}) * 100
+                        </div>`
+                    } else {
+                        return `
+                        <div class="up"><img src="{{ asset('icons/trending_up.svg') }}">
+                            (1 - ${price} / ${prevPrice}) * 100
+                        </div>`
+                    }
+                }
+            } else {
+                return '';
+            }
+        }
+        return `
+        <div class="other-card">
+            <div class="image">
+                <img src="{{ asset('images/amazon logo.png') }}" alt="">
+                <a href="${fullLink}"><span>${fullLink}</span></a>
+            </div>
+            <div class="price-list">
+                <div class="logo">
+                    <img src="{{ asset('icons/United-Arab-Emirates-Flag.svg') }}" alt="Amazon UAE">
+                </div>
+                <div class="price" style="margin-right: 50px;">
+                    <div class="amount" style="color: green;font-weight:bold">
+                        ${price}
+                    </div>
+                </div>
+                ${changeCurrency()}            
+            </div>
+
+            ${upDown()}
+
+            <a href="${fullLink}"><button>{{ __('home.view-amazon') }}</button></a>
+        </div>`
+    }
+    fetch('/amazonae/' + "{{ $json['asin'] }}").then(res => res.json()).then(data => {
+        ae.innerHTML = (generateCardAe({
+            price: data.prices.current_price,
+            prevPrice: data.prices.previous_price,
+            currency: data.prices.currency,
+            fullLink: data.full_link
+        }))
+    })
+</script> --}}
+
+<script>
+    const uk = document.querySelector('.uk')
+    // Amazon UK
+    function generateCardUk({
+        imageLink,
+        title,
+        price,
+        prevPrice,
+        currency,
+        fullLink
+    }) {
+        function changeCurrency() {
+            return `
+            <div class="logo">
+                <?php
+                $country = country('' . $ip['country_code'] . '');
+                echo $country->getFlag();
+                ?>
+                </div>
+                <div class="price">
+                    <div class="amount" style="color: green;font-weight:bold">
+                        {{ number_format(
+                            Currency::convert()->from('GBP')->to($ip['currency_code'])->amount(-1)->get(),
+                            0,
+                        ) }}
+                            {{ $ip['currency_code'] }}
+                            </div>
+                            </div>
+                            `
+        }
+        const checkPrice = price == -1 ? "{{ __('product.unknown-price') }}" : price + ' ' + currency;
+
+        function upDown() {
+            if (price !== -1) {
+                if (prevPrice !== -1) {
+                    if (price > prevPrice) {
+                        return `
+                        <div class="down"><img src="{{ asset('icons/trending_down.svg') }}">
+                            (1 - ${price} / ${prevPrice}) * 100
+                        </div>`
+                    } else {
+                        return `
+                        <div class="up"><img src="{{ asset('icons/trending_up.svg') }}">
+                            (1 - ${price} / ${prevPrice}) * 100
+                        </div>`
+                    }
+                }
+            }
+        }
+        return `
+        <div class="other-card">
+            <div class="image">
+                <img src="{{ asset('images/amazon logo.png') }}" alt="">
+                <a href="${fullLink}"><span>${fullLink}</span></a>
+            </div>
+            <div class="price-list">
+                <div class="logo">
+                    <img src="{{ asset('icons/United-Kingdom-Flag.svg') }}" alt="UK">
+                </div>
+                <div class="price" style="margin-right: 50px;">
+                    <div class="amount" style="color: green;font-weight:bold">
+                        ${price}
+                    </div>
+                </div>
+                ${changeCurrency()}            
+            </div>
+
+            ${upDown()}
+
+            <a href="${fullLink}"><button>{{ __('home.view-amazon') }}</button></a>
+        </div>`
+    }
+    fetch('/amazonuk/' + "{{ $json['asin'] }}").then(res => res.json()).then(data => {
+        uk.innerHTML = (generateCardUk({
+            price: data.prices.current_price,
+            prevPrice: data.prices.previous_price,
+            currency: data.prices.currency,
+            fullLink: data.full_link
+        }))
+    })
+</script>
+
 </html>
