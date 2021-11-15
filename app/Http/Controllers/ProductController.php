@@ -31,40 +31,13 @@ class ProductController extends Controller
         ]);
         $json = json_decode($json, TRUE);
 
-        if (DB::table('price_tracker')->where('date', '=', date('M Y'))->where('price', '=', $json['prices']['current_price'])->where('asin', '=', $id)->count() == 0) {
-            DB::table('price_tracker')->insert([
-                'asin' => $id,
-                'price' => $json['prices']['current_price'],
-                'date' => date('M Y')
-            ]);
-        }
-
-        // $jsonSa = Http::withHeaders([
-        //     'x-rapidapi-host' => 'amazon-products1.p.rapidapi.com',
-        //     'x-rapidapi-key' => env('X_RAPIDAPI_KEY', null)
-        // ])->get('https://amazon-products1.p.rapidapi.com/product', [
-        //     'country' => 'SA',
-        //     'asin' => "$id"
-        // ]);
-        // $jsonSa = json_decode($jsonSa, TRUE);
-
-        // $jsonAe = Http::withHeaders([
-        //     'x-rapidapi-host' => 'amazon-products1.p.rapidapi.com',
-        //     'x-rapidapi-key' => env('X_RAPIDAPI_KEY', null)
-        // ])->get('https://amazon-products1.p.rapidapi.com/product', [
-        //     'country' => 'AE',
-        //     'asin' => "$id"
-        // ]);
-        // $jsonAe = json_decode($jsonAe, TRUE);
-
-        // $jsonUk = Http::withHeaders([
-        //     'x-rapidapi-host' => 'amazon-products1.p.rapidapi.com',
-        //     'x-rapidapi-key' => env('X_RAPIDAPI_KEY', null)
-        // ])->get('https://amazon-products1.p.rapidapi.com/product', [
-        //     'country' => 'UK',
-        //     'asin' => "$id"
-        // ]);
-        // $jsonUk = json_decode($jsonUk, TRUE);
+        // if (DB::table('price_tracker')->where('date', '=', date('M Y'))->where('price', '=', $json['prices']['current_price'])->where('asin', '=', $id)->count() == 0) {
+        //     DB::table('price_tracker')->insert([
+        //         'asin' => $id,
+        //         'price' => $json['prices']['current_price'],
+        //         'date' => date('M Y')
+        //     ]);
+        // }
 
         $chart = DB::table('price_tracker')->where('asin', '=', $id)->orderBy('date', 'DESC')->get();
 
@@ -73,7 +46,6 @@ class ProductController extends Controller
         $ip = Http::get("https://ipwhois.app/json/$myIp?objects=country,currency_code,country_code");
         $ip = json_decode($ip, TRUE);
 
-        // return view('product', compact('check', 'rates', 'json', 'jsonSa', 'jsonAe', 'jsonUk', 'chart', 'ip'));
         return view('product', compact('check', 'rates', 'json', 'chart', 'ip'));
     }
     public function addFavorite(Request $request, $id, $email)

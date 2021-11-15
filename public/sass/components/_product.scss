@@ -268,10 +268,12 @@
         }
         input[type="submit"] {
             padding: 10px;
-            background: #febd69;
+            background: transparent;
+            text-align: initial;
             font-weight: bold;
             border: none;
             border-radius: 3px;
+            outline: none;
         }
     }
     @media (max-width: 567px) {

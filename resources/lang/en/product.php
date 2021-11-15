@@ -10,7 +10,7 @@ return [
     'select-currency' => 'Currency',
     'send-an-email' => 'Send an email',
     'send-an-message' => 'Send an message',
-    'subscribe' => 'Subscribe',
+    'subscribe' => 'Send',
     'customer-review' => 'Customer Review',
     'out-of' => 'out of',
     'customer-ratings' => 'Customer ratings',

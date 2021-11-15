@@ -5,9 +5,23 @@
     @include('layout/head')
     <title>{{ $json['title'] }}</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
-    <style>
+    @if (LaravelLocalization::getCurrentLocale() == 'ar')
+        <style>
+            .iti__flag-container {
+                right: auto;
+                left: auto !important;
+            }
 
-    </style>
+            div.stars {
+                direction: ltr;
+            }
+
+            #phone {
+                padding: 6px 52px 6px 6px;
+            }
+
+        </style>
+    @endif
 </head>
 
 <body>
@@ -163,8 +177,13 @@
                                 @csrf
                                 <div style="display: flex">
                                     @include('components/currencies')
-                                    <input type="text" name="price" placeholder="{{ __('product.price') }}"
-                                        style="padding:6px 13px 6px 85px;height:auto">
+                                    @if (LaravelLocalization::getCurrentLocale() == 'en')
+                                        <input type="text" name="price" placeholder="{{ __('product.price') }}"
+                                            style="padding:6px 13px 6px 85px;height:auto">
+                                    @else
+                                        <input type="text" name="price" placeholder="{{ __('product.price') }}"
+                                            style="padding:6px 85px 6px 6px;height:auto">
+                                    @endif
                                 </div>
                                 <div style="display: flex;align-items: center;gap: 10px;">
                                     <input type="checkbox" name="send_email">

@@ -10,7 +10,7 @@ return [
     'select-currency' => 'العملة',
     'send-an-email' => 'ارسال علي البريد الالكتروني',
     'send-an-message' => 'ارسال في رسالة نصية',
-    'subscribe' => 'اشتراك',
+    'subscribe' => 'ارسال',
     'customer-review' => 'تقييمات العملاء',
     'out-of' => 'من',
     'customer-ratings' => 'تقييمات العملاء',

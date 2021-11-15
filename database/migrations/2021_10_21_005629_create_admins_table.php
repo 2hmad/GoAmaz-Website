@@ -18,7 +18,7 @@ class CreateAdminsTable extends Migration
             $table->text('name');
             $table->string('email');
             $table->text('password');
-            $table->text('permissions');
+            $table->text('permissions')->nullable();
         });
     }
 
