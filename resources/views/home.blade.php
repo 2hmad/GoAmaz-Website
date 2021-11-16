@@ -13,11 +13,9 @@
     <div class="page">
         <div class="container">
             <div class="home-page">
-                <div class="swiper">
-                    <!-- Additional required wrapper -->
-                    <div class="swiper-wrapper">
 
-                        <!-- Slides -->
+                <div class="swiper">
+                    <div class="swiper-wrapper">
                         @foreach ($getAds as $ad)
                             <div class="swiper-slide">
                                 <div class="home-card">
@@ -37,69 +35,125 @@
                                 </div>
                             </div>
                         @endforeach
-
                     </div>
-                    <!-- If we need pagination -->
-
-                    <!-- If we need navigation buttons -->
                     <div class="swiper-button-prev"></div>
                     <div class="swiper-button-next"></div>
-
                 </div>
 
-                <div class="multi-item-grid">
-                    @foreach ($getOffersOne as $offer)
-                        <div class="home-card">
-                            <a href="/product/{{ $offer->asin }}">
-                                <div class="image">
-                                    <img src="{{ $offer->img }}" alt="A" />
+                @if (Agent::isMobile())
+                    <div class="swiper">
+                        <div class="swiper-wrapper">
+                            @foreach ($getOffersOne as $offer)
+                                <div class="swiper-slide">
+                                    <div class="home-card">
+                                        <a href="/product/{{ $offer->asin }}">
+                                            <div class="image">
+                                                <img src="{{ $offer->img }}" alt="{{ $offer->title }}" />
+                                            </div>
+                                            <div class="title">
+                                                {{ $offer->title }}
+                                            </div>
+                                            <div class="stars">
+                                                @if (number_format($offer->reviews, 0) == 5)
+                                                    <img src="{{ asset('icons/star.svg') }}" />
+                                                    <img src="{{ asset('icons/star.svg') }}" />
+                                                    <img src="{{ asset('icons/star.svg') }}" />
+                                                    <img src="{{ asset('icons/star.svg') }}" />
+                                                    <img src="{{ asset('icons/star.svg') }}" />
+                                                @elseif(number_format($offer->reviews, 0) == 4)
+                                                    <img src="{{ asset('icons/star.svg') }}" />
+                                                    <img src="{{ asset('icons/star.svg') }}" />
+                                                    <img src="{{ asset('icons/star.svg') }}" />
+                                                    <img src="{{ asset('icons/star.svg') }}" />
+                                                    <img src="{{ asset('icons/grey-star.svg') }}" />
+                                                @elseif(number_format($offer->reviews, 0) == 3)
+                                                    <img src="{{ asset('icons/star.svg') }}" />
+                                                    <img src="{{ asset('icons/star.svg') }}" />
+                                                    <img src="{{ asset('icons/star.svg') }}" />
+                                                    <img src="{{ asset('icons/grey-star.svg') }}" />
+                                                    <img src="{{ asset('icons/grey-star.svg') }}" />
+                                                @elseif(number_format($offer->reviews, 0) == 2)
+                                                    <img src="{{ asset('icons/star.svg') }}" />
+                                                    <img src="{{ asset('icons/star.svg') }}" />
+                                                    <img src="{{ asset('icons/grey-star.svg') }}" />
+                                                    <img src="{{ asset('icons/grey-star.svg') }}" />
+                                                    <img src="{{ asset('icons/grey-star.svg') }}" />
+                                                @elseif(number_format($offer->reviews, 0) == 1)
+                                                    <img src="{{ asset('icons/star.svg') }}" />
+                                                @else
+                                                    <img src="{{ asset('icons/grey-star.svg') }}" />
+                                                    <img src="{{ asset('icons/grey-star.svg') }}" />
+                                                    <img src="{{ asset('icons/grey-star.svg') }}" />
+                                                    <img src="{{ asset('icons/grey-star.svg') }}" />
+                                                    <img src="{{ asset('icons/grey-star.svg') }}" />
+                                                @endif
+                                            </div>
+                                            <div class="price">
+                                                <div class="currency">USD</div>
+                                                <div class="amount">{{ $offer->price }}</div>
+                                            </div>
+                                        </a>
+                                    </div>
                                 </div>
-                                <div class="title">{{ $offer->title }}</div>
-                                <div class="stars">
-                                    @if (number_format($offer->reviews, 0) == 5)
-                                        <img src="{{ asset('icons/star.svg') }}" />
-                                        <img src="{{ asset('icons/star.svg') }}" />
-                                        <img src="{{ asset('icons/star.svg') }}" />
-                                        <img src="{{ asset('icons/star.svg') }}" />
-                                        <img src="{{ asset('icons/star.svg') }}" />
-                                    @elseif(number_format($offer->reviews, 0) == 4)
-                                        <img src="{{ asset('icons/star.svg') }}" />
-                                        <img src="{{ asset('icons/star.svg') }}" />
-                                        <img src="{{ asset('icons/star.svg') }}" />
-                                        <img src="{{ asset('icons/star.svg') }}" />
-                                        <img src="{{ asset('icons/grey-star.svg') }}" />
-                                    @elseif(number_format($offer->reviews, 0) == 3)
-                                        <img src="{{ asset('icons/star.svg') }}" />
-                                        <img src="{{ asset('icons/star.svg') }}" />
-                                        <img src="{{ asset('icons/star.svg') }}" />
-                                        <img src="{{ asset('icons/grey-star.svg') }}" />
-                                        <img src="{{ asset('icons/grey-star.svg') }}" />
-                                    @elseif(number_format($offer->reviews, 0) == 2)
-                                        <img src="{{ asset('icons/star.svg') }}" />
-                                        <img src="{{ asset('icons/star.svg') }}" />
-                                        <img src="{{ asset('icons/grey-star.svg') }}" />
-                                        <img src="{{ asset('icons/grey-star.svg') }}" />
-                                        <img src="{{ asset('icons/grey-star.svg') }}" />
-                                    @elseif(number_format($offer->reviews, 0) == 1)
-                                        <img src="{{ asset('icons/star.svg') }}" />
-                                    @else
-                                        <img src="{{ asset('icons/grey-star.svg') }}" />
-                                        <img src="{{ asset('icons/grey-star.svg') }}" />
-                                        <img src="{{ asset('icons/grey-star.svg') }}" />
-                                        <img src="{{ asset('icons/grey-star.svg') }}" />
-                                        <img src="{{ asset('icons/grey-star.svg') }}" />
-                                    @endif
-                                </div>
-                                <div class="price">
-                                    <div class="currency">USD</div>
-                                    <div class="amount">{{ $offer->price }}</div>
-                                    {{-- <div class="complment">00</div> --}}
-                                </div>
-                            </a>
-                            {{-- @include('components/country') --}}
+                            @endforeach
                         </div>
-                    @endforeach
-                </div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                    </div>
+                @else
+                    <div class="multi-item-grid">
+                        @foreach ($getOffersOne as $offer)
+                            <div class="home-card">
+                                <a href="/product/{{ $offer->asin }}">
+                                    <div class="image">
+                                        <img src="{{ $offer->img }}" alt="A" />
+                                    </div>
+                                    <div class="title">{{ $offer->title }}</div>
+                                    <div class="stars">
+                                        @if (number_format($offer->reviews, 0) == 5)
+                                            <img src="{{ asset('icons/star.svg') }}" />
+                                            <img src="{{ asset('icons/star.svg') }}" />
+                                            <img src="{{ asset('icons/star.svg') }}" />
+                                            <img src="{{ asset('icons/star.svg') }}" />
+                                            <img src="{{ asset('icons/star.svg') }}" />
+                                        @elseif(number_format($offer->reviews, 0) == 4)
+                                            <img src="{{ asset('icons/star.svg') }}" />
+                                            <img src="{{ asset('icons/star.svg') }}" />
+                                            <img src="{{ asset('icons/star.svg') }}" />
+                                            <img src="{{ asset('icons/star.svg') }}" />
+                                            <img src="{{ asset('icons/grey-star.svg') }}" />
+                                        @elseif(number_format($offer->reviews, 0) == 3)
+                                            <img src="{{ asset('icons/star.svg') }}" />
+                                            <img src="{{ asset('icons/star.svg') }}" />
+                                            <img src="{{ asset('icons/star.svg') }}" />
+                                            <img src="{{ asset('icons/grey-star.svg') }}" />
+                                            <img src="{{ asset('icons/grey-star.svg') }}" />
+                                        @elseif(number_format($offer->reviews, 0) == 2)
+                                            <img src="{{ asset('icons/star.svg') }}" />
+                                            <img src="{{ asset('icons/star.svg') }}" />
+                                            <img src="{{ asset('icons/grey-star.svg') }}" />
+                                            <img src="{{ asset('icons/grey-star.svg') }}" />
+                                            <img src="{{ asset('icons/grey-star.svg') }}" />
+                                        @elseif(number_format($offer->reviews, 0) == 1)
+                                            <img src="{{ asset('icons/star.svg') }}" />
+                                        @else
+                                            <img src="{{ asset('icons/grey-star.svg') }}" />
+                                            <img src="{{ asset('icons/grey-star.svg') }}" />
+                                            <img src="{{ asset('icons/grey-star.svg') }}" />
+                                            <img src="{{ asset('icons/grey-star.svg') }}" />
+                                            <img src="{{ asset('icons/grey-star.svg') }}" />
+                                        @endif
+                                    </div>
+                                    <div class="price">
+                                        <div class="currency">USD</div>
+                                        <div class="amount">{{ $offer->price }}</div>
+                                    </div>
+                                </a>
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
+
                 <div class="homeblocks">
 
                     <div class="homeblock">
@@ -208,59 +262,120 @@
                 <!-- Ad -->
                 <div class="ad-728"></div>
                 <!-- End Ad -->
-                <div class="multi-item-grid">
-                    @foreach ($getOffersTwo as $offer)
-                        <div class="home-card">
-                            <a href="/product/{{ $offer->asin }}">
-                                <div class="image">
-                                    <img src="{{ $offer->img }}" alt="A" />
+                @if (Agent::isMobile())
+                    <div class="swiper">
+                        <div class="swiper-wrapper">
+                            @foreach ($getOffersTwo as $offer)
+                                <div class="swiper-slide">
+                                    <div class="home-card">
+                                        <a href="/product/{{ $offer->asin }}">
+                                            <div class="image">
+                                                <img src="{{ $offer->img }}" alt="{{ $offer->title }}" />
+                                            </div>
+                                            <div class="title">
+                                                {{ $offer->title }}
+                                            </div>
+                                            <div class="stars">
+                                                @if (number_format($offer->reviews, 0) == 5)
+                                                    <img src="{{ asset('icons/star.svg') }}" />
+                                                    <img src="{{ asset('icons/star.svg') }}" />
+                                                    <img src="{{ asset('icons/star.svg') }}" />
+                                                    <img src="{{ asset('icons/star.svg') }}" />
+                                                    <img src="{{ asset('icons/star.svg') }}" />
+                                                @elseif(number_format($offer->reviews, 0) == 4)
+                                                    <img src="{{ asset('icons/star.svg') }}" />
+                                                    <img src="{{ asset('icons/star.svg') }}" />
+                                                    <img src="{{ asset('icons/star.svg') }}" />
+                                                    <img src="{{ asset('icons/star.svg') }}" />
+                                                    <img src="{{ asset('icons/grey-star.svg') }}" />
+                                                @elseif(number_format($offer->reviews, 0) == 3)
+                                                    <img src="{{ asset('icons/star.svg') }}" />
+                                                    <img src="{{ asset('icons/star.svg') }}" />
+                                                    <img src="{{ asset('icons/star.svg') }}" />
+                                                    <img src="{{ asset('icons/grey-star.svg') }}" />
+                                                    <img src="{{ asset('icons/grey-star.svg') }}" />
+                                                @elseif(number_format($offer->reviews, 0) == 2)
+                                                    <img src="{{ asset('icons/star.svg') }}" />
+                                                    <img src="{{ asset('icons/star.svg') }}" />
+                                                    <img src="{{ asset('icons/grey-star.svg') }}" />
+                                                    <img src="{{ asset('icons/grey-star.svg') }}" />
+                                                    <img src="{{ asset('icons/grey-star.svg') }}" />
+                                                @elseif(number_format($offer->reviews, 0) == 1)
+                                                    <img src="{{ asset('icons/star.svg') }}" />
+                                                @else
+                                                    <img src="{{ asset('icons/grey-star.svg') }}" />
+                                                    <img src="{{ asset('icons/grey-star.svg') }}" />
+                                                    <img src="{{ asset('icons/grey-star.svg') }}" />
+                                                    <img src="{{ asset('icons/grey-star.svg') }}" />
+                                                    <img src="{{ asset('icons/grey-star.svg') }}" />
+                                                @endif
+                                            </div>
+                                            <div class="price">
+                                                <div class="currency">USD</div>
+                                                <div class="amount">{{ $offer->price }}</div>
+                                            </div>
+                                        </a>
+                                    </div>
                                 </div>
-                                <div class="title">{{ $offer->title }}</div>
-                                <div class="stars">
-                                    @if (number_format($offer->reviews, 0) == 5)
-                                        <img src="{{ asset('icons/star.svg') }}" />
-                                        <img src="{{ asset('icons/star.svg') }}" />
-                                        <img src="{{ asset('icons/star.svg') }}" />
-                                        <img src="{{ asset('icons/star.svg') }}" />
-                                        <img src="{{ asset('icons/star.svg') }}" />
-                                    @elseif(number_format($offer->reviews, 0) == 4)
-                                        <img src="{{ asset('icons/star.svg') }}" />
-                                        <img src="{{ asset('icons/star.svg') }}" />
-                                        <img src="{{ asset('icons/star.svg') }}" />
-                                        <img src="{{ asset('icons/star.svg') }}" />
-                                        <img src="{{ asset('icons/grey-star.svg') }}" />
-                                    @elseif(number_format($offer->reviews, 0) == 3)
-                                        <img src="{{ asset('icons/star.svg') }}" />
-                                        <img src="{{ asset('icons/star.svg') }}" />
-                                        <img src="{{ asset('icons/star.svg') }}" />
-                                        <img src="{{ asset('icons/grey-star.svg') }}" />
-                                        <img src="{{ asset('icons/grey-star.svg') }}" />
-                                    @elseif(number_format($offer->reviews, 0) == 2)
-                                        <img src="{{ asset('icons/star.svg') }}" />
-                                        <img src="{{ asset('icons/star.svg') }}" />
-                                        <img src="{{ asset('icons/grey-star.svg') }}" />
-                                        <img src="{{ asset('icons/grey-star.svg') }}" />
-                                        <img src="{{ asset('icons/grey-star.svg') }}" />
-                                    @elseif(number_format($offer->reviews, 0) == 1)
-                                        <img src="{{ asset('icons/star.svg') }}" />
-                                    @else
-                                        <img src="{{ asset('icons/grey-star.svg') }}" />
-                                        <img src="{{ asset('icons/grey-star.svg') }}" />
-                                        <img src="{{ asset('icons/grey-star.svg') }}" />
-                                        <img src="{{ asset('icons/grey-star.svg') }}" />
-                                        <img src="{{ asset('icons/grey-star.svg') }}" />
-                                    @endif
-                                </div>
-                                <div class="price">
-                                    <div class="currency">USD</div>
-                                    <div class="amount">{{ $offer->price }}</div>
-                                    {{-- <div class="complment">00</div> --}}
-                                </div>
-                            </a>
-                            {{-- @include('components/country') --}}
+                            @endforeach
                         </div>
-                    @endforeach
-                </div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                    </div>
+                @else
+                    <div class="multi-item-grid">
+                        @foreach ($getOffersTwo as $offer)
+                            <div class="home-card">
+                                <a href="/product/{{ $offer->asin }}">
+                                    <div class="image">
+                                        <img src="{{ $offer->img }}" alt="A" />
+                                    </div>
+                                    <div class="title">{{ $offer->title }}</div>
+                                    <div class="stars">
+                                        @if (number_format($offer->reviews, 0) == 5)
+                                            <img src="{{ asset('icons/star.svg') }}" />
+                                            <img src="{{ asset('icons/star.svg') }}" />
+                                            <img src="{{ asset('icons/star.svg') }}" />
+                                            <img src="{{ asset('icons/star.svg') }}" />
+                                            <img src="{{ asset('icons/star.svg') }}" />
+                                        @elseif(number_format($offer->reviews, 0) == 4)
+                                            <img src="{{ asset('icons/star.svg') }}" />
+                                            <img src="{{ asset('icons/star.svg') }}" />
+                                            <img src="{{ asset('icons/star.svg') }}" />
+                                            <img src="{{ asset('icons/star.svg') }}" />
+                                            <img src="{{ asset('icons/grey-star.svg') }}" />
+                                        @elseif(number_format($offer->reviews, 0) == 3)
+                                            <img src="{{ asset('icons/star.svg') }}" />
+                                            <img src="{{ asset('icons/star.svg') }}" />
+                                            <img src="{{ asset('icons/star.svg') }}" />
+                                            <img src="{{ asset('icons/grey-star.svg') }}" />
+                                            <img src="{{ asset('icons/grey-star.svg') }}" />
+                                        @elseif(number_format($offer->reviews, 0) == 2)
+                                            <img src="{{ asset('icons/star.svg') }}" />
+                                            <img src="{{ asset('icons/star.svg') }}" />
+                                            <img src="{{ asset('icons/grey-star.svg') }}" />
+                                            <img src="{{ asset('icons/grey-star.svg') }}" />
+                                            <img src="{{ asset('icons/grey-star.svg') }}" />
+                                        @elseif(number_format($offer->reviews, 0) == 1)
+                                            <img src="{{ asset('icons/star.svg') }}" />
+                                        @else
+                                            <img src="{{ asset('icons/grey-star.svg') }}" />
+                                            <img src="{{ asset('icons/grey-star.svg') }}" />
+                                            <img src="{{ asset('icons/grey-star.svg') }}" />
+                                            <img src="{{ asset('icons/grey-star.svg') }}" />
+                                            <img src="{{ asset('icons/grey-star.svg') }}" />
+                                        @endif
+                                    </div>
+                                    <div class="price">
+                                        <div class="currency">USD</div>
+                                        <div class="amount">{{ $offer->price }}</div>
+                                    </div>
+                                </a>
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
+
                 <div class="homeblocks">
 
                     <div class="homeblock">
@@ -308,59 +423,121 @@
                     </div>
 
                 </div>
-                <div class="multi-item-grid">
-                    @foreach ($getOffersThree as $offer)
-                        <div class="home-card">
-                            <a href="/product/{{ $offer->asin }}">
-                                <div class="image">
-                                    <img src="{{ $offer->img }}" alt="A" />
+
+                @if (Agent::isMobile())
+                    <div class="swiper">
+                        <div class="swiper-wrapper">
+                            @foreach ($getOffersThree as $offer)
+                                <div class="swiper-slide">
+                                    <div class="home-card">
+                                        <a href="/product/{{ $offer->asin }}">
+                                            <div class="image">
+                                                <img src="{{ $offer->img }}" alt="{{ $offer->title }}" />
+                                            </div>
+                                            <div class="title">
+                                                {{ $offer->title }}
+                                            </div>
+                                            <div class="stars">
+                                                @if (number_format($offer->reviews, 0) == 5)
+                                                    <img src="{{ asset('icons/star.svg') }}" />
+                                                    <img src="{{ asset('icons/star.svg') }}" />
+                                                    <img src="{{ asset('icons/star.svg') }}" />
+                                                    <img src="{{ asset('icons/star.svg') }}" />
+                                                    <img src="{{ asset('icons/star.svg') }}" />
+                                                @elseif(number_format($offer->reviews, 0) == 4)
+                                                    <img src="{{ asset('icons/star.svg') }}" />
+                                                    <img src="{{ asset('icons/star.svg') }}" />
+                                                    <img src="{{ asset('icons/star.svg') }}" />
+                                                    <img src="{{ asset('icons/star.svg') }}" />
+                                                    <img src="{{ asset('icons/grey-star.svg') }}" />
+                                                @elseif(number_format($offer->reviews, 0) == 3)
+                                                    <img src="{{ asset('icons/star.svg') }}" />
+                                                    <img src="{{ asset('icons/star.svg') }}" />
+                                                    <img src="{{ asset('icons/star.svg') }}" />
+                                                    <img src="{{ asset('icons/grey-star.svg') }}" />
+                                                    <img src="{{ asset('icons/grey-star.svg') }}" />
+                                                @elseif(number_format($offer->reviews, 0) == 2)
+                                                    <img src="{{ asset('icons/star.svg') }}" />
+                                                    <img src="{{ asset('icons/star.svg') }}" />
+                                                    <img src="{{ asset('icons/grey-star.svg') }}" />
+                                                    <img src="{{ asset('icons/grey-star.svg') }}" />
+                                                    <img src="{{ asset('icons/grey-star.svg') }}" />
+                                                @elseif(number_format($offer->reviews, 0) == 1)
+                                                    <img src="{{ asset('icons/star.svg') }}" />
+                                                @else
+                                                    <img src="{{ asset('icons/grey-star.svg') }}" />
+                                                    <img src="{{ asset('icons/grey-star.svg') }}" />
+                                                    <img src="{{ asset('icons/grey-star.svg') }}" />
+                                                    <img src="{{ asset('icons/grey-star.svg') }}" />
+                                                    <img src="{{ asset('icons/grey-star.svg') }}" />
+                                                @endif
+                                            </div>
+                                            <div class="price">
+                                                <div class="currency">USD</div>
+                                                <div class="amount">{{ $offer->price }}</div>
+                                            </div>
+                                        </a>
+                                    </div>
                                 </div>
-                                <div class="title">{{ $offer->title }}</div>
-                                <div class="stars">
-                                    @if (number_format($offer->reviews, 0) == 5)
-                                        <img src="{{ asset('icons/star.svg') }}" />
-                                        <img src="{{ asset('icons/star.svg') }}" />
-                                        <img src="{{ asset('icons/star.svg') }}" />
-                                        <img src="{{ asset('icons/star.svg') }}" />
-                                        <img src="{{ asset('icons/star.svg') }}" />
-                                    @elseif(number_format($offer->reviews, 0) == 4)
-                                        <img src="{{ asset('icons/star.svg') }}" />
-                                        <img src="{{ asset('icons/star.svg') }}" />
-                                        <img src="{{ asset('icons/star.svg') }}" />
-                                        <img src="{{ asset('icons/star.svg') }}" />
-                                        <img src="{{ asset('icons/grey-star.svg') }}" />
-                                    @elseif(number_format($offer->reviews, 0) == 3)
-                                        <img src="{{ asset('icons/star.svg') }}" />
-                                        <img src="{{ asset('icons/star.svg') }}" />
-                                        <img src="{{ asset('icons/star.svg') }}" />
-                                        <img src="{{ asset('icons/grey-star.svg') }}" />
-                                        <img src="{{ asset('icons/grey-star.svg') }}" />
-                                    @elseif(number_format($offer->reviews, 0) == 2)
-                                        <img src="{{ asset('icons/star.svg') }}" />
-                                        <img src="{{ asset('icons/star.svg') }}" />
-                                        <img src="{{ asset('icons/grey-star.svg') }}" />
-                                        <img src="{{ asset('icons/grey-star.svg') }}" />
-                                        <img src="{{ asset('icons/grey-star.svg') }}" />
-                                    @elseif(number_format($offer->reviews, 0) == 1)
-                                        <img src="{{ asset('icons/star.svg') }}" />
-                                    @else
-                                        <img src="{{ asset('icons/grey-star.svg') }}" />
-                                        <img src="{{ asset('icons/grey-star.svg') }}" />
-                                        <img src="{{ asset('icons/grey-star.svg') }}" />
-                                        <img src="{{ asset('icons/grey-star.svg') }}" />
-                                        <img src="{{ asset('icons/grey-star.svg') }}" />
-                                    @endif
-                                </div>
-                                <div class="price">
-                                    <div class="currency">USD</div>
-                                    <div class="amount">{{ $offer->price }}</div>
-                                    {{-- <div class="complment">00</div> --}}
-                                </div>
-                            </a>
-                            {{-- @include('components/country') --}}
+                            @endforeach
                         </div>
-                    @endforeach
-                </div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                    </div>
+                @else
+                    <div class="multi-item-grid">
+                        @foreach ($getOffersThree as $offer)
+                            <div class="home-card">
+                                <a href="/product/{{ $offer->asin }}">
+                                    <div class="image">
+                                        <img src="{{ $offer->img }}" alt="A" />
+                                    </div>
+                                    <div class="title">{{ $offer->title }}</div>
+                                    <div class="stars">
+                                        @if (number_format($offer->reviews, 0) == 5)
+                                            <img src="{{ asset('icons/star.svg') }}" />
+                                            <img src="{{ asset('icons/star.svg') }}" />
+                                            <img src="{{ asset('icons/star.svg') }}" />
+                                            <img src="{{ asset('icons/star.svg') }}" />
+                                            <img src="{{ asset('icons/star.svg') }}" />
+                                        @elseif(number_format($offer->reviews, 0) == 4)
+                                            <img src="{{ asset('icons/star.svg') }}" />
+                                            <img src="{{ asset('icons/star.svg') }}" />
+                                            <img src="{{ asset('icons/star.svg') }}" />
+                                            <img src="{{ asset('icons/star.svg') }}" />
+                                            <img src="{{ asset('icons/grey-star.svg') }}" />
+                                        @elseif(number_format($offer->reviews, 0) == 3)
+                                            <img src="{{ asset('icons/star.svg') }}" />
+                                            <img src="{{ asset('icons/star.svg') }}" />
+                                            <img src="{{ asset('icons/star.svg') }}" />
+                                            <img src="{{ asset('icons/grey-star.svg') }}" />
+                                            <img src="{{ asset('icons/grey-star.svg') }}" />
+                                        @elseif(number_format($offer->reviews, 0) == 2)
+                                            <img src="{{ asset('icons/star.svg') }}" />
+                                            <img src="{{ asset('icons/star.svg') }}" />
+                                            <img src="{{ asset('icons/grey-star.svg') }}" />
+                                            <img src="{{ asset('icons/grey-star.svg') }}" />
+                                            <img src="{{ asset('icons/grey-star.svg') }}" />
+                                        @elseif(number_format($offer->reviews, 0) == 1)
+                                            <img src="{{ asset('icons/star.svg') }}" />
+                                        @else
+                                            <img src="{{ asset('icons/grey-star.svg') }}" />
+                                            <img src="{{ asset('icons/grey-star.svg') }}" />
+                                            <img src="{{ asset('icons/grey-star.svg') }}" />
+                                            <img src="{{ asset('icons/grey-star.svg') }}" />
+                                            <img src="{{ asset('icons/grey-star.svg') }}" />
+                                        @endif
+                                    </div>
+                                    <div class="price">
+                                        <div class="currency">USD</div>
+                                        <div class="amount">{{ $offer->price }}</div>
+                                    </div>
+                                </a>
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
+
 
             </div>
         </div>

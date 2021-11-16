@@ -12,6 +12,7 @@
         "amrshawky/laravel-currency": "^4.0",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.3",
+        "jenssegers/agent": "^2.6",
         "laravel/framework": "^8.54",
         "laravel/sanctum": "^2.11",
         "laravel/socialite": "^5.2",
