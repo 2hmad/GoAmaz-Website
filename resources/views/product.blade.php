@@ -31,18 +31,20 @@
         <div class="container">
             <div class="product-page">
                 <div class="product">
-                    <div class="image-selector" @if (LaravelLocalization::getCurrentLocale() == 'ar') style="right:0;left:auto" @endif>
-                        @if (isset($json['images'][0]))
-                            <img src="{{ $json['images'][0] }}" alt="{{ $json['title'] }}">
-                        @endif
-                        @if (isset($json['images'][1]))
-                            <img src="{{ $json['images'][1] }}" alt="{{ $json['title'] }}">
-                        @endif
-                    </div>
-                    <div class="image">
-                        @if (isset($json['images'][0]))
-                            <img src="{{ $json['images'][0] }}" alt="{{ $json['title'] }}">
-                        @endif
+                    <div>
+                        <div class="image-selector" @if (LaravelLocalization::getCurrentLocale() == 'ar') style="right:0;left:auto" @endif>
+                            @if (isset($json['images'][0]))
+                                <img src="{{ $json['images'][0] }}" alt="{{ $json['title'] }}">
+                            @endif
+                            @if (isset($json['images'][1]))
+                                <img src="{{ $json['images'][1] }}" alt="{{ $json['title'] }}">
+                            @endif
+                        </div>
+                        <div class="image">
+                            @if (isset($json['images'][0]))
+                                <img src="{{ $json['images'][0] }}" alt="{{ $json['title'] }}">
+                            @endif
+                        </div>
                     </div>
                     <div class="details">
                         <div class="top-details">
