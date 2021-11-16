@@ -138,33 +138,6 @@
                             href="https://www.amazon.com/events/earlyblackfriday?ref_=nav_cs_gb_5d8ef71f209b44c2acab6343d6a5a05e&pf_rd_r=BWSXZEEJ7XXPGRS0H8RV&pf_rd_p=9a6c0d73-7822-49b7-81fa-791f25f9455c&pd_rd_r=d7b330a2-edeb-4366-a2ec-23cc58d28357&pd_rd_w=jhRib&pd_rd_wg=SEOHY">{{ __('home.show-now') }}</a>
                     </div>
 
-                    <div class="homeblock">
-                        <div class="title">{{ __('home.shopping') }}</div>
-                        <div class="images">
-                            <div class="row">
-                                <div class="image">
-                                    <img src="https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Fuji/2019/February/Dashboard/computer120x._SY85_CB468850970_.jpg"
-                                        alt="Computers">
-                                </div>
-                                <div class="image">
-                                    <img src="https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Fuji/2019/August/DashboardCard/PS4_120X._SY85_CB438749318_.jpg"
-                                        alt="PlayStation">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="image">
-                                    <img src="https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Fuji/2019/February/Dashboard/Baby120X._SY85_CB468850882_.jpg"
-                                        alt="Childrens">
-                                </div>
-                                <div class="image">
-                                    <img src="https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Fuji/2019/February/Dashboard/Toys120X._SY85_CB468851693_.jpg"
-                                        alt="Toys">
-                                </div>
-                            </div>
-                        </div>
-                        <a
-                            href="https://www.amazon.com/-/ar/b?node=17938598011&pf_rd_r=BWSXZEEJ7XXPGRS0H8RV&pf_rd_p=f4c99c2c-2128-4a44-b52e-ae53b811e48f&pd_rd_r=d7b330a2-edeb-4366-a2ec-23cc58d28357&pd_rd_w=rhIBV&pd_rd_wg=SEOHY&ref_=pd_gw_unk">{{ __('home.explore-now') }}</a>
-                    </div>
 
                 </div>
                 <div class="swiper">
