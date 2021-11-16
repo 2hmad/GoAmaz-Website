@@ -131,10 +131,21 @@ body {
             gap: 32px;
             height: auto;
             flex-wrap: wrap;
+            @media (max-width: 567px) {
+                & {
+                    flex-wrap: nowrap;
+                    gap: 4px;
+                }
+            }
             img {
                 width: 186px;
                 height: 116px;
                 object-fit: contain;
+                @media (max-width: 567px) {
+                    & {
+                        width: 100%;
+                    }
+                }
             }
             @media (max-width: 567px) {
                 & {

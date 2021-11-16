@@ -1466,11 +1466,25 @@ body {
       flex-wrap: wrap;
 }
 
+@media (max-width: 567px) {
+  .homeblock .images .row {
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    gap: 4px;
+  }
+}
+
 .homeblock .images .row img {
   width: 186px;
   height: 116px;
   -o-object-fit: contain;
      object-fit: contain;
+}
+
+@media (max-width: 567px) {
+  .homeblock .images .row img {
+    width: 100%;
+  }
 }
 
 @media (max-width: 567px) {
