@@ -221,28 +221,28 @@
                 </div>
                 <div class="other">
                     <div class="sa">
-                        <div class="lds-ellipsis">
+                        {{-- <div class="lds-ellipsis">
                             <div></div>
                             <div></div>
                             <div></div>
                             <div></div>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="ae">
-                        <div class="lds-ellipsis">
+                        {{-- <div class="lds-ellipsis">
                             <div></div>
                             <div></div>
                             <div></div>
                             <div></div>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="uk">
-                        <div class="lds-ellipsis">
+                        {{-- <div class="lds-ellipsis">
                             <div></div>
                             <div></div>
                             <div></div>
                             <div></div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
 
@@ -385,10 +385,12 @@
         priceSa,
         prevPriceSa,
         currencySa,
-        fullLinkSa
+        fullLinkSa,
+        error
     }) {
-        function changeCurrency() {
-            return `
+        if (errorSa !== true) {
+            function changeCurrency() {
+                return `
             <div class="logo">
                 <?php
                 $country = country('' . $ip['country_code'] . '');
@@ -398,37 +400,37 @@
                 <div class="price">
                     <div class="amount" style="color: green;font-weight:bold">
                         {{ number_format(
-                            Currency::convert()->from('SAR')->to($ip['currency_code'])->amount(-1)->get(),
+                            Currency::convert()->from('SAR')->to($ip['currency_code'])->amount(0)->get(),
                             0,
                         ) }}
-                            {{ $ip['currency_code'] }}
-                            </div>
-                            </div>
-                            `
-        }
-        const checkPrice = priceSa = -1 ? '' + "{{ __('product.unknown-price') }}" + '' : priceSa + ' ' +
-            currencySa;
-
-        function upDown() {
-            if (priceSa !== -1) {
-                if (prevPriceSa !== -1) {
-                    if (priceSa > prevPriceSa) {
-                        return `
-                        <div class="down"><img src="{{ asset('icons/trending_down.svg') }}">
-                            (1 - ${priceSa} / ${prevPriceSa}) * 100
-                        </div>`
-                    } else {
-                        return `
-                        <div class="up"><img src="{{ asset('icons/trending_up.svg') }}">
-                            (1 - ${priceSa} / ${prevPriceSa}) * 100
-                        </div>`
-                    }
-                }
-            } else {
-                return '';
+                        {{ $ip['currency_code'] }}
+                    </div>
+                </div>
+                `
             }
-        }
-        return `
+
+            function upDownSa() {
+                if (parseInt(priceSa) > 0) {
+                    if (parseInt(prevPriceSa) > 0) {
+                        if (parseInt(priceSa) > parseInt(prevPriceSa)) {
+                            return `
+                        <div class="down"><img src="{{ asset('icons/trending_down.svg') }}">
+                            ${(1 - parseInt(priceSa) / parseInt(prevPriceSa)) * 100}
+                        </div>`
+                        } else {
+                            return `
+                        <div class="up"><img src="{{ asset('icons/trending_up.svg') }}">
+                            ${(1 - parseInt(priceSa) / parseInt(prevPriceSa)) * 100}
+                        </div>`
+                        }
+                    } else {
+                        return ''
+                    }
+                } else {
+                    return ''
+                }
+            }
+            return `
         <div class="other-card">
             <div class="image">
                 <img src="{{ asset('images/amazon logo.png') }}" alt="">
@@ -446,10 +448,11 @@
                 ${changeCurrency()}            
             </div>
 
-            ${upDown()}
+            ${upDownSa()}
 
             <a href="${fullLinkSa}"><button>{{ __('home.view-amazon') }}</button></a>
         </div>`
+        }
     }
     fetch('/amazonsa/' + "{{ $json['asin'] }}").then(res => res.json()).then(data => {
         sa.innerHTML = (generateCardSa({
@@ -457,6 +460,7 @@
             prevPriceSa: data.prices.previous_price,
             currencySa: data.prices.currency,
             fullLinkSa: data.full_link
+            error: data.error
         }))
     })
 </script>
@@ -471,7 +475,8 @@
         price,
         prevPrice,
         currency,
-        fullLink
+        fullLink,
+        error
     }) {
         function changeCurrency() {
             return `
@@ -484,33 +489,33 @@
                 <div class="price">
                     <div class="amount" style="color: green;font-weight:bold">
                         {{ number_format(
-                            Currency::convert()->from('AED')->to($ip['currency_code'])->amount(-1)->get(),
+                            Currency::convert()->from('AED')->to($ip['currency_code'])->amount(0)->get(),
                             0,
                         ) }}
-                            {{ $ip['currency_code'] }}
-                            </div>
-                            </div>
-                            `
+                        {{ $ip['currency_code'] }}
+                    </div>
+                </div>`
         }
-        const checkPrice = price = -1 ? '' + "{{ __('product.unknown-price') }}" + '' : price + ' ' + currency;
 
-        function upDown() {
-            if (price !== -1) {
-                if (prevPrice !== -1) {
-                    if (price > prevPrice) {
+        function upDownAe() {
+            if (parseInt(price) > 0) {
+                if (parseInt(prevPrice) > 0) {
+                    if (parseInt(price) > parseInt(prevPrice)) {
                         return `
                         <div class="down"><img src="{{ asset('icons/trending_down.svg') }}">
-                            (1 - ${price} / ${prevPrice}) * 100
+                            ${(1 - parseInt(price) / parseInt(prevPrice)) * 100}
                         </div>`
                     } else {
                         return `
                         <div class="up"><img src="{{ asset('icons/trending_up.svg') }}">
-                            (1 - ${price} / ${prevPrice}) * 100
+                            ${(1 - parseInt(price) / parseInt(prevPrice)) * 100}
                         </div>`
                     }
+                } else {
+                    return ''
                 }
             } else {
-                return '';
+                return ''
             }
         }
         return `
@@ -531,7 +536,7 @@
                 ${changeCurrency()}            
             </div>
 
-            ${upDown()}
+            ${upDownAe()}
 
             <a href="${fullLink}"><button>{{ __('home.view-amazon') }}</button></a>
         </div>`
@@ -541,7 +546,8 @@
             price: data.prices.current_price,
             prevPrice: data.prices.previous_price,
             currency: data.prices.currency,
-            fullLink: data.full_link
+            fullLink: data.full_link,
+            error: data.error
         }))
     })
 </script>
@@ -552,10 +558,11 @@
     function generateCardUk({
         imageLink,
         title,
-        price,
-        prevPrice,
+        priceUk,
+        prevPriceUk,
         currency,
-        fullLink
+        fullLink,
+        error
     }) {
         function changeCurrency() {
             return `
@@ -568,7 +575,7 @@
                 <div class="price">
                     <div class="amount" style="color: green;font-weight:bold">
                         {{ number_format(
-                            Currency::convert()->from('GBP')->to($ip['currency_code'])->amount(-1)->get(),
+                            Currency::convert()->from('GBP')->to($ip['currency_code'])->amount(0)->get(),
                             0,
                         ) }}
                             {{ $ip['currency_code'] }}
@@ -576,25 +583,29 @@
                             </div>
                             `
         }
-        const checkPrice = price == -1 ? "{{ __('product.unknown-price') }}" : price + ' ' + currency;
 
-        function upDown() {
-            if (price !== -1) {
-                if (prevPrice !== -1) {
-                    if (price > prevPrice) {
+        function upDownUk() {
+            if (parseInt(priceUk) > 0) {
+                if (parseInt(prevPriceUk) > 0) {
+                    if (parseInt(priceUk) > parseInt(prevPriceUk)) {
                         return `
                         <div class="down"><img src="{{ asset('icons/trending_down.svg') }}">
-                            (1 - ${price} / ${prevPrice}) * 100
+                            ${(1 - parseInt(priceUk) / parseInt(prevPriceUk)) * 100}
                         </div>`
                     } else {
                         return `
                         <div class="up"><img src="{{ asset('icons/trending_up.svg') }}">
-                            (1 - ${price} / ${prevPrice}) * 100
+                            ${(1 - parseInt(priceUk) / parseInt(prevPriceUk)) * 100}
                         </div>`
                     }
+                } else {
+                    return ''
                 }
+            } else {
+                return ''
             }
         }
+
         return `
         <div class="other-card">
             <div class="image">
@@ -607,23 +618,25 @@
                 </div>
                 <div class="price" style="margin-right: 50px;">
                     <div class="amount" style="color: green;font-weight:bold">
-                        ${price}
+                        ${priceUk}
                     </div>
                 </div>
                 ${changeCurrency()}            
             </div>
 
-            ${upDown()}
+            ${upDownUk()}
 
             <a href="${fullLink}"><button>{{ __('home.view-amazon') }}</button></a>
         </div>`
+
     }
     fetch('/amazonuk/' + "{{ $json['asin'] }}").then(res => res.json()).then(data => {
         uk.innerHTML = (generateCardUk({
-            price: data.prices.current_price,
-            prevPrice: data.prices.previous_price,
+            priceUk: data.prices.current_price,
+            prevPriceUk: data.prices.previous_price,
             currency: data.prices.currency,
-            fullLink: data.full_link
+            fullLink: data.full_link,
+            error: data.error
         }))
     })
 </script>
